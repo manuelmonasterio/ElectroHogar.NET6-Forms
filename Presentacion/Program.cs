@@ -7,31 +7,29 @@ using Negocio;
 
 namespace Presentacion
 {
-    public class Program
+    internal class Program
     {
         public static List<UsuarioModel> usuarios = new List<UsuarioModel>();
+        private static LoginInicio log = new LoginInicio();
+        private static MetodosUsuarios met = new MetodosUsuarios();
         //UsuarioModel usuario = new UsuarioModel();
-        private static LoginInicio loginIn = new LoginInicio();
+
         static void Main(string[] args)
         {
+            Console.WriteLine("Bienvenidos a Electro Hogar SA.");
+            met.CrearUsuariosAdmin();
             UsuarioModel usuario = new Administrador();
-            //List<UsuarioModel> usuarios = new List<UsuarioModel>();
-
-            Console.WriteLine("Bienvenidos al sistema de Eletro Hogar S.A.");
-            
-            MetodosUsuarios usu = new MetodosUsuarios();
-            usuario = usu.CrearUsuario("1","Carolina", "Wehner", "Uzal 1234", "1138205055", "carowehner2001@gmail.com", new DateTime(2001, 05, 23), "AdministradoraCW", 1, 43245128, "CAI20232");
+            usuario = new Administrador(new Guid(), "Carolina", "Wehner", "Uzal 1234", "1138205055", "carowehner2001@gmail.com", DateTime.Now, new DateTime(2001, 05, 23), new DateTime(2099, 01, 01), "AdministradoraCW", 1, 43245128, "CAI20232", "Activo");
             usuarios.Add(usuario);
-            usuario = usu.CrearUsuario("2", "Evelyn", "Zivano", "Farrel 1234", "1153376046", "evelynzivano@gmail.com", new DateTime(1994, 07, 12), "AdministradoraEZ", 1, 38491201, "CAI20232");
+            usuario = new Administrador(new Guid(), "Evelyn", "Zivano", "Farrel 1234", "1153376046", "evelynzivano@gmail.com", DateTime.Now, new DateTime(1994, 07, 12), new DateTime(2099, 01, 01), "AdministradoraEZ", 1, 38491201, "CAI20232", "Activo");
             usuarios.Add(usuario);
-            usuario = usu.CrearUsuario("3", "Patricio", "Gerenni", "Cochabamba 1234", "1167845556", "patriciogerenni@gmail.com", new DateTime(1999, 04, 20), "AdministradorPG", 1, 41823861, "CAI20232");
+            usuario = new Administrador(new Guid(), "Patricio", "Gerenni", "Cochabamba 1234", "1167845556", "patriciogerenni@gmail.com", DateTime.Now, new DateTime(1999, 04, 20), new DateTime(2099, 01, 01), "AdministradorPG", 1, 41823861, "CAI20232", "Activo");
             usuarios.Add(usuario);
-            // DATOS DE CADA UNO
 
             //declaro variable para definir el perfil para el menú
             int PerfilMenu = 0;
 
-            string inputNombreUsuario = loginIn.IngresarUsuario();
+            string inputNombreUsuario = log.IngresarUsuario();
             //usuario = usuarios.Find(u => u.usuario == inputNombreUsuario);
             if (usuarios.Find(u => u.usuario == inputNombreUsuario) == null)
             {
@@ -40,14 +38,11 @@ namespace Presentacion
             }
             else
             {
-                MetodosUsuarios perfil = new MetodosUsuarios();
-                string mensaje = perfil.BuscarPerfil(usuario, usuario.host);
-                Console.WriteLine(mensaje);
+                MetodosUsuarios perfil = new MetodosUsuarios();;
                 PerfilMenu = usuario.host;
             }
             string inputContraseña = LoginInicio.IngresarContraseña();
             LoginInicio.BuscarContraseña(usuario, inputContraseña, usuario.fechacontraseña);
-
 
             //Agrego menu según perfil del usuario
             if (PerfilMenu == 1)
@@ -64,7 +59,6 @@ namespace Presentacion
             }
 
         }
-
 
         public UsuarioModel BuscarUsuario(string inputUsuario)
         {

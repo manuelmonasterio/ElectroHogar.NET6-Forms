@@ -5,24 +5,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Modelo.Exceptions;
 
 namespace PRESENTACION
 {
     public class Menu
     {
         public static List<UsuarioModel> usuarios = new List<UsuarioModel>();
-
+        private static ValidacionesDatos valDatos = new ValidacionesDatos();
 
         public static void MenuAdm()
         {
             MetodosUsuarios usu = new MetodosUsuarios();
-            UsuarioModel usuario5 = new Administrador();
-            usuario5 = usu.CrearUsuario("1", "Carolina", "Wehner", "Uzal 1234", "1138205055", "carowehner2001@gmail.com", new DateTime(2001, 05, 23), "AdministradoraCW", 1, 43245128, "CAI20232");
-            usuarios.Add(usuario5);
-            usuario5 = usu.CrearUsuario("2", "Evelyn", "Zivano", "Farrel 1234", "1153376046", "evelynzivano@gmail.com", new DateTime(1994, 07, 12), "AdministradoraEZ", 1, 38491201, "CAI20232");
-            usuarios.Add(usuario5);
-            usuario5 = usu.CrearUsuario("3", "Patricio", "Gerenni", "Cochabamba 1234", "1167845556", "patriciogerenni@gmail.com", new DateTime(1999, 04, 20), "AdministradorPG", 1, 41823861, "CAI20232");
-            usuarios.Add(usuario5);
+            UsuarioModel usuario9 = new Administrador();
+            usuario9 = new Administrador(new Guid(), "Carolina", "Wehner", "Uzal 1234", "1138205055", "carowehner2001@gmail.com", DateTime.Now, new DateTime(2001, 05, 23), new DateTime(2099, 01, 01), "AdministradoraCW", 1, 43245128, "CAI20232", "Activo");
+            usuarios.Add(usuario9);
+            usuario9 = new Administrador(new Guid(), "Evelyn", "Zivano", "Farrel 1234", "1153376046", "evelynzivano@gmail.com", DateTime.Now, new DateTime(1994, 07, 12), new DateTime(2099, 01, 01), "AdministradoraEZ", 1, 38491201, "CAI20232", "Activo");
+            usuarios.Add(usuario9);
+            usuario9 = new Administrador(new Guid(), "Patricio", "Gerenni", "Cochabamba 1234", "1167845556", "patriciogerenni@gmail.com", DateTime.Now, new DateTime(1999, 04, 20), new DateTime(2099, 01, 01), "AdministradorPG", 1, 41823861, "CAI20232", "Activo");
+            usuarios.Add(usuario9);
 
             bool CtrlAdm = true;
             do
@@ -72,19 +73,19 @@ namespace PRESENTACION
                                     if (perfil == 1)
                                     {
                                         usuario = new Administrador();
-                                        usuario = alta.DarAltaUsuario(perfil);
+                                        alta.DarAltaUsuario(perfil);
                                         usuarios.Add(usuario);
                                     }
                                     else if (perfil == 2)
                                     {
                                         usuario = new Supervisores();
-                                        usuario = alta.DarAltaUsuario(perfil);
+                                        alta.DarAltaUsuario(perfil);
                                         usuarios.Add(usuario);
                                     }
                                     else if (perfil == 3)
                                     {
                                         usuario = new Vendedor();
-                                        usuario = alta.DarAltaUsuario(perfil);
+                                        alta.DarAltaUsuario(perfil);
                                         usuarios.Add(usuario);
                                     }
                                     else
@@ -95,18 +96,18 @@ namespace PRESENTACION
 
                                 case "2":
                                     //Ingresar modificación usuario                              
-                                    string id;
+                                    string nombre;
                                     flag = false;
                                     ModificarUsuario mod = new ModificarUsuario();
                                     do
                                     {
-                                        Console.Write("Ingrese el id del usuario que quieres modificar: ");
-                                        id = Console.ReadLine();
+                                        Console.Write("Ingrese el nombre del usuario que quieres modificar: ");
+                                        nombre = Console.ReadLine();
                                         ValidacionesDatos validador = new ValidacionesDatos();
-                                        flag = validador.ValidarVacio(id, "Id Usuario");
+                                        flag = validador.ValidarVacio(nombre, "Nombre del usuario");
                                     } while (flag == false);
                                     Menu menu = new Menu();
-                                    UsuarioModel usuario2 = menu.BuscarUsuario(id);
+                                    UsuarioModel usuario2 = menu.BuscarUsuarioxNombre(nombre);
                                     if(usuario2.host == 1)
                                     {
                                         usuario2 = new Administrador();
@@ -132,12 +133,12 @@ namespace PRESENTACION
                                     do
                                     {
                                         Console.Write("Ingrese el id del usuario que quieres dar de baja: ");
-                                        id = Console.ReadLine();
+                                        idB = Console.ReadLine();
                                         ValidacionesDatos validador = new ValidacionesDatos();
-                                        flag = validador.ValidarVacio(id, "Id Usuario");
+                                        flag = validador.ValidarVacio(idB, "Id Usuario");
                                     } while (flag == false);
                                     Menu menu1 = new Menu();
-                                    UsuarioModel usuario3 = menu1.BuscarUsuario(id);
+                                    UsuarioModel usuario3 = menu1.BuscarUsuarioID(idB);
                                     if (usuario3.host == 1)
                                     {
                                         BajaUsuario baja = new BajaUsuario();
@@ -427,22 +428,43 @@ namespace PRESENTACION
             } while (CtrlVend);
         }
 
-        public UsuarioModel BuscarUsuario(string idUsuario)
+        public UsuarioModel BuscarUsuarioID(string idUsuario)
         {
             bool flag = false;
 
-            //flag = ValidacionesDatos.ValidarVacioid(idUsuario);
-            //flag = ValidacionesDatos.ValidarID(idUsuario);
+            flag = ValidacionesDatos.ValidarVacioid(idUsuario);
+            flag = valDatos.ValidarID(idUsuario);
 
-            /*if (flag == true)
+            if (flag == true)
             {
                 idUsuario = Guid.NewGuid().ToString();
-            }*/
-            //Lo pongo en comentarios ya que el ig pasa a ser un string porque ahora va a ser el siguiente: D347CE99-DB8D-4542-AA97-FC9F3CCE6969 para que funcione con el web service --CW
+            }
+            Guid idGuid;
+            if (Guid.TryParse(idUsuario, out idGuid))
+            {
+                UsuarioModel usuarioEncontrado = Menu.usuarios.Find(u => u.id == idGuid);
+                if (usuarioEncontrado != null)
+                {
+                    return usuarioEncontrado;
+                }
+                else
+                {
+                    throw new UsuarioNoEncontradoException(); // Lanzar una excepción personalizada si el usuario no se encuentra.
+                }
+            }
+            else
+            {
+                throw new FormatoIDInvalidoException(); // Lanzar una excepción personalizada si el formato del ID es inválido.
+            }
 
-            return Menu.usuarios.Find(u => u.id == idUsuario);
+            //return Menu.usuarios.Find(u => u.id == idUsuario);
         }
 
+        public UsuarioModel BuscarUsuarioxNombre(string NombreUsuario)
+        {
+
+            return Menu.usuarios.Find(u => u.usuario == NombreUsuario);
+        }
 
     }
 }

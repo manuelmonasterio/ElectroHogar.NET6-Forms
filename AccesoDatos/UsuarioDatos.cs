@@ -10,7 +10,7 @@ namespace AccesoDatos
 {
     public static class UsuarioDatos
     {
-        public static void CrearUsuario(UsuarioModel usuario)
+        public static void CrearUsuario(UsuarioModelDatos usuario)
         {
             var jsonRequest = JsonConvert.SerializeObject(usuario);
 

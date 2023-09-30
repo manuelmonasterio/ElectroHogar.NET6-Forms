@@ -3,15 +3,17 @@ using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using AccesoDatos; 
 
 namespace PRESENTACION
 {
     public class AltaUsuario
     {
-        
-        public UsuarioModel DarAltaUsuario(int perfil)
+        private static MetodosUsuarios met = new MetodosUsuarios();
+        public void DarAltaUsuario(int perfil)
         {
             bool flag = false;
             string inputNombre;
@@ -121,8 +123,89 @@ namespace PRESENTACION
                 }
             } while (flag == false);
             MetodosUsuarios usu = new MetodosUsuarios();
-            Console.WriteLine("El usuario se dio de alta correctamente ;)");
-            return usu.CrearUsuario("99", inputNombre, inputApellido, inputDireccion, inputTelefono, inputEmail, fechaNacimiento, NombreUsuario, perfil, dni, inputContra);
+            UsuarioModelDatos usuario = new UsuarioModelDatos();
+            usuario.IdUsuario = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+            usuario.Host = perfil;
+            usuario.Nombre = inputNombre;
+            usuario.Apellido = inputApellido;
+            usuario.Dni = dni;
+            usuario.Direccion = inputDireccion;
+            usuario.Telefono = inputTelefono;
+            usuario.Email = inputEmail;
+            usuario.FechaNacimiento = fechaNacimiento;
+            usuario.NombreUsuario = NombreUsuario;
+            usuario.Contraseña = inputContra;
+            try
+            {
+                met.CrearUsuario(usuario);
+                Console.WriteLine("Alta exitosa");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            if (perfil == 1)
+            {
+                UsuarioModel usuario1 = new Administrador();
+                usuario1.id = new Guid();
+                usuario1.host = perfil;
+                usuario1.nombre = inputNombre;
+                usuario1.apellido = inputApellido;
+                usuario1.dni = dni;
+                usuario1.direccion = inputDireccion;
+                usuario1.telefono = inputTelefono;
+                usuario1.email = inputEmail;
+                usuario1.fechaAlta = DateTime.Now;
+                usuario1.fechaNacimiento = fechaNacimiento;
+                //usuario.fechaBaja = new DateTime(2999, 12, 31);
+                usuario1.usuario = NombreUsuario;
+                usuario1.contraseña = inputContra;
+                usuario1.fechacontraseña = DateTime.Today;
+                met.CrearUsuarioLista(usuario1);
+
+            }
+            else if(perfil == 2)
+            {
+                UsuarioModel usuario1 = new Supervisores();
+                usuario1.id = new Guid();
+                usuario1.host = perfil;
+                usuario1.nombre = inputNombre;
+                usuario1.apellido = inputApellido;
+                usuario1.dni = dni;
+                usuario1.direccion = inputDireccion;
+                usuario1.telefono = inputTelefono;
+                usuario1.email = inputEmail;
+                usuario1.fechaAlta = DateTime.Now;
+                usuario1.fechaNacimiento = fechaNacimiento;
+                //usuario1.fechaBaja = new DateTime(2999, 12, 31);
+                usuario1.usuario = NombreUsuario;
+                usuario1.contraseña = inputContra;
+                usuario1.fechacontraseña = DateTime.Today;
+                met.CrearUsuarioLista(usuario1);
+            }
+            else
+            {
+                UsuarioModel usuario1 = new Vendedor();
+                usuario1.id =new Guid();
+                usuario1.host = perfil;
+                usuario1.nombre = inputNombre;
+                usuario1.apellido = inputApellido;
+                usuario1.dni = dni;
+                usuario1.direccion = inputDireccion;
+                usuario1.telefono = inputTelefono;
+                usuario1.email = inputEmail;
+                usuario1.fechaAlta = DateTime.Now;
+                usuario1.fechaNacimiento = fechaNacimiento;
+                //usuario1.fechaBaja = new DateTime(2999, 12, 31);
+                usuario1.usuario = NombreUsuario;
+                usuario1.contraseña = inputContra;
+                usuario1.fechacontraseña = DateTime.Today;
+                met.CrearUsuarioLista(usuario1);
+            }
+
+
+            
         }
     }
 }

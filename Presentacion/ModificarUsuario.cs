@@ -28,7 +28,7 @@ namespace PRESENTACION
             } while (flag == false);
 
             Menu menu = new Menu();
-            UsuarioModel usuario = menu.BuscarUsuario(idUsuario);
+            UsuarioModel usuario = menu.BuscarUsuarioID(idUsuario);
             return usuario;
         }
 
