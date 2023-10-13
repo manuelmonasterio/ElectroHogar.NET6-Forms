@@ -13,8 +13,9 @@ namespace PRESENTACION
     {
         public static List<UsuarioModel> usuarios = new List<UsuarioModel>();
         private static ValidacionesDatos valDatos = new ValidacionesDatos();
-        private static AltaProveedor altaProv = new AltaProveedor(); 
-        
+        private static AltaProveedor altaProv = new AltaProveedor();
+        private static BajaProveedor bajaProv = new BajaProveedor();
+
 
         public static void MenuAdm()
         {
@@ -203,6 +204,7 @@ namespace PRESENTACION
 
                                 case "3":
                                     //Ingresar baja proveedor
+                                    bajaProv.DarBajaProveedor();
                                     break;
 
                                 case "4":
