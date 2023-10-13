@@ -72,7 +72,7 @@ namespace Presentacion
             Console.WriteLine("ingrese el id del usuario: ");
             string id = Console.ReadLine();
             flag = validador.ValidarVacio(id, "Id Usuario");
-            //flag = ValidacionesDatos.ValidarID(id);
+            flag = validador.ValidarID(id);
             BuscarUsuario(id);
 
             if (flag == true)

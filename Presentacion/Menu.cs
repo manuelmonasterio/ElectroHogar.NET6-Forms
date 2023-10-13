@@ -136,6 +136,8 @@ namespace PRESENTACION
                                         idB = Console.ReadLine();
                                         ValidacionesDatos validador = new ValidacionesDatos();
                                         flag = validador.ValidarVacio(idB, "Id Usuario");
+                                        flag = validador.ValidarID(idB);
+
                                     } while (flag == false);
                                     Menu menu1 = new Menu();
                                     UsuarioModel usuario3 = menu1.BuscarUsuarioID(idB);

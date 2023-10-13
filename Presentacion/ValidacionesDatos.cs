@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PRESENTACION
@@ -80,12 +81,12 @@ namespace PRESENTACION
         public bool ValidarID (string input)
         {
             bool flag = true;
-            if(!(input.Length == 32))
+            if(!(input.Length == 36))
             {
-                //los tipos de dato GUID tienen 32 caracteres
-                Console.WriteLine("El ID debe tener 32 caracteres.");
+                //los tipos de dato GUID tienen 36 caracteres
+                Console.WriteLine("El ID debe tener 36 caracteres.");
             }
-            else if (IDsolonum(input) == false)
+            else if (FormatoGuid(input) == false)
             {
                 Console.WriteLine("El ID contiene dígitos especiales y solo debe contener números");
             }
@@ -102,22 +103,13 @@ namespace PRESENTACION
             return flag;
         }
 
-        //verifica que el ID solo tenga números y no guiones (para luego verificar que tenga 32 números en el método de arriba)
-        public bool IDsolonum(string input)
+        public bool FormatoGuid(string input)
         {
-            foreach (char c in input)
-            {
-                if (!char.IsDigit(c))
-                {
-                    return false;
-                }
-            }
+            // Patrón regex para validar el formato de Guid con 4 guiones y caracteres alfanuméricos
+            string patron = @"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
 
-            return true;
-        }
-        internal static bool ValidarVacioid(string idUsuario)
-        {
-            throw new NotImplementedException();
+           return Regex.IsMatch(input, patron);
         }
     }
 }
+
