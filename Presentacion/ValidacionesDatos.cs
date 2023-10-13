@@ -106,7 +106,7 @@ namespace PRESENTACION
         public bool FormatoGuid(string input)
         {
             // Patrón regex para validar el formato de Guid con 4 guiones y caracteres alfanuméricos
-            string patron = @"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+            string patron = @"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$";
 
            return Regex.IsMatch(input, patron);
         }

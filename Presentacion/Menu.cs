@@ -13,6 +13,8 @@ namespace PRESENTACION
     {
         public static List<UsuarioModel> usuarios = new List<UsuarioModel>();
         private static ValidacionesDatos valDatos = new ValidacionesDatos();
+        private static AltaProveedor altaProv = new AltaProveedor(); 
+        
 
         public static void MenuAdm()
         {
@@ -192,6 +194,7 @@ namespace PRESENTACION
                             {
                                 case "1":
                                     //Ingresar alta proveedor
+                                    altaProv.DarAltaProveedor();
                                     break;
 
                                 case "2":
@@ -434,7 +437,6 @@ namespace PRESENTACION
         {
             bool flag = false;
 
-            flag = ValidacionesDatos.ValidarVacioid(idUsuario);
             flag = valDatos.ValidarID(idUsuario);
 
             if (flag == true)

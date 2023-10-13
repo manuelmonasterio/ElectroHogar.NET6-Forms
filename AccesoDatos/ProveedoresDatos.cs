@@ -1,5 +1,6 @@
 ﻿using AccesoDatos.Utilidades;
 using Modelo;
+using Modelo.Exceptions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Specialized;
@@ -27,4 +28,6 @@ namespace AccesoDatos
             }
         }
     }
+
+    
 }

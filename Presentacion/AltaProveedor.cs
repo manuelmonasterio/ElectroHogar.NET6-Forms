@@ -1,30 +1,41 @@
-﻿using System;
+﻿using Modelo;
+using Modelo.Exceptions;
+using Negocio;
+using PRESENTACION;
+using System;
+using System.ComponentModel.DataAnnotations;
+
 
 public class AltaProveedor
 {
-	public void DarAltaProveedor()
-	{
+    private static ValidacionesDatos vd = new ValidacionesDatos();
+    private static ProveedoresNegocio pn = new ProveedoresNegocio();
+    public static List<Proveedores> proveedores = new List<Proveedores>();
+    public static CategoriaProductos categoria = new CategoriaProductos();
+
+    public void DarAltaProveedor()
+    {
         string inputNombre;
         string inputApellido;
         string inputDireccion;
         string inputTelefono;
         string inputEmail;
-        string inputCuit;
+        string inputCuit = "";
+        int cuit = 0;
+        bool flag;
 
         do
         {
             Console.Write("Ingresar el nombre: ");
             inputNombre = Console.ReadLine();
-            ValidacionesDatos validador = new ValidacionesDatos();
-            flag = validador.ValidarVacio(inputNombre, "Nombre");
+            flag = vd.ValidarVacio(inputNombre, "Nombre");
         } while (flag == false);
 
         do
         {
             Console.Write("Ingresar el apellido: ");
             inputApellido = Console.ReadLine();
-            ValidacionesDatos validador = new ValidacionesDatos();
-            flag = validador.ValidarVacio(inputApellido, "Apellido");
+            flag = vd.ValidarVacio(inputApellido, "Apellido");
         } while (flag == false);
 
 
@@ -32,51 +43,80 @@ public class AltaProveedor
         {
             Console.Write("Ingresar un mail: ");
             inputEmail = Console.ReadLine();
-            ValidacionesDatos validador = new ValidacionesDatos();
-            flag = validador.ValidarVacio(inputEmail, "Email");
+            flag = vd.ValidarVacio(inputEmail, "Email");
         } while (flag == false);
 
         do
         {
             Console.Write("Ingresar su cuit: ");
-            inputCuit = Console.ReadLine();
-            ValidacionesDatos validador = new ValidacionesDatos();
-            flag = validador.ValidarNumero(inputCuit, ref cuit, "CUIT");
+            flag = vd.ValidarNumero(inputCuit, ref cuit, "CUIT");
         } while (flag == false);
 
-        public void AsociarCategoriaAProveedor()
+        Proveedores proveedor = new Proveedores();
+        proveedor.Id = new Guid(); 
+        proveedor.Nombre = inputNombre;
+        proveedor.Apellido = inputApellido;
+        proveedor.Email = inputEmail;
+        proveedor.Cuit = cuit;
+        proveedor.FechaAlta = DateTime.Now;
+        proveedor.Estado = "ACTIVO";
+
+        /* SE TIENE QUE IMPLEMENTAR DENTRO DEL WEB SERVICE --CW
+         * try
         {
-            bool flag; 
+            met.CrearProveedor(proveedor);
+            Console.WriteLine("Alta exitosa");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }*/
 
+    }
+    public void AsociarCategoriaAProveedor()
+    {
+        bool flag;
+        string inputproveedorId;
+        Proveedores proveedor;
+        do
+        {
             Console.Write("Seleccione el ID del proveedor al que desea asociar una categoría: ");
-            int proveedorId = Console.ReadLine();
-            flag = validador.ValidarVacio(proveedorId, "ID Proveedor");
-            flag = validador.ValidarID(proveedorId);
+            inputproveedorId = Console.ReadLine();
+            flag = vd.ValidarVacio(inputproveedorId, "ID Proveedor");
+            flag = vd.ValidarID(inputproveedorId);
 
-            Proveedores proveedor = proveedores.Find(p => p.Id == proveedorId);
+            proveedor = pn.BuscarProveedorId(inputproveedorId);
 
             if (proveedor == null)
             {
                 Console.WriteLine("Proveedor no encontrado.");
-                return;
+                flag = false;
             }
 
-            MostrarCategoriasProducto();
+        } while (flag == false);
 
+        categoria.MostrarCategoriasProducto();
+        string inputCategoriaId;
+        int categoriaId = 0;
+
+        do
+        {
             Console.Write("Seleccione el ID de la categoría de producto a asociar: ");
-            int categoriaId = Console.ReadLine();
-            flag = validador.ValidarVacio(categoriaId, "ID Categoria");
-            flag = validador.ValidarID(categoriaId);
-            AgregarCatProducto categorias = categoria.Find(c => c.Id == categoriaId);
-
+            inputCategoriaId = Console.ReadLine();
+            flag = vd.ValidarVacio(inputCategoriaId, "ID Categoria");
+            flag = vd.ValidarNumero(inputCategoriaId, ref categoriaId, "ID Categoria");
+            categoria = categoria.BuscarCategoriaId(categoriaId);
             if (categoria == null)
             {
                 Console.WriteLine("Categoría de producto no encontrada.");
-                return;
+                flag = false;                 
             }
+        } while (flag == false);
 
-            proveedor.AgregarCatProducto.Add(categoria);
-            Console.WriteLine("Categoría de producto asociada al proveedor exitosamente.");
-        }
+        proveedor.IdCategoria = categoriaId;
+        Console.WriteLine("Categoría de producto asociada al proveedor exitosamente.");
     }
+
+
+
 }
