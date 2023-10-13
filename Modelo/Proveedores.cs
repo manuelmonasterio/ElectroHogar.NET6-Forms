@@ -15,6 +15,7 @@ namespace Modelo
         private string _cuit;
         private DateTime _fechaAlta;
         private DateTime? _fechaBaja;
+        private string _estado;
 
         public string Id { get => _id; set => _id = value; }
         public string Nombre { get => _nombre; set => _nombre = value; }
@@ -23,6 +24,7 @@ namespace Modelo
         public string Cuit { get => _cuit; set => _cuit = value; }
         public DateTime FechaAlta { get => _fechaAlta; set => _fechaAlta = value; }
         public DateTime? FechaBaja1 { get => _fechaBaja; set => _fechaBaja = value; }
+        public string Estado { get => _estado; set => _estado = value; };
 
         override
         public String ToString() => Cuit + " " + Nombre + " " + Apellido;
