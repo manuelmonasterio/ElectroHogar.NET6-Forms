@@ -12,4 +12,11 @@ public class Categorias
         categorias.Add(new CategoriaProducto { Id = 5, Nombre = "Smart TV" });
 
     }
+    public void MostrarCategoriasProducto()
+    {
+        foreach (var categoria in categorias)
+        {
+            Console.WriteLine($"ID: {categoria.Id}, Nombre: {categoria.Nombre}");
+        }
+    }
 }
