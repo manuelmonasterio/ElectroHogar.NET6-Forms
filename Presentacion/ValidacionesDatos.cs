@@ -78,6 +78,26 @@ namespace PRESENTACION
             return flag;
         }
 
+        public bool ValidarDecimal(string input, ref double valor, string campo)
+        {
+            bool flag = false;
+
+            if (!double.TryParse(input, out valor))
+            {
+                Console.WriteLine("Por favor, ingresar un valor numérico en el campo " + campo + ".");
+            }
+            else if (valor < 0)
+            {
+                Console.WriteLine("Por favor, ingresar un valor positivo");
+            }
+            else
+            {
+                flag = true;
+            }
+
+            return flag;
+        }
+
         public bool ValidarID (string input)
         {
             bool flag = true;
