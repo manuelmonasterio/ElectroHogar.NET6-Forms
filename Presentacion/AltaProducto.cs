@@ -3,6 +3,8 @@
 public class AltaProducto
 {
     private static ValidacionesDatos vd = new ValidacionesDatos();
+    private static ProductosNegocio pn = new ProductosNegocio();
+    public static List<Productos> productos = new List<Productos>();
 
     public void DarAltaProducto()
     {
@@ -36,5 +38,13 @@ public class AltaProducto
             flag = vd.ValidarNumero(inputStock, ref stock, "Stock");
 
         } while (flag == false);
+
+        Productos producto = new Productos();
+        producto.IdProducto = new Guid();
+        producto.Nombre = inputNombre;
+        producto.Precio = inputPrecio;
+        producto.Stock = inputStock;
+        producto.FechaAlta = Datetime.Now;
+
     }
 }
