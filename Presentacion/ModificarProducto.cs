@@ -1,61 +1,75 @@
-﻿using System;
+﻿using AccesoDatos;
+using Modelo;
+using Negocio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class ModificarProveedor
+namespace PRESENTACION
 {
-    public Productos ModProducto()
+    public class ModificarProducto
     {
-        string idProducto;
-        bool flag;
-        do
+        public Productos ModProducto()
         {
-            Console.Write("Ingresar el id del producto a modificar: ");
-            idProducto = Console.ReadLine();
-            ValidacionesDatos validador = new ValidacionesDatos();
-            flag = validador.ValidarVacio(idProducto, "ID Producto");
-            flag = validador.ValidarID(idProducto);
-
-        } while (flag == false);
-
-        Menu menu = new Menu();
-        Productos productos = menu.BuscarUsuarioID(idProductos);
-        return productos;
-
-        public Productos ModifProductos()
-        {
-            bool CtrlG = true;
+            string idProducto;
+            bool flag;
             do
             {
-                Console.WriteLine("Seleccione que tarea va a realizar");
-                Console.WriteLine("1: Modificar Nombre");
-                Console.WriteLine("2: Modificar Precio");
-                Console.WriteLine("3: Modificar Stock");
-                Console.Writeline("4: Salir");
+                Console.Write("Ingresar el id del producto a modificar: ");
+                idProducto = Console.ReadLine();
+                ValidacionesDatos validador = new ValidacionesDatos();
+                flag = validador.ValidarVacio(idProducto, "ID Producto");
+                flag = validador.ValidarID(idProducto);
 
-                string opcG = Console.ReadLine().ToUpper();
+            } while (flag == false);
 
-                switch (opcG)
+            Menu menu = new Menu();
+            Productos productos = menu.BuscarUsuarioID(idProducto);
+            return productos;
+
+            public Productos ModifProductos()
+            {
+                bool CtrlG = true;
+                do
                 {
-                    case "1":
+                    Console.WriteLine("Seleccione que tarea va a realizar");
+                    Console.WriteLine("1: Modificar Nombre");
+                    Console.WriteLine("2: Modificar Precio");
+                    Console.WriteLine("3: Modificar Stock");
+                    Console.WriteLine("4: Salir");
+
+                    string opcG = Console.ReadLine().ToUpper();
+
+                    switch (opcG)
+                    {
+                        case "1":
 
 
-                        break;
+                            break;
 
-                    case "2":
+                        case "2":
 
 
-                        break;
+                            break;
 
-                    case "3":
+                        case "3":
 
-                        break;
+                            break;
 
-                    case "4":
-                      Console.WriteLine("Esta volviendo al menú principal");
-                       CtrlG = false;
+                        case "4":
+                            Console.WriteLine("Esta volviendo al menú principal");
+                            CtrlG = false;
 
-                        break;
+                            break;
 
-                      default:
-                        Console.WriteLine("Se ingreso una opcion invalida, intente nuevamente. Presione cualquier tecla para volver");
-                        break;
-                }
+                        default:
+                            Console.WriteLine("Se ingreso una opcion invalida, intente nuevamente. Presione cualquier tecla para volver");
+                            break;
+                    }
+                } while (CtrlG);
+            }
+        }
+    }
+}

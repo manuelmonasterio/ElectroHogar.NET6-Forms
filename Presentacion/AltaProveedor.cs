@@ -116,7 +116,4 @@ public class AltaProveedor
         proveedor.IdCategoria = categoriaId;
         Console.WriteLine("Categoría de producto asociada al proveedor exitosamente.");
     }
-
-
-
 }
