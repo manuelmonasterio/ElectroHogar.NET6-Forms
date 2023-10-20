@@ -46,5 +46,11 @@ namespace Negocio
             }
 
         }
+        /*
+        public void ModificarNombreProd(Nombre, nombreNuevo)
+        {
+            String idProducto = ProductosDatos.ModificarNombreProd(Nombre, nombreNuevo);
+        }
+       */
     }
 }

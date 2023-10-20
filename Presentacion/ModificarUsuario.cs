@@ -55,7 +55,6 @@ namespace PRESENTACION
 
                     case "2":
                         cambiarEstado();
-
                         break;
 
                     case "3":

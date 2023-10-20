@@ -1,27 +1,36 @@
-﻿using System;
+﻿using Modelo;
+using Negocio;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class BajaProducto
+namespace PRESENTACION
 {
-    private static ValidacionesDatos vd = new ValidacionesDatos();
-	private static ProductosNegocio pn = new ProductosNegocio();
+    public class BajaProducto
+    {
+        private static ValidacionesDatos vd = new ValidacionesDatos();
+        private static ProductosNegocio pn = new ProductosNegocio();
 
-    public Productos DarBajaProducto()
-	{
-		string idProducto;
-		bool flag;
+        public Productos DarBajaProducto()
+        {
+            string idProducto;
+            bool flag;
 
-		do
-		{
+            do
+            {
 
-			Console.Write("Ingrese el Id del producto a dar de baja: ");
-			idProducto = Console.Readline();
-			flag = vd.ValidarVacio(idProducto, "ID Producto");
-			flag = vd.ValidarID(idProducto);
+                Console.Write("Ingrese el Id del producto a dar de baja: ");
+                idProducto = Console.ReadLine();
+                flag = vd.ValidarVacio(idProducto, "ID Producto");
+                flag = vd.ValidarID(idProducto);
 
-		} while (flag == false);
+            } while (flag == false);
 
-        Menu menu = new Menu();
-		Productos producto = pn.BuscarProducto(idProducto);
-		return producto;
+            Menu menu = new Menu();
+            Productos producto = pn.BuscarProductoId(idProducto);
+            return producto;
+        }
     }
 }

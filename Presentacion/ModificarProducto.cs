@@ -6,11 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/*
 namespace PRESENTACION
 {
     public class ModificarProducto
     {
+        private static ProductosNegocio met = new ProductosNegocio();
         public Productos ModProducto()
         {
             string idProducto;
@@ -45,23 +46,20 @@ namespace PRESENTACION
                     switch (opcG)
                     {
                         case "1":
-
-
+                            ModificarNombreProd();
                             break;
 
                         case "2":
-
-
+                            ModificarPrecioProd();
                             break;
 
                         case "3":
-
+                            ModificarStockProd();
                             break;
 
                         case "4":
                             Console.WriteLine("Esta volviendo al menú principal");
                             CtrlG = false;
-
                             break;
 
                         default:
@@ -70,6 +68,43 @@ namespace PRESENTACION
                     }
                 } while (CtrlG);
             }
+
+            public void ModificarNombreProd()
+            {
+                string nombreProducto;
+                string nombreNuevo;
+                bool flag;
+                do
+                {
+                    Console.Write("Ingresar el nombre del producto a modificar: ");
+                    nombreProducto = Console.ReadLine();
+                    ValidacionesDatos validador = new ValidacionesDatos();
+                    flag = validador.ValidarVacio(nombreProducto, "Nombre Usuario");
+
+                } while (flag == false);
+
+                do
+                {
+                    Console.Write("Ingresar el nuevo nombre: ");
+                    nombreNuevo = Console.ReadLine();
+                    ValidacionesDatos validador = new ValidacionesDatos();
+                    flag = validador.ValidarVacio(nombreNuevo, "Nombre");
+
+                } while (flag == false);
+
+                try
+                {
+                    met.ModificarNombreProd(nombre, nombreNuevo);
+                    nombreProducto = nombreNuevo;
+                    Console.WriteLine("Cambio de nombre exitoso");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
         }
     }
 }
+*/
