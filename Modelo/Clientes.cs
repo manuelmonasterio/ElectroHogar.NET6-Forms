@@ -27,6 +27,8 @@ public class Clientes
 	public DateTime FechaBaja { get => _fechaBaja; set => _fechaBaja = value; }
 	public DateTime FechaNacimiento { get => _fechaNacimiento; set => _fechaNacimiento = value; }
 
+    public static List<Clientes> clientes = new List<Clientes>();
+
     override
        public string ToString() => IdCliente + " " + Nombre + " " + Apellido + "" ;
 }

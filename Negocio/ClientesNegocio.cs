@@ -13,11 +13,11 @@ namespace Negocio
     public class ClientesNegocio
 {
         public List<Clientes> ListarClientes()
-            {
-            return ClientesDatos.ListarProductos();
+        {
+            return ClientesDatos.ListarClientes();
         }
 
-        public Productos BuscarProductoId(string clienteId)
+        public Clientes BuscarClienteId(string clienteId)
         {
             bool flag = false;
 
