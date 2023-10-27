@@ -9,27 +9,22 @@ using System.Threading.Tasks;
 
 namespace PRESENTACION
 {
-
-
     public class ModificarCliente
     {
         public Clientes ModCliente()
         {
-
             Console.Write("Ingrese el ID del cliente a buscar para modificar sus datos (0 para salir): ");
-            string clienteId = (Console.ReadLine());
+            string? clienteId = Console.ReadLine();
 
             if (int.Parse(clienteId) == 0)
             {
                 Console.WriteLine("No ingreso un cliente valido");
-
             }
-
-            Clientes cliente = BuscarClienteId(clienteId);
+       
+            Clientes cliente = ClientesNegocio.BuscarClienteId(clienteId);
 
             if (cliente != null)
             {
-
                 Console.WriteLine("Datos del Cliente:");
                 Console.WriteLine("Nombre: " + cliente.Nombre);
                 Console.WriteLine("Dirección: " + cliente.Direccion);
@@ -97,24 +92,39 @@ namespace PRESENTACION
                 {
                     do
                     {
-                        Console.Write("Nuevo Estado: ");
+                        Console.Write("El estado actual del cliente es: " + cliente.Estado);
 
-                        if (cliente.Estado == false)
+                        Console.Write("Desea modiciarlo, Ingrese S o N");
+
+                        string confirmar = Console.ReadLine().ToUpper();
+
+                        if (confirmar=="S" && cliente.Estado == "INACTIVO")
                         {
-                            cliente.Estado = true;
+                            cliente.Estado = "ACTIVO";
+                            flag = true;
+                        }
+
+                        else if(confirmar== "S" && cliente.Estado == "ACTIVO")
+                        {
+                            cliente.Estado = "INACTIVO";
+                            flag = true;
+                        }
+
+                        else if(confirmar == "N")
+                        {
+                            Console.WriteLine("No se modificará el estado de cliente");
                             flag = true;
                         }
 
                         else
                         {
-                            cliente.Estado = false;
-                            flag = true;
+                            Console.WriteLine("No ingreso un valor correcto");
+                            flag = false;
                         }
 
-
                     } while (flag == false);
-
                 }
+
                 else
                 {
                     Console.WriteLine("Opción no válida. Inténtalo de nuevo.");
@@ -133,6 +143,7 @@ namespace PRESENTACION
                 Console.WriteLine("Cliente no encontrado.");
             }
 
+            return cliente;
         }
     }
 }

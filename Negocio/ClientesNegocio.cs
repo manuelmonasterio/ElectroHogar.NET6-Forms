@@ -16,7 +16,7 @@ namespace Negocio
             return ClientesDatos.ListarClientes();
         }
 
-        public Clientes BuscarClienteId(string clienteId)
+        public static Clientes BuscarClienteId(string clienteId)
         {
             bool flag = false;
 
@@ -27,6 +27,7 @@ namespace Negocio
             {
                 clienteId = Guid.NewGuid().ToString();
             }
+
             Guid idGuid;
             if (Guid.TryParse(clienteId, out idGuid))
             {

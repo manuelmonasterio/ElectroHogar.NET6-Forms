@@ -22,7 +22,6 @@ public class Productos
     public int Stock { get => _stock; set => _stock = value; }
     public DateTime FechaAlta { get => _fechaAlta; set => _fechaAlta = value; }
     public DateTime FechaBaja { get => _fechaBaja; set => _fechaBaja = value; }
-
-    override
-       public String ToString() => _idproducto + " " + Nombre + " ";
+    
+    override public String ToString() => _idproducto + " " + Nombre + " ";
 }

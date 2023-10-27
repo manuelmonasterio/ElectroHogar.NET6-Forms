@@ -16,7 +16,7 @@ namespace Negocio
             return ProductosDatos.ListarProductos();
         }
 
-        public Productos BuscarProductoId(string productoId)
+        public static Productos BuscarProductoId(string productoId)
         {
             bool flag = false;
 
