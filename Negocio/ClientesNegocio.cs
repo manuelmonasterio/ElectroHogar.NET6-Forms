@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-
     public class ClientesNegocio
-{
+    {
         public List<Clientes> ListarClientes()
         {
             return ClientesDatos.ListarClientes();
@@ -48,3 +47,4 @@ namespace Negocio
 
         }
     }
+}

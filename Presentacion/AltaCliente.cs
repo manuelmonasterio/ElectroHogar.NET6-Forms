@@ -86,8 +86,8 @@ public class AltaCliente
 
         do
         {
-            Console.Write("Ingresar el grupo del cliente: ")
-            inputHost = Console.Readline();
+            Console.Write("Ingresar el grupo del cliente: ");
+            inputHost = Console.ReadLine();
             ValidacionesDatos validador = new ValidacionesDatos();
             flag = validador.ValidarVacio(inputEmail, "Email");
         } while (flag == false);
@@ -98,7 +98,7 @@ public class AltaCliente
             Console.Write("Ingrese el DNI del usuario como Id: ");
             inputIdUsuario = Console.ReadLine();
             Menu menu = new Menu();
-            flag2 = false;
+            var flag2 = false;
 
             if (menu.BuscarUsuarioID(inputIdUsuario) is null)
             {
@@ -106,7 +106,7 @@ public class AltaCliente
             }
             else if (menu.BuscarUsuarioID(inputIdUsuario) is not null)
             {
-                Guid.TryParse(inputIdUsuario, out idUsuario);
+                Guid.TryParse(inputIdUsuario, out IdUsuario);
                 flag = true;
                 flag2 = true;
             }

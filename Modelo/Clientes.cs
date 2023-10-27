@@ -3,6 +3,7 @@
 public class Clientes
 {
 	public Guid _idcliente { get; set; }
+	public Guid _idUsuario { get; set; }
 	public string _nombre { get; set; }
 	public string _apellido { get; set; }
 	public string _direccion { get; set; }
@@ -14,8 +15,10 @@ public class Clientes
 	public DateTime _fechaBaja { get; set; }
 	public DateTime _fechaNacimiento { get; set; }
 	public string _host { get; set; }
+	public bool _estado { get; set; }
 
-	public string IdCliente { get => _idcliente; set => _idcliente = value; }
+	public Guid IdCliente { get => _idcliente; set => _idcliente = value; }
+	public Guid IdUsuario { get => _idcliente; set => _idcliente = value; }
 	public string Nombre { get => _nombre; set => _nombre = value; }
 	public string Apellido { get => _apellido; set => _apellido = value; }
     public string Direccion { get => _direccion; set => _direccion = value; }
@@ -26,6 +29,7 @@ public class Clientes
 	public DateTime FechaAlta { get => _fechaAlta; set => _fechaAlta = value; }
 	public DateTime FechaBaja { get => _fechaBaja; set => _fechaBaja = value; }
 	public DateTime FechaNacimiento { get => _fechaNacimiento; set => _fechaNacimiento = value; }
+    public bool Estado { get => _estado; set => _estado = value; }
 
     public static List<Clientes> clientes = new List<Clientes>();
 
