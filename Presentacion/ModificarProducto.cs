@@ -6,105 +6,94 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/*
+
 namespace PRESENTACION
 {
     public class ModificarProducto
     {
-        private static ProductosNegocio met = new ProductosNegocio();
         public Productos ModProducto()
         {
-            string idProducto;
-            bool flag;
-            do
+            Console.Write("Ingrese el ID del producto a buscar para modificar sus datos (0 para salir): ");
+            string? productoId = Console.ReadLine();
+
+            if (int.Parse(productoId) == 0)
             {
-                Console.Write("Ingresar el id del producto a modificar: ");
-                idProducto = Console.ReadLine();
-                ValidacionesDatos validador = new ValidacionesDatos();
-                flag = validador.ValidarVacio(idProducto, "ID Producto");
-                flag = validador.ValidarID(idProducto);
-
-            } while (flag == false);
-
-            Menu menu = new Menu();
-            Productos productos = menu.BuscarUsuarioID(idProducto);
-            return productos;
-
-            public Productos ModifProductos()
-            {
-                bool CtrlG = true;
-                do
-                {
-                    Console.WriteLine("Seleccione que tarea va a realizar");
-                    Console.WriteLine("1: Modificar Nombre");
-                    Console.WriteLine("2: Modificar Precio");
-                    Console.WriteLine("3: Modificar Stock");
-                    Console.WriteLine("4: Salir");
-
-                    string opcG = Console.ReadLine().ToUpper();
-
-                    switch (opcG)
-                    {
-                        case "1":
-                            ModificarNombreProd();
-                            break;
-
-                        case "2":
-                            ModificarPrecioProd();
-                            break;
-
-                        case "3":
-                            ModificarStockProd();
-                            break;
-
-                        case "4":
-                            Console.WriteLine("Esta volviendo al menú principal");
-                            CtrlG = false;
-                            break;
-
-                        default:
-                            Console.WriteLine("Se ingreso una opcion invalida, intente nuevamente. Presione cualquier tecla para volver");
-                            break;
-                    }
-                } while (CtrlG);
+                Console.WriteLine("No ingreso un producto valido");
             }
 
-            public void ModificarNombreProd()
+            Productos producto = ProductosNegocio.BuscarProductoId(productoId);
+
+            if (producto != null)
             {
-                string nombreProducto;
-                string nombreNuevo;
+                Console.WriteLine("Datos del Producto:");
+                Console.WriteLine("Nombre: " + producto.Nombre);
+                Console.WriteLine("Precio: " + producto.Precio);
+                Console.WriteLine("Stock: " + producto.Stock);
+
+                Console.WriteLine("\n¿Qué dato deseas modificar? (nombre/precio/stock/salir):");
+                string opcion = Console.ReadLine().ToLower();
+
                 bool flag;
-                do
+                int stock = 0;
+                double precio = 0;
+
+                if (opcion == "salir")
                 {
-                    Console.Write("Ingresar el nombre del producto a modificar: ");
-                    nombreProducto = Console.ReadLine();
-                    ValidacionesDatos validador = new ValidacionesDatos();
-                    flag = validador.ValidarVacio(nombreProducto, "Nombre Usuario");
-
-                } while (flag == false);
-
-                do
-                {
-                    Console.Write("Ingresar el nuevo nombre: ");
-                    nombreNuevo = Console.ReadLine();
-                    ValidacionesDatos validador = new ValidacionesDatos();
-                    flag = validador.ValidarVacio(nombreNuevo, "Nombre");
-
-                } while (flag == false);
-
-                try
-                {
-                    met.ModificarNombreProd(nombre, nombreNuevo);
-                    nombreProducto = nombreNuevo;
-                    Console.WriteLine("Cambio de nombre exitoso");
+                    Console.WriteLine("Selecciono salir");
                 }
-                catch (Exception ex)
+                else if (opcion == "nombre")
                 {
-                    Console.WriteLine(ex.Message);
+                    do
+                    {
+                        Console.Write("Nuevo Nombre: ");
+                        producto.Nombre = Console.ReadLine();
+                        ValidacionesDatos validador = new ValidacionesDatos();
+                        flag = validador.ValidarVacio(producto.Nombre, "Nombre");
+
+                    } while (flag == false);
                 }
+                else if (opcion == "precio")
+                {
+                    do
+                    {
+                        Console.Write("Nuevo apellido: ");
+                        producto.Precio = Console.ReadLine();
+                        ValidacionesDatos validador = new ValidacionesDatos();
+                        flag = validador.ValidarDecimal(producto.Precio, ref precio , "Precio");
+
+                    } while (flag == false);
+
+                }
+                else if (opcion == "stock")
+                {
+                    do
+                    {
+                        Console.Write("Nuevo cuit: ");
+                        producto.Stock = Console.ReadLine();
+                        ValidacionesDatos validador = new ValidacionesDatos();
+                        flag = validador.ValidarNumero(producto.Stock, ref stock, "Cuit");
+
+                    } while (flag == false);
+
+                }
+                else
+                {
+                    Console.WriteLine("Opción no válida. Inténtalo de nuevo.");
+                }
+
+                Console.WriteLine("Datos actualizados del producto:");
+                Console.WriteLine("Nombre: " + producto.Nombre);
+                Console.WriteLine("Precio: " + precio);
+                Console.WriteLine("Stock: " + stock);
+
+            }
+            else
+            {
+                Console.WriteLine("Producto no encontrado.");
             }
 
+            return producto;
         }
     }
 }
-*/
+     
