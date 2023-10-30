@@ -195,16 +195,17 @@ namespace PRESENTACION
                             {
                                 case "1":
                                     //Ingresar alta proveedor
-                                    altaProv.DarAltaProveedor();
+                                    AltaProveedor.DarAltaProveedor();
                                     break;
 
                                 case "2":
                                     //Ingresar modificación proveedor
+                                    ModificarProveedor.ModProveedor();
                                     break;
 
                                 case "3":
                                     //Ingresar baja proveedor
-                                    bajaProv.DarBajaProveedor();
+                                    BajaProveedor.DarBajaProveedor();
                                     break;
 
                                 case "4":
@@ -233,14 +234,17 @@ namespace PRESENTACION
                             {
                                 case "1":
                                     //Ingresar alta producto
+                                    AltaProducto.DarAltaProducto();
                                     break;
 
                                 case "2":
                                     //Ingresar modificación producto
+                                    ModificarProducto.ModProducto();
                                     break;
 
                                 case "3":
                                     //Ingresar baja producto
+                                    BajaProducto.DarBajaProducto();
                                     break;
                                 case "4":
                                     Console.WriteLine("Esta volviendo al menú principal");
@@ -332,12 +336,15 @@ namespace PRESENTACION
                             {
                                 case "1":
                                     //Ingresar alta producto
+                                    AltaProducto.DarAltaProducto();
                                     break;
                                 case "2":
                                     //Ingresar modificación producto
+                                    ModificarProducto.ModProducto();
                                     break;
                                 case "3":
                                     //Ingresar baja producto
+                                    BajaProducto.DarBajaProducto();
                                     break;
                                 case "4":
                                     Console.WriteLine("Esta volviendo al menú principal");
@@ -417,6 +424,7 @@ namespace PRESENTACION
                 {
                     case "1":
                         //Llamar metodo venta
+                        RegistrarVenta.registrarVenta();
                     case "2":
                         //Llamar reporte
                         break;
