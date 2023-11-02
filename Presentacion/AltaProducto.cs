@@ -11,6 +11,8 @@ public class AltaProducto
     private static ValidacionesDatos vd = new ValidacionesDatos();
     private static ProductosNegocio pn = new ProductosNegocio();
     public static List<Productos> productos = new List<Productos>();
+    // public static UsuarioModel usuario = new Supervisores();
+    // public static UsuarioModel usuario = new Administradores();
 
     public void DarAltaProducto()
     {
@@ -39,7 +41,7 @@ public class AltaProducto
             Console.Write("Ingrese el precio del producto: ");
             inputPrecio = Console.ReadLine();
             flag = vd.ValidarDecimal(inputPrecio, ref precio, "Precio");
-            
+
         } while (flag == false);
 
         do
@@ -81,5 +83,17 @@ public class AltaProducto
         producto.Stock = Convert.ToInt32(inputStock);
         producto.FechaAlta = DateTime.Now;
         producto.IdCategoria = idCat;
+
+        /*if (producto.Stock < 0.25 * producto.Stock)
+        {
+            if (usuario is Administradores || usuario is Supervisores)
+            {
+               Console.WriteLine($"{producto.Nombre} - Stock: {producto.Stock}");
+               Console.WriteLine("¡ALERTA! Stock bajo.");
+            }
+
+        }*/
+
+        Console.WriteLine("Se agregó el producto correctamente");
     }
 }
