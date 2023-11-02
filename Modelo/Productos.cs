@@ -4,7 +4,7 @@ public class Productos
 {
 	public string _nombre { get; set; }
 	public Guid _idproducto { get; set; }
-    public Guid _idcategoria { get; set; }
+    public int _idcategoria { get; set; }
     public Guid _idusuario { get; set; }
     public Guid _idproveedor { get; set; }
     public double _precio { get; set; }
@@ -16,7 +16,7 @@ public class Productos
     public Guid IdProducto { get => _idproducto; set => _idproducto = value; }
     public string Nombre { get => _nombre; set => _nombre = value; }
     public Guid IdUsuario { get => _idusuario; set => _idusuario = value; }
-    public Guid IdCategoria { get => _idcategoria; set => _idcategoria = value; }
+    public int IdCategoria { get => _idcategoria; set => _idcategoria = value; }
     public Guid IdProveedor { get => _idproveedor; set => _idproveedor = value; }
     public double Precio { get => _precio; set => _precio = value; }
     public int Stock { get => _stock; set => _stock = value; }

@@ -1,11 +1,7 @@
-﻿using AccesoDatos;
+﻿using System;
+using System.Collections.Generic;
 using Modelo;
 using Negocio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PRESENTACION
 {
@@ -18,10 +14,12 @@ namespace PRESENTACION
 
             if (int.Parse(proveedorId) == 0)
             {
-                Console.WriteLine("No ingreso un proveedor valido");
+                Console.WriteLine("No ingreso un proveedor válido");
+                return null;
             }
 
-            Proveedores proveedor = ProveedoresNegocio.BuscarProveedorId(proveedorId);
+            ProveedoresNegocio proveedoresNegocio = new ProveedoresNegocio();
+            Proveedores proveedor = proveedoresNegocio.BuscarProveedorId(proveedorId);
 
             if (proveedor != null)
             {
@@ -50,7 +48,6 @@ namespace PRESENTACION
                         proveedor.Nombre = Console.ReadLine();
                         ValidacionesDatos validador = new ValidacionesDatos();
                         flag = validador.ValidarVacio(proveedor.Nombre, "Nombre");
-
                     } while (flag == false);
                 }
                 else if (opcion == "apellido")
@@ -61,21 +58,47 @@ namespace PRESENTACION
                         proveedor.Apellido = Console.ReadLine();
                         ValidacionesDatos validador = new ValidacionesDatos();
                         flag = validador.ValidarVacio(proveedor.Apellido, "Apellido");
-
                     } while (flag == false);
-
                 }
                 else if (opcion == "cuit")
                 {
                     do
                     {
-                        Console.Write("Nuevo cuit: ");
-                        proveedor.Cuit = Console.ReadLine();
-                        ValidacionesDatos validador = new ValidacionesDatos();
-                        flag = validador.ValidarNumero(proveedor.Cuit, ref cuit,"Cuit");
+                        Console.Write("Nuevo CUIT: ");
+                        string nuevoCuit = Console.ReadLine();
 
-                    } while (flag == false);
+                        // Verifica que el CUIT tenga 11 dígitos
+                        if (nuevoCuit.Length == 11)
+                        {
+                            flag = true;
 
+                            // Verifica que todos los caracteres del CUIT sean dígitos
+                            foreach (char c in nuevoCuit)
+                            {
+                                if (!char.IsDigit(c))
+                                {
+                                    flag = false;
+                                    Console.WriteLine("El CUIT debe contener solo dígitos.");
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("El CUIT debe tener 11 dígitos.");
+                            flag = false;
+                        }
+
+                        if (int.TryParse(nuevoCuit, out int cuitNumero))
+                        {
+                            proveedor.Cuit = cuitNumero;
+                        }
+                        else
+                        {
+                            Console.WriteLine("El nuevo CUIT no es válido. Debe ser un número.");
+                        }
+
+                    } while (!flag);
                 }
                 else if (opcion == "email")
                 {
@@ -85,59 +108,51 @@ namespace PRESENTACION
                         proveedor.Email = Console.ReadLine();
                         ValidacionesDatos validador = new ValidacionesDatos();
                         flag = validador.ValidarVacio(proveedor.Email, "Email");
-
                     } while (flag == false);
-
                 }
                 else if (opcion == "estado")
                 {
                     do
                     {
                         Console.Write("El estado actual del proveedor es: " + proveedor.Estado);
-
-                        Console.Write("Desea modiciarlo, Ingrese S o N");
-
+                        Console.Write("Desea modificarlo? Ingrese 'S' para activar o 'N' para desactivar: ");
                         string confirmar = Console.ReadLine().ToUpper();
 
-                        if (confirmar == "S" && proveedor.Estado == "INACTIVO")
+                        if (confirmar == "S")
                         {
-                            proveedor.Estado = "ACTIVO";
+                            if (proveedor.Estado == "INACTIVO")
+                            {
+                                proveedor.Estado = "ACTIVO";
+                            }
+                            else if (proveedor.Estado == "ACTIVO")
+                            {
+                                proveedor.Estado = "INACTIVO";
+                            }
                             flag = true;
                         }
-
-                        else if (confirmar == "S" && cliente.Estado == "ACTIVO")
-                        {
-                            proveedor.Estado = "INACTIVO";
-                            flag = true;
-                        }
-
                         else if (confirmar == "N")
                         {
                             Console.WriteLine("No se modificará el estado del proveedor");
                             flag = true;
                         }
-
                         else
                         {
-                            Console.WriteLine("No ingreso un valor correcto");
+                            Console.WriteLine("No ingresó un valor correcto.");
                             flag = false;
                         }
-
                     } while (flag == false);
                 }
-
                 else
                 {
-                    Console.WriteLine("Opción no válida. Inténtalo de nuevo.");
+                    Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
                 }
 
                 Console.WriteLine("Datos actualizados del proveedor:");
                 Console.WriteLine("Nombre: " + proveedor.Nombre);
                 Console.WriteLine("Apellido: " + proveedor.Apellido);
-                Console.WriteLine("Cuit: " + cuit);
+                Console.WriteLine("Cuit: " + proveedor.Cuit);
                 Console.WriteLine("Email: " + proveedor.Email);
                 Console.WriteLine("Estado: " + proveedor.Estado);
-
             }
             else
             {
@@ -147,7 +162,4 @@ namespace PRESENTACION
             return proveedor;
         }
     }
-
 }
-         
-              

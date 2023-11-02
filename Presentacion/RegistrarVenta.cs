@@ -3,8 +3,6 @@ using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PRESENTACION
 {
@@ -12,90 +10,188 @@ namespace PRESENTACION
     {
         private static ValidacionesDatos vd = new ValidacionesDatos();
         private static ProductosNegocio pn = new ProductosNegocio();
+        private static ClientesNegocio cn = new ClientesNegocio();
         public static List<Ventas> ventas = new List<Ventas>();
-
-
+        private static CategoriaProductos cp = new CategoriaProductos();
+        Ventas venta = null; // Declaración de venta fuera del bucle
         public Ventas registrarVenta()
         {
-            string idVenta = "";
-            string idProducto;
+            string idVenta = Guid.NewGuid().ToString(); // Generar un ID de venta único.
             string idCliente;
             string idUsuario;
-            int cantidad = 0;
-            Productos producto = new Productos();
+            List<(string IdProducto, int Cantidad)> productosVendidos = new List<(string, int)>();
 
-            bool flag;           
+            bool flag;
 
             do
             {
-                Console.Write("Ingrese el Id del producto vendido: ");
-                idProducto = Console.ReadLine();
-                producto = ProductosNegocio.BuscarProductoId(idProducto);
-                flag = vd.ValidarVacio(idProducto, "ID Producto");
-                flag = vd.ValidarID(idProducto);
-
-            } while (flag == false);
-
-     
-            do
-            {
-                Console.Write("Ingrese el Id del cliente: ");
+                Console.Write("Ingrese el ID del cliente: ");
                 idCliente = Console.ReadLine();
-                Clientes cliente = ClientesNegocio.BuscarClienteId(idCliente);
-                flag = vd.ValidarVacio(idCliente, "ID Cliente");
-                flag = vd.ValidarID(idCliente);
+                flag = vd.ValidarVacio(idCliente, "ID Cliente") && vd.ValidarID(idCliente);
 
-            } while (flag == false);
+                if (!flag)
+                {
+                    Console.WriteLine("ID de cliente no válido. Inténtelo de nuevo.");
+                }
 
-            Menu menu = new Menu();
+            } while (!flag);
 
             do
             {
-                Console.Write("Ingrese el Id del usuario: ");
+                Console.Write("Ingrese el ID del usuario: ");
                 idUsuario = Console.ReadLine();
-                UsuarioModel usuario = menu.BuscarUsuarioID(idCliente);
-                flag = vd.ValidarVacio(idUsuario, "ID Usuario");
-                flag = vd.ValidarID(idUsuario);
+                flag = vd.ValidarVacio(idUsuario, "ID Usuario") && vd.ValidarID(idUsuario);
 
-            } while (flag == false);
+                if (!flag)
+                {
+                    Console.WriteLine("ID de usuario no válido. Inténtelo de nuevo.");
+                }
 
-         
+            } while (!flag);
+
+            // Solicitar la lista de productos vendidos
+            do
+            {
+                Console.Write("Ingrese el ID del producto vendido (o '0' para finalizar): ");
+                string idProducto = Console.ReadLine();
+
+                if (idProducto == "0")
+                {
+                    break; // Salir del bucle cuando el usuario finalice la entrada de productos.
+                }
+
+                flag = vd.ValidarVacio(idProducto, "ID Producto") && vd.ValidarID(idProducto);
+
+                if (flag)
+                {
+                    int cantidad = SolicitarCantidadProducto();
+
+                    if (cantidad > 0)
+                    {
+                        productosVendidos.Add((idProducto, cantidad));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Cantidad no válida. Debe ser un número positivo.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("ID de producto no válido. Inténtelo de nuevo.");
+                }
+
+            } while (true);
+
+            // Crear una fila por cada producto vendido
+            foreach ((string IdProducto, int Cantidad) productoVenta in productosVendidos)
+            {
+                Ventas venta = new Ventas(idVenta, productoVenta.IdProducto, idCliente, idUsuario, productoVenta.Cantidad, "ACTIVO", DateTime.Now.Date);
+                ventas.Add(venta);
+
+                // Actualizar el stock del producto
+                Productos producto = ProductosNegocio.BuscarProductoId(productoVenta.IdProducto);
+                producto.Stock -= productoVenta.Cantidad;
+            }
+
+            // Aplicar descuentos (puedes mantener la lógica de descuentos como antes)
+            double descuento = AplicarDescuentos(venta, productosVendidos);
+
+            // Calcular el total de la venta (puedes mantener la lógica de cálculo de total como antes)
+            double totalVenta = CalcularTotalVenta(productosVendidos) - descuento;
+
+            // Generar el comprobante de venta (puedes mantener la lógica de generación de comprobante como antes)
+            GenerarComprobante(venta, productosVendidos, totalVenta);
+
+            return ventas.First(); // Devuelve la primera venta de la lista.
+        }
+
+        private int SolicitarCantidadProducto()
+        {
+            int cantidad = 0;
 
             do
             {
                 Console.Write("Ingrese la cantidad: ");
-                cantidad = int.Parse(Console.ReadLine());
-                
-                if (cantidad > 0)
-                {
-                    flag = true;
-                }
+                int.TryParse(Console.ReadLine(), out cantidad);
+            } while (cantidad <= 0);
 
-                else 
-                {
-                    flag = false;
-                }
+            return cantidad;
+        }
 
-            } while (flag == false);
+        private double CalcularTotalVenta(List<(string IdProducto, int Cantidad)> productosVendidos)
+        {
+            double totalVenta = 0;
+
+            foreach ((string IdProducto, int Cantidad) productoVenta in productosVendidos)
+            {
+                Productos producto = ProductosNegocio.BuscarProductoId(productoVenta.IdProducto);
+                totalVenta += producto.Precio * productoVenta.Cantidad;
+            }
+
+            return totalVenta;
+        }
+
+        private double AplicarDescuentos(Ventas venta, List<(string IdProducto, int Cantidad)> productosVendidos)
+        {
+            double totalDescuento = 0;
+
+            // Obtener la lista de categorías de productos
+            CategoriaProductos categoriaProductos = new CategoriaProductos();
+            categoriaProductos.AgregarCategorias();
+
+            // Verificar si la venta contiene productos de la categoría "Electro Hogar" que sumen más de $100,000
+            bool contieneElectroHogar = productosVendidos.Any(productoVenta =>
+            {
+                Productos producto = ProductosNegocio.BuscarProductoId(productoVenta.IdProducto);
+                CategoriaProductos categoria = cp.BuscarCategoriaId(producto.IdCategoria);
+                return categoria != null && categoria.Descripcion == "Electro Hogar";
+            });
+
+            double totalVenta = CalcularTotalVenta(productosVendidos);
+
+            // Aplicar el descuento "Promo Electro Hogar" (5%) si se cumple la condición
+            if (contieneElectroHogar && totalVenta > 100000)
+            {
+                totalDescuento += totalVenta * 0.05; // 5% de descuento
+            }
+
+            // Aplicar el descuento "Promo Cliente Nuevo" (5%) si es la primera compra del cliente
+            if (EsPrimeraCompraCliente(venta.IdCliente))
+            {
+                totalDescuento += totalVenta * 0.05; // 5% de descuento
+            }
+
+            return totalDescuento;
+        }
+
+        private bool EsPrimeraCompraCliente(string idCliente)
+        {
+            // Verificar si el cliente ha realizado compras anteriores
+            return !ventas.Any(venta => venta.IdCliente == idCliente);
+        }
 
 
-            //Ventas venta = new Ventas();
+        private void GenerarComprobante(Ventas venta, List<(string IdProducto, int Cantidad)> productosVendidos, double totalVenta)
+        {
+            Console.WriteLine("Comprobante de Venta");
+            Console.WriteLine("Empresa: Electro Hogar");
+            Console.WriteLine("Fecha de Operación: " + venta.FechaAlta.ToString("dd/MM/yyyy"));
+            Console.WriteLine("Datos del Cliente: " + ClientesNegocio.BuscarClienteId(venta.IdCliente));
+            Console.WriteLine("Detalle de Productos:");
 
-            //venta.IdVenta = idVenta;
-            //venta.IdCliente = idCliente;
-            //venta.IdProducto = idProducto;
-            //venta.IdUsuario = idUsuario;
-            //venta.Cantidad = cantidad;
-            //venta.Estado = "";
-            //venta.FechaAlta = DateTime.Now;
-          
+            foreach ((string IdProducto, int Cantidad) productoVenta in productosVendidos)
+            {
+                Productos producto = ProductosNegocio.BuscarProductoId(productoVenta.IdProducto);
+                Console.WriteLine($"- Producto: {producto.IdProducto}");
+                Console.WriteLine($"- Descripción: {producto.Nombre}");
+                Console.WriteLine($"- Cantidad: {productoVenta.Cantidad}");
+                Console.WriteLine($"- Monto Unitario: {producto.Precio:C}");
+                Console.WriteLine($"- Monto Total: {producto.Precio * productoVenta.Cantidad:C}");
+            }
 
-            var venta = new Ventas("", idProducto, idCliente, idUsuario, cantidad, "ACTIVO", DateTime.Now.Date);
-            ventas.Add(venta);
+            // Agregar lógica para mostrar las promociones aquí
 
-            producto.Stock = producto.Stock - cantidad;
-      
-            return venta;
+            Console.WriteLine("Total a Pagar: " + totalVenta.ToString("C"));
         }
     }
 }

@@ -56,24 +56,35 @@ namespace PRESENTACION
                 {
                     do
                     {
-                        Console.Write("Nuevo apellido: ");
-                        producto.Precio = Console.ReadLine();
+                        Console.Write("Nuevo precio: ");
+                        string precioStr = Console.ReadLine();
                         ValidacionesDatos validador = new ValidacionesDatos();
-                        flag = validador.ValidarDecimal(producto.Precio, ref precio , "Precio");
+                        flag = validador.ValidarDecimal(precioStr, ref precio, "Precio");
 
-                    } while (flag == false);
+                        if (!flag)
+                        {
+                            Console.WriteLine("Precio no válido. Debe ser un número decimal válido.");
+                        }
+
+                    } while (!flag);
 
                 }
                 else if (opcion == "stock")
                 {
                     do
                     {
-                        Console.Write("Nuevo cuit: ");
-                        producto.Stock = Console.ReadLine();
+                        Console.Write("Nuevo stock: ");
+                        string stockStr = Console.ReadLine();
                         ValidacionesDatos validador = new ValidacionesDatos();
-                        flag = validador.ValidarNumero(producto.Stock, ref stock, "Cuit");
+                        flag = validador.ValidarNumero(stockStr, ref stock, "Stock");
 
-                    } while (flag == false);
+                        if (!flag)
+                        {
+                            Console.WriteLine("Stock no válido. Debe ser un número entero válido.");
+                        }
+
+                    } while (!flag);
+
 
                 }
                 else

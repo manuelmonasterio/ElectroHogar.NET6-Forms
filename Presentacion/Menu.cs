@@ -15,6 +15,11 @@ namespace PRESENTACION
         private static ValidacionesDatos valDatos = new ValidacionesDatos();
         private static AltaProveedor altaProv = new AltaProveedor();
         private static BajaProveedor bajaProv = new BajaProveedor();
+        private static ModificarProveedor modProv = new ModificarProveedor();
+        private static AltaProducto altaProd = new AltaProducto();
+        private static BajaProducto bajaProd = new BajaProducto();
+        private static ModificarProducto modProd = new ModificarProducto();
+        private static RegistrarVenta registrarVenta = new RegistrarVenta(); 
 
 
         public static void MenuAdm()
@@ -195,17 +200,17 @@ namespace PRESENTACION
                             {
                                 case "1":
                                     //Ingresar alta proveedor
-                                    AltaProveedor.DarAltaProveedor();
+                                    altaProv.DarAltaProveedor();
                                     break;
 
                                 case "2":
                                     //Ingresar modificación proveedor
-                                    ModificarProveedor.ModProveedor();
+                                    modProv.ModProveedor();
                                     break;
 
                                 case "3":
                                     //Ingresar baja proveedor
-                                    BajaProveedor.DarBajaProveedor();
+                                    bajaProv.DarBajaProveedor();
                                     break;
 
                                 case "4":
@@ -234,17 +239,17 @@ namespace PRESENTACION
                             {
                                 case "1":
                                     //Ingresar alta producto
-                                    AltaProducto.DarAltaProducto();
+                                    altaProd.DarAltaProducto();
                                     break;
 
                                 case "2":
                                     //Ingresar modificación producto
-                                    ModificarProducto.ModProducto();
+                                    modProd.ModProducto();
                                     break;
 
                                 case "3":
                                     //Ingresar baja producto
-                                    BajaProducto.DarBajaProducto();
+                                    bajaProd.DarBajaProducto();
                                     break;
                                 case "4":
                                     Console.WriteLine("Esta volviendo al menú principal");
@@ -336,15 +341,15 @@ namespace PRESENTACION
                             {
                                 case "1":
                                     //Ingresar alta producto
-                                    AltaProducto.DarAltaProducto();
+                                    altaProd.DarAltaProducto();
                                     break;
                                 case "2":
                                     //Ingresar modificación producto
-                                    ModificarProducto.ModProducto();
+                                    modProd.ModProducto();
                                     break;
                                 case "3":
                                     //Ingresar baja producto
-                                    BajaProducto.DarBajaProducto();
+                                    bajaProd.DarBajaProducto();
                                     break;
                                 case "4":
                                     Console.WriteLine("Esta volviendo al menú principal");
@@ -424,7 +429,8 @@ namespace PRESENTACION
                 {
                     case "1":
                         //Llamar metodo venta
-                        RegistrarVenta.registrarVenta();
+                        registrarVenta.registrarVenta();
+                        break;
                     case "2":
                         //Llamar reporte
                         break;
