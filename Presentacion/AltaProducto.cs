@@ -5,6 +5,7 @@ using PRESENTACION;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlTypes;
+using System.Runtime.InteropServices.ObjectiveC;
 
 public class AltaProducto
 {
@@ -81,18 +82,37 @@ public class AltaProducto
         producto.Nombre = inputNombre;
         producto.Precio = Convert.ToSingle(inputPrecio);
         producto.Stock = Convert.ToInt32(inputStock);
+        //producto.StockMaximo = 10000;
         producto.FechaAlta = DateTime.Now;
         producto.IdCategoria = idCat;
 
-        /*if (producto.Stock < 0.25 * producto.Stock)
+        /*if (producto.Stock < 0.25 * producto.Stock) 
         {
-            if (usuario is Administradores || usuario is Supervisores)
+            if (usuario is Administrador || usuario is Supervisor)
             {
                Console.WriteLine($"{producto.Nombre} - Stock: {producto.Stock}");
                Console.WriteLine("¡ALERTA! Stock bajo.");
             }
 
         }*/
+
+        /* otra posibilidad con StockMaximo como propiedad
+         if (usuario is Supervisor || usuario is Administrador)
+        {
+            foreach (Productos producto in productos)
+            {
+                // Calcular el porcentaje de stock actual en comparación con el stock máximo
+                double porcentajeStock = (double)producto.Stock / producto.StockMaximo * 100;
+
+                // Verificar si el stock es menor al 25%
+                if (porcentajeStock < 25)
+                {
+                    // Mostrar la alerta en la pantalla principal
+                    MostrarAlerta($" ¡ALERTA! Stock bajo para el producto: {producto.Nombre}");
+                }
+            }
+        }
+         */
 
         Console.WriteLine("Se agregó el producto correctamente");
     }
