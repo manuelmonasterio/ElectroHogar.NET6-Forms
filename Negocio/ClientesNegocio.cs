@@ -16,6 +16,13 @@ namespace Negocio
             return ClientesDatos.ListarClientes();
         }
 
+        public void CrearCliente(ClienteModelDatos cliente)
+        {
+            //Este es el idUsuario Master
+            cliente.IdUsuario = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+            ClientesDatos.CrearCliente(cliente);
+        }
+
         public static Clientes BuscarClienteId(string clienteId)
         {
             bool flag = false;

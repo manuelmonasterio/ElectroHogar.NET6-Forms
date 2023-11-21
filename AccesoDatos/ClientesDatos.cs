@@ -27,6 +27,19 @@ namespace AccesoDatos
                 return listadoProveedores;
             }
         }
+
+        
+        public static void CrearCliente(ClienteModelDatos cliente)
+        {
+            var jsonRequest = JsonConvert.SerializeObject(cliente);
+
+            HttpResponseMessage response = WebHelper.Post("Cliente/AgregarCliente", jsonRequest);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.StatusCode.ToString());
+            }
+        }
     }
 
     

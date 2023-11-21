@@ -11,6 +11,7 @@ namespace PRESENTACION
 {
     public class ModificarCliente
     {
+        ClientesNegocio cn = new ClientesNegocio();
         public Clientes ModCliente()
         {
             Console.Write("Ingrese el ID del cliente a buscar para modificar sus datos (0 para salir): ");
@@ -26,7 +27,6 @@ namespace PRESENTACION
             if (cliente != null)
             {
                 Console.WriteLine("Datos del Cliente:");
-                Console.WriteLine("Nombre: " + cliente.Nombre);
                 Console.WriteLine("Dirección: " + cliente.Direccion);
                 Console.WriteLine("Teléfono: " + cliente.Telefono);
                 Console.WriteLine("Email: " + cliente.Email);
@@ -36,60 +36,92 @@ namespace PRESENTACION
                 string opcion = Console.ReadLine().ToLower();
 
                 bool flag;
+                string nuevaDireccion;
+                string nuevoTelefono;
+                string nuevoEmail;
 
                 if (opcion == "salir")
                 {
                     Console.WriteLine("Selecciono salir");
                 }
-                else if (opcion == "nombre")
-                {
-                    do
-                    {
-                        Console.Write("Nuevo Nombre: ");
-                        cliente.Nombre = Console.ReadLine();
-                        ValidacionesDatos validador = new ValidacionesDatos();
-                        flag = validador.ValidarVacio(cliente.Nombre, "Nombre");
-
-                    } while (flag == false);
-                }
-                else if (opcion == "direccion")
+                else if (opcion == "Dirección")
                 {
                     do
                     {
                         Console.Write("Nueva Dirección: ");
-                        cliente.Direccion = Console.ReadLine();
+                        nuevaDireccion = Console.ReadLine();
+                        cliente.Direccion = nuevaDireccion;
                         ValidacionesDatos validador = new ValidacionesDatos();
                         flag = validador.ValidarVacio(cliente.Direccion, "Direccion");
 
                     } while (flag == false);
 
+
+                    try
+                    {
+                        cn.ModificarCliente(nuevaDireccion, cliente.Telefono, cliente.Email);
+                        
+                        Console.WriteLine("Cambio de Dirección exitoso");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
                 }
-                else if (opcion == "telefono")
+                else if (opcion == "Teléfono")
                 {
                     do
                     {
                         Console.Write("Nuevo Teléfono: ");
-                        cliente.Telefono = Console.ReadLine();
+                        nuevoTelefono = Console.ReadLine();
+                        cliente.Telefono = nuevoTelefono;
                         ValidacionesDatos validador = new ValidacionesDatos();
                         flag = validador.ValidarVacio(cliente.Telefono, "Telefono");
 
                     } while (flag == false);
 
+                    try
+                    {
+                        cn.ModificarCliente(cliente.Direccion, nuevoTelefono, cliente.Email);
+
+                        Console.WriteLine("Cambio de Teléfono exitoso");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
                 }
-                else if (opcion == "email")
+                else if (opcion == "Email")
                 {
                     do
                     {
                         Console.Write("Nuevo Email: ");
-                        cliente.Email = Console.ReadLine();
+                        nuevoEmail = Console.ReadLine();
+                        cliente.Email = nuevoEmail;
                         ValidacionesDatos validador = new ValidacionesDatos();
                         flag = validador.ValidarVacio(cliente.Email, "Email");
 
                     } while (flag == false);
 
+                    try
+                    {
+                        cn.ModificarCliente(cliente.Direccion, cliente.Telefono, nuevoEmail);
+
+                        Console.WriteLine("Cambio de Email exitoso");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+
                 }
-                else if (opcion == "estado")
+                else if (opcion == "Estado")
                 {
+                    String IdUsuarioMaster = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+                    string idCliente = Convert.ToString(cliente.IdCliente);
                     do
                     {
                         Console.Write("El estado actual del cliente es: " + cliente.Estado);
@@ -102,12 +134,14 @@ namespace PRESENTACION
                         {
                             cliente.Estado = "ACTIVO";
                             flag = true;
+                            ClientesDatos.ReactivarCliente(idCliente, IdUsuarioMaster);
                         }
 
                         else if(confirmar== "S" && cliente.Estado == "ACTIVO")
                         {
                             cliente.Estado = "INACTIVO";
                             flag = true;
+                            ClientesDatos.BorrarCliente(idCliente, IdUsuarioMaster);
                         }
 
                         else if(confirmar == "N")
@@ -123,6 +157,14 @@ namespace PRESENTACION
                         }
 
                     } while (flag == false);
+
+
+
+
+
+                        
+                    
+
                 }
 
                 else

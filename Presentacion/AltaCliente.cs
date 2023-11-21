@@ -1,4 +1,5 @@
-﻿using Modelo;
+﻿using AccesoDatos;
+using Modelo;
 using Modelo.Exceptions;
 using Negocio;
 using PRESENTACION;
@@ -25,7 +26,7 @@ public class AltaCliente
         string inputFechaNacimiento;
         DateTime fechaNacimiento = DateTime.Now;
         string inputHost;
-        Guid IdUsuario = Guid.Empty;
+        Guid IdUsuario = new Guid();
         string inputIdUsuario;
 
         do
@@ -89,7 +90,7 @@ public class AltaCliente
             Console.Write("Ingresar el grupo del cliente: ");
             inputHost = Console.ReadLine();
             ValidacionesDatos validador = new ValidacionesDatos();
-            flag = validador.ValidarVacio(inputEmail, "Email");
+            flag = validador.ValidarVacio(inputHost, "Email");
         } while (flag == false);
 
         do
@@ -125,5 +126,27 @@ public class AltaCliente
         cliente.DNI = Convert.ToInt32(inputDNI);
         cliente.FechaAlta = DateTime.Now;
         cliente.IdUsuario = IdUsuario;
+
+        ClienteModelDatos clienteDatos = new ClienteModelDatos();
+        clienteDatos.IdUsuario = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+        clienteDatos.Host = inputHost;
+        clienteDatos.Nombre = inputNombre;
+        clienteDatos.Apellido = inputApellido;
+        clienteDatos.Dni = dni;
+        clienteDatos.Direccion = inputDireccion;
+        clienteDatos.Telefono = inputTelefono;
+        clienteDatos.Email = inputEmail;
+        clienteDatos.FechaNacimiento = fechaNacimiento;
+
+        try
+        {
+            pn.CrearCliente(clienteDatos);
+            Console.WriteLine("Alta exitosa");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
     }
 }
