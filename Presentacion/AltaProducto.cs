@@ -82,9 +82,9 @@ public class AltaProducto
         producto.Nombre = inputNombre;
         producto.Precio = Convert.ToSingle(inputPrecio);
         producto.Stock = Convert.ToInt32(inputStock);
-        //producto.StockMaximo = 10000;
+        producto.StockMaximo = 10000;
         producto.FechaAlta = DateTime.Now;
-        producto.IdCategoria = idCat;
+        producto.IdCategoria = inputCategoria;
 
         /*if (producto.Stock < 0.25 * producto.Stock) 
         {

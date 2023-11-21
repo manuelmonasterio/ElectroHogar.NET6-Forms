@@ -29,7 +29,7 @@ namespace PRESENTACION
             } while (flag == false);
 
             Menu menu = new Menu();
-            Productos producto = pn.BuscarProductoId(idProducto);
+            Productos producto = ProductosNegocio.BuscarProductoId(idProducto);
             return producto;
         }
     }

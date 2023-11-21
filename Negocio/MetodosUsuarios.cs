@@ -21,7 +21,7 @@ namespace Negocio
             UsuarioDatos.CrearUsuario(usuario);
         }
 
-        public void CrearUsuariosAdmin()
+        /*public void CrearUsuariosAdmin()
         {
             UsuarioModelDatos usuario = new UsuarioModelDatos();
 
@@ -34,7 +34,7 @@ namespace Negocio
             usuario.Telefono = "44443333";
             usuario.Email = "test@test.com";
             usuario.FechaNacimiento = DateTime.Now.AddYears(-22);
-            usuario.NombreUsuario = "AdministradoraCW";
+            usuario.NombreUsuario = "Admini05CW";
             usuario.Contraseña = "CAI20232";
             CrearUsuario(usuario);
 
@@ -47,7 +47,7 @@ namespace Negocio
             usuario.Telefono = "44443333";
             usuario.Email = "test@test.com";
             usuario.FechaNacimiento = DateTime.Now.AddYears(-30);
-            usuario.NombreUsuario = "AdministradoraEZ";
+            usuario.NombreUsuario = "Adminis05EZ";
             usuario.Contraseña = "CAI20232";
             CrearUsuario(usuario);
 
@@ -60,7 +60,7 @@ namespace Negocio
             usuario.Telefono = "44443333";
             usuario.Email = "test@test.com";
             usuario.FechaNacimiento = DateTime.Now.AddYears(-30);
-            usuario.NombreUsuario = "AdministradoraPG";
+            usuario.NombreUsuario = "Adminis05PG";
             usuario.Contraseña = "CAI20232";
             CrearUsuario(usuario);
 
@@ -71,7 +71,7 @@ namespace Negocio
             usuarios.Add(usuario1);
             usuario1 = new Administrador(new Guid(), "Patricio", "Gerenni", "Cochabamba 1234", "1167845556", "patriciogerenni@gmail.com", DateTime.Now, new DateTime(1999, 04, 20), new DateTime(2099, 01, 01), "AdministradorPG", 1, 41823861, "CAI20232", "Activo");
             usuarios.Add(usuario1);
-        }
+        }*/
 
         public void CrearUsuarioLista(UsuarioModel usuario)
         {

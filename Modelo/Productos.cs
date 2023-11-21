@@ -9,6 +9,7 @@ public class Productos
     public Guid _idproveedor { get; set; }
     public double _precio { get; set; }
     public int _stock { get; set; }
+    public int _stockMaximo { get; set; }
     public DateTime _fechaAlta { get; set; }
     public DateTime _fechaBaja { get; set; }
 
@@ -20,9 +21,27 @@ public class Productos
     public Guid IdProveedor { get => _idproveedor; set => _idproveedor = value; }
     public double Precio { get => _precio; set => _precio = value; }
     public int Stock { get => _stock; set => _stock = value; }
-    //public int StockMaximo { get => _stock; set => _stock = value }
+    public int StockMaximo { get => _stockMaximo; set => _stockMaximo = value; }
     public DateTime FechaAlta { get => _fechaAlta; set => _fechaAlta = value; }
     public DateTime FechaBaja { get => _fechaBaja; set => _fechaBaja = value; }
     
     override public String ToString() => _idproducto + " " + Nombre + " ";
+
+    public Productos()
+    {
+
+    }
+    public Productos(string Nombre, Guid IdUsuario, int IdCategoria, Guid IdProveedor, double Precio, int Stock, int StockMaximo, DateTime FechaBaja)
+    {
+        _nombre = Nombre;
+        _idproducto = IdProducto;
+        _idusuario = IdUsuario;
+        _idcategoria = IdCategoria;
+        _idproveedor = IdProveedor;
+        _precio = Precio;
+        _stock = Stock;
+        _stockMaximo = StockMaximo;
+        _fechaAlta = DateTime.Today;
+        _fechaBaja = FechaBaja;
+    }
 }
