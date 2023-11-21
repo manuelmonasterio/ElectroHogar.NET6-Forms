@@ -54,5 +54,22 @@ namespace Negocio
             }
 
         }
+
+        public void ModificarCliente(string direccion, string telefono, string email)
+        {
+            String idUsuario = UsuarioDatos.CambiarContraseña(direccion, telefono, email);
+        }
+
+        public void BorrarCliente(string idCliente)
+        {
+            String IdUsuarioMaster = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+            ClientesDatos.BorrarCliente(idCliente, IdUsuarioMaster);
+        }
+
+        public void ReactivarCliente(string idCliente)
+        {
+            String IdUsuarioMaster = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+            ClientesDatos.ReactivarCliente(idCliente, IdUsuarioMaster);
+        }
     }
 }
