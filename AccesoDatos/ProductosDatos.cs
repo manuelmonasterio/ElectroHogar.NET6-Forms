@@ -62,6 +62,44 @@ namespace AccesoDatos
             return respuesta;
         }
     }
+    public static void BorrarProducto(string idProducto, string idUsuarioMaster)
+    {
+        Dictionary<String, String> map = new Dictionary<String, String>();
+        map.Add("id", idProducto);
+        map.Add("idUsuario", idUsuarioMaster);
+
+        var jsonRequest = JsonConvert.SerializeObject(map);
+
+        HttpResponseMessage response = WebHelper.DeleteConBody("Producto/BajaProducto", jsonRequest);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception("Verifique los datos ingresados");
+        }
+
+    }
+
+    public static string ReactivarProducto(string idProducto, string idUsuarioMaster)
+    {
+        Dictionary<String, String> map = new Dictionary<String, String>();
+        map.Add("id", idProducto);
+        map.Add("idUsuario", idUsuarioMaster);
+
+        var jsonRequest = JsonConvert.SerializeObject(map);
+
+        HttpResponseMessage response = WebHelper.Patch("Producto/ReactivarProducto", jsonRequest);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception("Verifique los datos ingresados");
+        }
+
+        var reader = new StreamReader(response.Content.ReadAsStream());
+
+        String respuesta = reader.ReadToEnd();
+
+        return respuesta;
+    }
 
 
 }

@@ -15,7 +15,7 @@ namespace PRESENTACION
         public Clientes ModCliente()
         {
             Console.Write("Ingrese el ID del cliente a buscar para modificar sus datos (0 para salir): ");
-            string? clienteId = Console.ReadLine();
+            string clienteId = Console.ReadLine();
 
             if (int.Parse(clienteId) == 0)
             {
@@ -120,7 +120,6 @@ namespace PRESENTACION
                 }
                 else if (opcion == "Estado")
                 {
-                    String IdUsuarioMaster = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
                     string idCliente = Convert.ToString(cliente.IdCliente);
                     do
                     {
@@ -134,14 +133,14 @@ namespace PRESENTACION
                         {
                             cliente.Estado = "ACTIVO";
                             flag = true;
-                            ClientesDatos.ReactivarCliente(idCliente, IdUsuarioMaster);
+                            cn.ReactivarCliente(idCliente);
                         }
 
                         else if(confirmar== "S" && cliente.Estado == "ACTIVO")
                         {
                             cliente.Estado = "INACTIVO";
                             flag = true;
-                            ClientesDatos.BorrarCliente(idCliente, IdUsuarioMaster);
+                            cn.BorrarCliente(idCliente);
                         }
 
                         else if(confirmar == "N")

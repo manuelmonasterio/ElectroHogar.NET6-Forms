@@ -10,6 +10,7 @@ namespace PRESENTACION
     {
         private static ValidacionesDatos vd = new ValidacionesDatos();
         private static ProductosNegocio pn = new ProductosNegocio();
+        private static VentasNegocio vn = new VentasNegocio();
         private static ClientesNegocio cn = new ClientesNegocio();
         public static List<Ventas> ventas = new List<Ventas>();
         private static CategoriaProductos cp = new CategoriaProductos();
@@ -19,6 +20,8 @@ namespace PRESENTACION
             string idVenta = Guid.NewGuid().ToString(); // Generar un ID de venta único.
             string idCliente;
             string idUsuario;
+            string idProducto;
+            int cantidad;
             List<(string IdProducto, int Cantidad)> productosVendidos = new List<(string, int)>();
 
             bool flag;
@@ -53,7 +56,7 @@ namespace PRESENTACION
             do
             {
                 Console.Write("Ingrese el ID del producto vendido (o '0' para finalizar): ");
-                string idProducto = Console.ReadLine();
+                idProducto = Console.ReadLine();
 
                 if (idProducto == "0")
                 {
@@ -64,11 +67,27 @@ namespace PRESENTACION
 
                 if (flag)
                 {
-                    int cantidad = SolicitarCantidadProducto();
+                    cantidad = SolicitarCantidadProducto();
 
                     if (cantidad > 0)
                     {
                         productosVendidos.Add((idProducto, cantidad));
+                        
+                        VentaModelDatos VentaDatos = new VentaModelDatos();
+                        VentaDatos.IdCliente = idCliente;
+                        VentaDatos.IdUsuario = idUsuario;
+                        VentaDatos.IdProducto = idProducto;
+                        ventaDatos.Cantidad = cantidad;
+
+                        try
+                        {
+                            vn.CrearVenta(VentaDatos);
+                            Console.WriteLine("Producto vendido");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
                     }
                     else
                     {

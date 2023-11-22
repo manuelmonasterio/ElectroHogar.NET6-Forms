@@ -421,8 +421,10 @@ namespace PRESENTACION
             {
                 Console.WriteLine("Vendedor, seleccione que tarea va a realizar");
                 Console.WriteLine("1: Venta");
-                Console.WriteLine("2: Reporte de ventas por vendedor ");
-                Console.WriteLine("3: Salir");
+                Console.WriteLine("2: Agregar cliente ");
+                Console.WriteLine("3: Modificar cliente ");
+                Console.WriteLine("4: Reporte de ventas por vendedor ");
+                Console.WriteLine("5: Salir");
                 string opcVend = Console.ReadLine().ToUpper();
                 Console.Clear();
                 switch (opcVend)
@@ -432,9 +434,17 @@ namespace PRESENTACION
                         registrarVenta.registrarVenta();
                         break;
                     case "2":
-                        //Llamar reporte
+                        //Llamar metodo agregar cliente
+                        AltaCliente.DarAltaCliente();
                         break;
                     case "3":
+                        //Llamar metodo modificar cliente
+                        ModificarCliente.ModCliente();
+                        break;
+                    case "4":
+                        //Llamar reporte
+                        break;
+                    case "5":
                         Console.WriteLine("Gracias por utilizar el sistema");
                         Console.ReadKey();
                         CtrlVend = false;

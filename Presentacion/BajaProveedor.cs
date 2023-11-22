@@ -26,6 +26,7 @@ public class BajaProveedor
         Menu menu = new Menu();
         Proveedores proveedor = pn.BuscarProveedorId(idProveedor);
         proveedor.Estado = "INACTIVO";
+        pn.BorrarProveedor(idProveedor);
         return proveedor;
     }
 }

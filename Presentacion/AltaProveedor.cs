@@ -61,6 +61,23 @@ public class AltaProveedor
         proveedor.FechaAlta = DateTime.Now;
         proveedor.Estado = "ACTIVO";
 
+        ProveedorModelDatos proveedorDatos = new ProveedorModelDatos();
+        proveedor.Id = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+        proveedor.Nombre = inputNombre;
+        proveedor.Apellido = inputApellido;
+        proveedor.Email = inputEmail;
+        proveedor.Cuit = cuit;
+
+        try
+        {
+            pn.CrearProveedor(proveedorDatos);
+            Console.WriteLine("Alta exitosa");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
         /* SE TIENE QUE IMPLEMENTAR DENTRO DEL WEB SERVICE --CW
          * try
         {

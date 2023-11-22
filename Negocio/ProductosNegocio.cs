@@ -63,4 +63,15 @@ namespace Negocio
         {
             String idUsuario = ProductosDatos.ModificarProducto(id, precio, stock);
         }
+        public void BorrarProducto(string idProducto)
+        {
+            String IdUsuarioMaster = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+            ProductosDatos.BorrarProducto(idProducto, IdUsuarioMaster);
+        }
+
+        public void ReactivarProducto(string idProducto)
+        {
+            String IdUsuarioMaster = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+            ProductosDatos.ReactivarProducto(idProducto, IdUsuarioMaster);
+        }
     }

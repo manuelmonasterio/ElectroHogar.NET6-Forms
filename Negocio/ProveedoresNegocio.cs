@@ -46,5 +46,27 @@ namespace Negocio
             }
 
         }
+        public void CrearProveedor(ProveedorModelDatos proveedor)
+        {
+            //Este es el idUsuario Master
+            proveedor.IdUsuario = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+            ProveedoresDatos.CrearProveedor(proveedor);
+
+        }
+        public void ModificarProveedor(string id, string nombre, string apellido, string email, string cuit)
+        {
+            String idUsuario = ProductosDatos.ModificarProducto(id, nombre, apellido, email, cuit);
+        }
+        public void BorrarProveedor(string idProveedor)
+        {
+            String IdUsuarioMaster = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+            ProveedoresDatos.BorrarProveedor(idProveedor, IdUsuarioMaster);
+        }
+
+        public void ReactivarProveedor(string idProveedor)
+        {
+            String IdUsuarioMaster = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+            ProveedoresDatos.ReactivarProveedor(idProveedor, IdUsuarioMaster);
+        }
     }
 }

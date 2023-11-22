@@ -11,7 +11,7 @@ namespace PRESENTACION
 {
     public class ModificarProducto
     {
-        ProductosNegocio cn = new ProductosNegocio(); 
+        ProductosNegocio pn = new ProductosNegocio(); 
         public Productos ModProducto()
         {
             Console.Write("Ingrese el ID del producto a buscar para modificar sus datos (0 para salir): ");
@@ -31,7 +31,7 @@ namespace PRESENTACION
                 Console.WriteLine("Precio: " + producto.Precio);
                 Console.WriteLine("Stock: " + producto.Stock);
 
-                Console.WriteLine("\n¿Qué dato deseas modificar? (precio/stock/salir):");
+                Console.WriteLine("\n¿Qué dato deseas modificar? (precio/stock/estado/salir):");
                 string opcion = Console.ReadLine().ToLower();
 
                 bool flag;
@@ -61,7 +61,7 @@ namespace PRESENTACION
                     } while (!flag);
                     try
                     {
-                        cn.ModificarProducto(productoId, precioStr, producto.Stock);
+                        pn.ModificarProducto(productoId, precioStr, producto.Stock);
 
                         Console.WriteLine("Cambio de precio exitoso");
                     }
@@ -87,7 +87,7 @@ namespace PRESENTACION
                     } while (!flag);
                     try
                     {
-                        cn.ModificarCliente(productoId, producto.Precio, stockStr);
+                        pn.ModificarCliente(productoId, producto.Precio, stockStr);
 
                         Console.WriteLine("Cambio de stock exitoso");
                     }
@@ -96,6 +96,44 @@ namespace PRESENTACION
                         Console.WriteLine(ex.Message);
                     }
 
+                }
+                else if (opcion == "estado")
+                {
+                    do
+                    {
+                        Console.Write("El estado actual del producto es: " + producto.Estado);
+
+                        Console.Write("Desea modiciarlo, Ingrese S o N");
+
+                        string confirmar = Console.ReadLine().ToUpper();
+
+                        if (confirmar == "S" && producto.Estado == "INACTIVO")
+                        {
+                            producto.Estado = "ACTIVO";
+                            flag = true;
+                            pn.ReactivarProducto(productoId);
+                        }
+
+                        else if (confirmar == "S" && producto.Estado == "ACTIVO")
+                        {
+                            producto.Estado = "INACTIVO";
+                            flag = true;
+                            pn.BorrarProducto(productoId);
+                        }
+
+                        else if (confirmar == "N")
+                        {
+                            Console.WriteLine("No se modificará el estado de cliente");
+                            flag = true;
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("No ingreso un valor correcto");
+                            flag = false;
+                        }
+
+                    } while (flag == false);
                 }
                 else
                 {

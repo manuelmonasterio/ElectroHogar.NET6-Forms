@@ -7,10 +7,11 @@ namespace PRESENTACION
 {
     public class ModificarProveedor
     {
+        ProveedoresNegocio pn = new ProveedoresNegocio(); 
         public Proveedores ModProveedor()
         {
             Console.Write("Ingrese el ID del proveedor a buscar para modificar sus datos (0 para salir): ");
-            string? proveedorId = Console.ReadLine();
+            string proveedorId = Console.ReadLine();
 
             if (int.Parse(proveedorId) == 0)
             {
@@ -18,8 +19,7 @@ namespace PRESENTACION
                 return null;
             }
 
-            ProveedoresNegocio proveedoresNegocio = new ProveedoresNegocio();
-            Proveedores proveedor = proveedoresNegocio.BuscarProveedorId(proveedorId);
+            Proveedores proveedor = pn.BuscarProveedorId(proveedorId);
 
             if (proveedor != null)
             {
@@ -30,11 +30,15 @@ namespace PRESENTACION
                 Console.WriteLine("Email: " + proveedor.Email);
                 Console.WriteLine("Estado: " + proveedor.Estado);
 
-                Console.WriteLine("\n¿Qué dato deseas modificar? (nombre/apellido/cuit/email/estado/salir):");
+                Console.WriteLine("\n¿Qué dato deseas modificar? (nombre/apellido/email/cuit/estado/salir):");
                 string opcion = Console.ReadLine().ToLower();
 
                 bool flag;
                 int cuit = 0;
+                string nuevoNombre;
+                string nuevoApellido;
+                string nuevoEmail;
+                string nuevoCuit;
 
                 if (opcion == "salir")
                 {
@@ -45,27 +49,47 @@ namespace PRESENTACION
                     do
                     {
                         Console.Write("Nuevo Nombre: ");
-                        proveedor.Nombre = Console.ReadLine();
+                        nuevoNombre = Console.ReadLine();
                         ValidacionesDatos validador = new ValidacionesDatos();
-                        flag = validador.ValidarVacio(proveedor.Nombre, "Nombre");
+                        flag = validador.ValidarVacio(nuevoNombre, "Nombre");
                     } while (flag == false);
+                    try
+                    {
+                        pn.ModificarProveedor(proveedorId, nuevoNombre, proveedor.Apellido, proveedor.Email, proveedor.Cuit);
+
+                        Console.WriteLine("Cambio de Nombre exitoso");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
                 else if (opcion == "apellido")
                 {
                     do
                     {
                         Console.Write("Nuevo apellido: ");
-                        proveedor.Apellido = Console.ReadLine();
+                        nuevoApellido = Console.ReadLine();
                         ValidacionesDatos validador = new ValidacionesDatos();
-                        flag = validador.ValidarVacio(proveedor.Apellido, "Apellido");
+                        flag = validador.ValidarVacio(nuevoApellido, "Apellido");
                     } while (flag == false);
+                    try
+                    {
+                        pn.ModificarProveedor(proveedorId, proveedor.Nombre, nuevoApellido, proveedor.Email, proveedor.Cuit);
+
+                        Console.WriteLine("Cambio de apellido exitoso");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
                 else if (opcion == "cuit")
                 {
                     do
                     {
                         Console.Write("Nuevo CUIT: ");
-                        string nuevoCuit = Console.ReadLine();
+                        nuevoCuit = Console.ReadLine();
 
                         // Verifica que el CUIT tenga 11 dígitos
                         if (nuevoCuit.Length == 11)
@@ -89,26 +113,37 @@ namespace PRESENTACION
                             flag = false;
                         }
 
-                        if (int.TryParse(nuevoCuit, out int cuitNumero))
-                        {
-                            proveedor.Cuit = cuitNumero;
-                        }
-                        else
-                        {
-                            Console.WriteLine("El nuevo CUIT no es válido. Debe ser un número.");
-                        }
-
                     } while (!flag);
+                    try
+                    {
+                        pn.ModificarProveedor(proveedorId, proveedor.Nombre, proveedor.Apellido, proveedor.Email, nuevoCuit);
+
+                        Console.WriteLine("Cambio de CUIT exitoso");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
                 else if (opcion == "email")
                 {
                     do
                     {
                         Console.Write("Nuevo Email: ");
-                        proveedor.Email = Console.ReadLine();
+                        nuevoEmail = Console.ReadLine();
                         ValidacionesDatos validador = new ValidacionesDatos();
                         flag = validador.ValidarVacio(proveedor.Email, "Email");
                     } while (flag == false);
+                    try
+                    {
+                        pn.ModificarProveedor(proveedorId, proveedor.Nombre, proveedor.Apellido, nuevoEmail, proveedor.Cuit);
+
+                        Console.WriteLine("Cambio de Email exitoso");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
                 else if (opcion == "estado")
                 {
@@ -123,10 +158,14 @@ namespace PRESENTACION
                             if (proveedor.Estado == "INACTIVO")
                             {
                                 proveedor.Estado = "ACTIVO";
+                                flag = true;
+                                pn.ReactivarProveedor(proveedorId);
                             }
                             else if (proveedor.Estado == "ACTIVO")
                             {
                                 proveedor.Estado = "INACTIVO";
+                                flag = true;
+                                pn.BorrarProveedor(proveedorId);
                             }
                             flag = true;
                         }

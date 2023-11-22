@@ -30,6 +30,8 @@ namespace PRESENTACION
 
             Menu menu = new Menu();
             Productos producto = ProductosNegocio.BuscarProductoId(idProducto);
+            producto.Estado = "INACTIVO";
+            pn.BorrarProducto(idProducto);
             return producto;
         }
     }

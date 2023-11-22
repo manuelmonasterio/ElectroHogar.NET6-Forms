@@ -8,7 +8,7 @@ namespace AccesoDatos
 {
     public class ClienteModelDatos
     {
-        private String _idUsuario;
+        private string _idUsuario;
         private string _host;
         private string _nombre;
         private string _apellido;

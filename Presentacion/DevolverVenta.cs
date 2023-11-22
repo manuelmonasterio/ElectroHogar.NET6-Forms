@@ -12,6 +12,7 @@ namespace PRESENTACION
     {
         private static ValidacionesDatos vd = new ValidacionesDatos();
         private static ProductosNegocio pn = new ProductosNegocio();
+        private static VentasNegocio vn = new VentasNegocio();
         public static List<Ventas> ventas = new List<Ventas>();
 
 
@@ -45,4 +46,5 @@ namespace PRESENTACION
         //    return venta;
         //}
     }
+
 }

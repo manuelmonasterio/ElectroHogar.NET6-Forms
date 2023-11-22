@@ -86,6 +86,13 @@ public class AltaProducto
         producto.FechaAlta = DateTime.Now;
         producto.IdCategoria = inputCategoria;
 
+        ProductoModelDatos productoDatos = new ProductoModelDatos();
+        productoDatos.IdCategoria = inputCategoria; 
+        productoDatos.IdProducto = Convert.ToString(producto.IdProducto);
+        productoDatos.Nombre = inputNombre;
+        productoDatos.Precio = Convert.ToSingle(inputPrecio);
+        productoDatos.Stock = Convert.ToInt32(inputStock);
+
         try
         {
             pn.CrearProducto(productoDatos);
