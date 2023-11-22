@@ -86,6 +86,15 @@ public class AltaProducto
         producto.FechaAlta = DateTime.Now;
         producto.IdCategoria = inputCategoria;
 
+        try
+        {
+            pn.CrearProducto(productoDatos);
+            Console.WriteLine("Alta exitosa");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
         /*if (producto.Stock < 0.25 * producto.Stock) 
         {
             if (usuario is Administrador || usuario is Supervisor)

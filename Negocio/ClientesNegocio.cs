@@ -57,7 +57,7 @@ namespace Negocio
 
         public void ModificarCliente(string direccion, string telefono, string email)
         {
-            String idUsuario = UsuarioDatos.CambiarContraseña(direccion, telefono, email);
+            String idUsuario = ClientesDatos.ModificarCliente(direccion, telefono, email);
         }
 
         public void BorrarCliente(string idCliente)

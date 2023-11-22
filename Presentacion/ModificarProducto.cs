@@ -11,10 +11,11 @@ namespace PRESENTACION
 {
     public class ModificarProducto
     {
+        ProductosNegocio cn = new ProductosNegocio(); 
         public Productos ModProducto()
         {
             Console.Write("Ingrese el ID del producto a buscar para modificar sus datos (0 para salir): ");
-            string? productoId = Console.ReadLine();
+            string productoId = Console.ReadLine();
 
             if (int.Parse(productoId) == 0)
             {
@@ -30,34 +31,25 @@ namespace PRESENTACION
                 Console.WriteLine("Precio: " + producto.Precio);
                 Console.WriteLine("Stock: " + producto.Stock);
 
-                Console.WriteLine("\n¿Qué dato deseas modificar? (nombre/precio/stock/salir):");
+                Console.WriteLine("\n¿Qué dato deseas modificar? (precio/stock/salir):");
                 string opcion = Console.ReadLine().ToLower();
 
                 bool flag;
                 int stock = 0;
                 double precio = 0;
-
+                string precioStr;
+                string stockStr;
                 if (opcion == "salir")
                 {
                     Console.WriteLine("Selecciono salir");
                 }
-                else if (opcion == "nombre")
-                {
-                    do
-                    {
-                        Console.Write("Nuevo Nombre: ");
-                        producto.Nombre = Console.ReadLine();
-                        ValidacionesDatos validador = new ValidacionesDatos();
-                        flag = validador.ValidarVacio(producto.Nombre, "Nombre");
-
-                    } while (flag == false);
-                }
+                
                 else if (opcion == "precio")
                 {
                     do
                     {
                         Console.Write("Nuevo precio: ");
-                        string precioStr = Console.ReadLine();
+                        precioStr = Console.ReadLine();
                         ValidacionesDatos validador = new ValidacionesDatos();
                         flag = validador.ValidarDecimal(precioStr, ref precio, "Precio");
 
@@ -67,14 +59,23 @@ namespace PRESENTACION
                         }
 
                     } while (!flag);
+                    try
+                    {
+                        cn.ModificarProducto(productoId, precioStr, producto.Stock);
 
+                        Console.WriteLine("Cambio de precio exitoso");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
                 else if (opcion == "stock")
                 {
                     do
                     {
                         Console.Write("Nuevo stock: ");
-                        string stockStr = Console.ReadLine();
+                        stockStr = Console.ReadLine();
                         ValidacionesDatos validador = new ValidacionesDatos();
                         flag = validador.ValidarNumero(stockStr, ref stock, "Stock");
 
@@ -84,7 +85,16 @@ namespace PRESENTACION
                         }
 
                     } while (!flag);
+                    try
+                    {
+                        cn.ModificarCliente(productoId, producto.Precio, stockStr);
 
+                        Console.WriteLine("Cambio de stock exitoso");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
 
                 }
                 else

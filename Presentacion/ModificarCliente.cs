@@ -32,7 +32,7 @@ namespace PRESENTACION
                 Console.WriteLine("Email: " + cliente.Email);
                 Console.WriteLine("Estado: " + cliente.Estado);
 
-                Console.WriteLine("\n¿Qué dato deseas modificar? (nombre/direccion/telefono/email/estado/salir):");
+                Console.WriteLine("\n¿Qué dato deseas modificar? (direccion/telefono/email/estado/salir):");
                 string opcion = Console.ReadLine().ToLower();
 
                 bool flag;

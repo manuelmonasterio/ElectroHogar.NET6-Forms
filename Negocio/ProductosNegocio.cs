@@ -52,5 +52,15 @@ namespace Negocio
             String idProducto = ProductosDatos.ModificarNombreProd(Nombre, nombreNuevo);
         }
        */
+        public void CrearProducto(ProductoModelDatos producto)
+        {
+            //Este es el idUsuario Master
+            producto.IdUsuario = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+            ProductoDatos.CrearProducto(producto);
+
+        }
+        public void ModificarProducto(string id, double precio, int stock)
+        {
+            String idUsuario = ProductosDatos.ModificarProducto(id, precio, stock);
+        }
     }
-}
