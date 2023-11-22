@@ -61,7 +61,7 @@ namespace PRESENTACION
                     } while (!flag);
                     try
                     {
-                        pn.ModificarProducto(productoId, precioStr, producto.Stock);
+                        pn.ModificarProducto(productoId, precio, producto.Stock);
 
                         Console.WriteLine("Cambio de precio exitoso");
                     }
@@ -87,7 +87,7 @@ namespace PRESENTACION
                     } while (!flag);
                     try
                     {
-                        pn.ModificarCliente(productoId, producto.Precio, stockStr);
+                        pn.ModificarProducto(productoId, producto.Precio, stock);
 
                         Console.WriteLine("Cambio de stock exitoso");
                     }

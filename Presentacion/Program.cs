@@ -21,9 +21,9 @@ namespace Presentacion
             UsuarioModel usuario = new Administrador();
             usuario = new Administrador(new Guid(), "Carolina", "Wehner", "Uzal 1234", "1138205055", "carowehner2001@gmail.com", DateTime.Now, new DateTime(2001, 05, 23), new DateTime(2099, 01, 01), "Admini05CW", 1, 43245128, "CAI20232", "Activo");
             usuarios.Add(usuario);
-            usuario = new Administrador(new Guid(), "Evelyn", "Zivano", "Farrel 1234", "1153376046", "evelynzivano@gmail.com", DateTime.Now, new DateTime(1994, 07, 12), new DateTime(2099, 01, 01), "Admini05EZ", 1, 38491201, "CAI20232", "Activo");
+            usuario = new Administrador(new Guid(), "Evelyn", "Zivano", "Farrel 1234", "1153376046", "evelynzivano@gmail.com", DateTime.Now, new DateTime(1994, 07, 12), new DateTime(2099, 01, 01), "AdminiEZ05", 1, 38491201, "CAI20232", "Activo");
             usuarios.Add(usuario);
-            usuario = new Administrador(new Guid(), "Patricio", "Gerenni", "Cochabamba 1234", "1167845556", "patriciogerenni@gmail.com", DateTime.Now, new DateTime(1999, 04, 20), new DateTime(2099, 01, 01), "Admini05PG", 1, 41823861, "CAI20232", "Activo");
+            usuario = new Administrador(new Guid(), "Patricio", "Gerenni", "Cochabamba 1234", "1167845556", "patriciogerenni@gmail.com", DateTime.Now, new DateTime(1999, 04, 20), new DateTime(2099, 01, 01), "AdminiPG05", 1, 41823861, "CAI20232", "Activo");
             usuarios.Add(usuario);
 
             //declaro variable para definir el perfil para el menú

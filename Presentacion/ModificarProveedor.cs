@@ -7,8 +7,15 @@ namespace PRESENTACION
 {
     public class ModificarProveedor
     {
-        ProveedoresNegocio pn = new ProveedoresNegocio(); 
-        public Proveedores ModProveedor()
+        ProveedoresNegocio pn = new ProveedoresNegocio();
+        Proveedores proveedor1 = new Proveedores();
+        public Proveedores GetProveedor()
+        {
+            Proveedores proveedor = new Proveedores();
+            return proveedor;
+        }
+
+        public Proveedores ModProveedor(Proveedores proveedor)
         {
             Console.Write("Ingrese el ID del proveedor a buscar para modificar sus datos (0 para salir): ");
             string proveedorId = Console.ReadLine();
@@ -19,16 +26,16 @@ namespace PRESENTACION
                 return null;
             }
 
-            Proveedores proveedor = pn.BuscarProveedorId(proveedorId);
+            Proveedores proveedor1 = pn.BuscarProveedorId(proveedorId);
 
             if (proveedor != null)
             {
                 Console.WriteLine("Datos del Proveedor:");
-                Console.WriteLine("Nombre: " + proveedor.Nombre);
-                Console.WriteLine("Apellido: " + proveedor.Apellido);
-                Console.WriteLine("Cuit: " + proveedor.Cuit);
-                Console.WriteLine("Email: " + proveedor.Email);
-                Console.WriteLine("Estado: " + proveedor.Estado);
+                Console.WriteLine("Nombre: " + proveedor1.Nombre);
+                Console.WriteLine("Apellido: " + proveedor1.Apellido);
+                Console.WriteLine("Cuit: " + proveedor1.Cuit);
+                Console.WriteLine("Email: " + proveedor1.Email);
+                Console.WriteLine("Estado: " + proveedor1.Estado);
 
                 Console.WriteLine("\n¿Qué dato deseas modificar? (nombre/apellido/email/cuit/estado/salir):");
                 string opcion = Console.ReadLine().ToLower();
@@ -55,7 +62,7 @@ namespace PRESENTACION
                     } while (flag == false);
                     try
                     {
-                        pn.ModificarProveedor(proveedorId, nuevoNombre, proveedor.Apellido, proveedor.Email, proveedor.Cuit);
+                        pn.ModificarProveedor(proveedorId, nuevoNombre, proveedor1.Apellido, proveedor1.Email, Convert.ToString(proveedor1.Cuit));
 
                         Console.WriteLine("Cambio de Nombre exitoso");
                     }
@@ -75,7 +82,7 @@ namespace PRESENTACION
                     } while (flag == false);
                     try
                     {
-                        pn.ModificarProveedor(proveedorId, proveedor.Nombre, nuevoApellido, proveedor.Email, proveedor.Cuit);
+                        pn.ModificarProveedor(proveedorId, proveedor1.Nombre, nuevoApellido, proveedor1.Email, Convert.ToString(proveedor1.Cuit));
 
                         Console.WriteLine("Cambio de apellido exitoso");
                     }
@@ -116,7 +123,7 @@ namespace PRESENTACION
                     } while (!flag);
                     try
                     {
-                        pn.ModificarProveedor(proveedorId, proveedor.Nombre, proveedor.Apellido, proveedor.Email, nuevoCuit);
+                        pn.ModificarProveedor(proveedorId, proveedor1.Nombre, proveedor1.Apellido, proveedor1.Email, nuevoCuit);
 
                         Console.WriteLine("Cambio de CUIT exitoso");
                     }
@@ -132,11 +139,11 @@ namespace PRESENTACION
                         Console.Write("Nuevo Email: ");
                         nuevoEmail = Console.ReadLine();
                         ValidacionesDatos validador = new ValidacionesDatos();
-                        flag = validador.ValidarVacio(proveedor.Email, "Email");
+                        flag = validador.ValidarVacio(proveedor1.Email, "Email");
                     } while (flag == false);
                     try
                     {
-                        pn.ModificarProveedor(proveedorId, proveedor.Nombre, proveedor.Apellido, nuevoEmail, proveedor.Cuit);
+                        pn.ModificarProveedor(proveedorId, proveedor1.Nombre, proveedor1.Apellido, nuevoEmail, Convert.ToString(proveedor1.Cuit));
 
                         Console.WriteLine("Cambio de Email exitoso");
                     }
@@ -149,21 +156,21 @@ namespace PRESENTACION
                 {
                     do
                     {
-                        Console.Write("El estado actual del proveedor es: " + proveedor.Estado);
+                        Console.Write("El estado actual del proveedor es: " + proveedor1.Estado);
                         Console.Write("Desea modificarlo? Ingrese 'S' para activar o 'N' para desactivar: ");
                         string confirmar = Console.ReadLine().ToUpper();
 
                         if (confirmar == "S")
                         {
-                            if (proveedor.Estado == "INACTIVO")
+                            if (proveedor1.Estado == "INACTIVO")
                             {
-                                proveedor.Estado = "ACTIVO";
+                                proveedor1.Estado = "ACTIVO";
                                 flag = true;
                                 pn.ReactivarProveedor(proveedorId);
                             }
-                            else if (proveedor.Estado == "ACTIVO")
+                            else if (proveedor1.Estado == "ACTIVO")
                             {
-                                proveedor.Estado = "INACTIVO";
+                                proveedor1.Estado = "INACTIVO";
                                 flag = true;
                                 pn.BorrarProveedor(proveedorId);
                             }
@@ -187,11 +194,11 @@ namespace PRESENTACION
                 }
 
                 Console.WriteLine("Datos actualizados del proveedor:");
-                Console.WriteLine("Nombre: " + proveedor.Nombre);
-                Console.WriteLine("Apellido: " + proveedor.Apellido);
-                Console.WriteLine("Cuit: " + proveedor.Cuit);
-                Console.WriteLine("Email: " + proveedor.Email);
-                Console.WriteLine("Estado: " + proveedor.Estado);
+                Console.WriteLine("Nombre: " + proveedor1.Nombre);
+                Console.WriteLine("Apellido: " + proveedor1.Apellido);
+                Console.WriteLine("Cuit: " + proveedor1.Cuit);
+                Console.WriteLine("Email: " + proveedor1.Email);
+                Console.WriteLine("Estado: " + proveedor1.Estado);
             }
             else
             {

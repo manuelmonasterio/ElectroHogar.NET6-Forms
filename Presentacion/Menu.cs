@@ -19,18 +19,20 @@ namespace PRESENTACION
         private static AltaProducto altaProd = new AltaProducto();
         private static BajaProducto bajaProd = new BajaProducto();
         private static ModificarProducto modProd = new ModificarProducto();
-        private static RegistrarVenta registrarVenta = new RegistrarVenta(); 
+        private static RegistrarVenta registrarVenta = new RegistrarVenta();
+        private static AltaCliente altaClien = new AltaCliente();
+        private static ModificarCliente modClien = new ModificarCliente();
 
 
         public static void MenuAdm()
         {
             MetodosUsuarios usu = new MetodosUsuarios();
             UsuarioModel usuario9 = new Administrador();
-            usuario9 = new Administrador(new Guid(), "Carolina", "Wehner", "Uzal 1234", "1138205055", "carowehner2001@gmail.com", DateTime.Now, new DateTime(2001, 05, 23), new DateTime(2099, 01, 01), "AdministradoraCW", 1, 43245128, "CAI20232", "Activo");
+            usuario9 = new Administrador(new Guid(), "Carolina", "Wehner", "Uzal 1234", "1138205055", "carowehner2001@gmail.com", DateTime.Now, new DateTime(2001, 05, 23), new DateTime(2099, 01, 01), "AdminiCW05", 1, 43245128, "CAI20232", "Activo");
             usuarios.Add(usuario9);
-            usuario9 = new Administrador(new Guid(), "Evelyn", "Zivano", "Farrel 1234", "1153376046", "evelynzivano@gmail.com", DateTime.Now, new DateTime(1994, 07, 12), new DateTime(2099, 01, 01), "AdministradoraEZ", 1, 38491201, "CAI20232", "Activo");
+            usuario9 = new Administrador(new Guid(), "Evelyn", "Zivano", "Farrel 1234", "1153376046", "evelynzivano@gmail.com", DateTime.Now, new DateTime(1994, 07, 12), new DateTime(2099, 01, 01), "AdminiEZ05", 1, 38491201, "CAI20232", "Activo");
             usuarios.Add(usuario9);
-            usuario9 = new Administrador(new Guid(), "Patricio", "Gerenni", "Cochabamba 1234", "1167845556", "patriciogerenni@gmail.com", DateTime.Now, new DateTime(1999, 04, 20), new DateTime(2099, 01, 01), "AdministradorPG", 1, 41823861, "CAI20232", "Activo");
+            usuario9 = new Administrador(new Guid(), "Patricio", "Gerenni", "Cochabamba 1234", "1167845556", "patriciogerenni@gmail.com", DateTime.Now, new DateTime(1999, 04, 20), new DateTime(2099, 01, 01), "AdminiPG05", 1, 41823861, "CAI20232", "Activo");
             usuarios.Add(usuario9);
 
             bool CtrlAdm = true;
@@ -205,7 +207,8 @@ namespace PRESENTACION
 
                                 case "2":
                                     //Ingresar modificación proveedor
-                                    modProv.ModProveedor();
+                                    modProv.ModProveedor(                                    //Ingresar modificación proveedor
+                                    modProv.GetProveedor());
                                     break;
 
                                 case "3":
@@ -435,11 +438,11 @@ namespace PRESENTACION
                         break;
                     case "2":
                         //Llamar metodo agregar cliente
-                        AltaCliente.DarAltaCliente();
+                        altaClien.DarAltaCliente();
                         break;
                     case "3":
                         //Llamar metodo modificar cliente
-                        ModificarCliente.ModCliente();
+                        modClien.ModCliente();
                         break;
                     case "4":
                         //Llamar reporte

@@ -54,10 +54,10 @@ namespace Negocio
             }
 
         }
-
+        
         public void ModificarCliente(string direccion, string telefono, string email)
         {
-            String idUsuario = ClientesDatos.ModificarCliente(direccion, telefono, email);
+            String idCliente = ClientesDatos.ModificarCliente(direccion, telefono, email);
         }
 
         public void BorrarCliente(string idCliente)

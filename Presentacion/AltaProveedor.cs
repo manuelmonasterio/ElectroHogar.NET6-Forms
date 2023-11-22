@@ -1,4 +1,5 @@
-﻿using Modelo;
+﻿using AccesoDatos;
+using Modelo;
 using Modelo.Exceptions;
 using Negocio;
 using PRESENTACION;
@@ -62,11 +63,11 @@ public class AltaProveedor
         proveedor.Estado = "ACTIVO";
 
         ProveedorModelDatos proveedorDatos = new ProveedorModelDatos();
-        proveedor.Id = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
-        proveedor.Nombre = inputNombre;
-        proveedor.Apellido = inputApellido;
-        proveedor.Email = inputEmail;
-        proveedor.Cuit = cuit;
+        proveedorDatos.IdUsuario = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+        proveedorDatos.Nombre = inputNombre;
+        proveedorDatos.Apellido = inputApellido;
+        proveedorDatos.Email = inputEmail;
+        proveedorDatos.CUIT = inputCuit;
 
         try
         {

@@ -55,7 +55,7 @@ namespace Negocio
         }
         public void ModificarProveedor(string id, string nombre, string apellido, string email, string cuit)
         {
-            String idUsuario = ProductosDatos.ModificarProducto(id, nombre, apellido, email, cuit);
+            String idUsuario = ProveedoresDatos.ModificarProveedor(id, nombre, apellido, email, cuit);
         }
         public void BorrarProveedor(string idProveedor)
         {

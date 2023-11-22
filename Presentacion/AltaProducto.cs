@@ -1,4 +1,5 @@
-﻿using Modelo;
+﻿using AccesoDatos;
+using Modelo;
 using Modelo.Exceptions;
 using Negocio;
 using PRESENTACION;
@@ -69,8 +70,6 @@ public class AltaProducto
             }
             else if (categoriaProductos.BuscarCategoriaId(inputCategoria) is not null)
             {
-                inputCat = Convert.ToString(inputCategoria);
-                Guid.TryParse(inputCat, out idCat);
                 flag = true;
                 flag2 = true;
             }
@@ -88,7 +87,7 @@ public class AltaProducto
 
         ProductoModelDatos productoDatos = new ProductoModelDatos();
         productoDatos.IdCategoria = inputCategoria; 
-        productoDatos.IdProducto = Convert.ToString(producto.IdProducto);
+        //productoDatos.IdProducto = Convert.ToString(producto.IdProducto); --CW no tiene ID directamente se lo crea automaticamente el swagger
         productoDatos.Nombre = inputNombre;
         productoDatos.Precio = Convert.ToSingle(inputPrecio);
         productoDatos.Stock = Convert.ToInt32(inputStock);

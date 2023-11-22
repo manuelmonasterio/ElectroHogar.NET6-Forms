@@ -43,9 +43,9 @@ namespace AccesoDatos
             Dictionary<String, String> map = new Dictionary<String, String>();
             map.Add("ID", id);
             map.Add("IdUsuario", "D347CE99-DB8D-4542-AA97-FC9F3CCE6969");
-            map.Add("Precio", precio);
-            map.Add("Stock", stock);
-
+            map.Add("Precio", precio.ToString());  // CW-- Convertir precio a string
+            map.Add("Stock", stock.ToString());    // CW-- Convertir stock a string SE DEBE INGRESAR COMO STRING POR EL DICCIONARIO, VER SI LO ACEPTO EL JSON
+            
             var jsonRequest = JsonConvert.SerializeObject(map);
 
             HttpResponseMessage response = WebHelper.Patch("Producto/ModificarProducto", jsonRequest);
@@ -61,45 +61,45 @@ namespace AccesoDatos
 
             return respuesta;
         }
-    }
-    public static void BorrarProducto(string idProducto, string idUsuarioMaster)
-    {
-        Dictionary<String, String> map = new Dictionary<String, String>();
-        map.Add("id", idProducto);
-        map.Add("idUsuario", idUsuarioMaster);
 
-        var jsonRequest = JsonConvert.SerializeObject(map);
-
-        HttpResponseMessage response = WebHelper.DeleteConBody("Producto/BajaProducto", jsonRequest);
-
-        if (!response.IsSuccessStatusCode)
+        public static void BorrarProducto(string idProducto, string idUsuarioMaster)
         {
-            throw new Exception("Verifique los datos ingresados");
+            Dictionary<String, String> map = new Dictionary<String, String>();
+            map.Add("id", idProducto);
+            map.Add("idUsuario", idUsuarioMaster);
+
+            var jsonRequest = JsonConvert.SerializeObject(map);
+
+            HttpResponseMessage response = WebHelper.DeleteConBody("Producto/BajaProducto", jsonRequest);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("Verifique los datos ingresados");
+            }
+
         }
 
-    }
-
-    public static string ReactivarProducto(string idProducto, string idUsuarioMaster)
-    {
-        Dictionary<String, String> map = new Dictionary<String, String>();
-        map.Add("id", idProducto);
-        map.Add("idUsuario", idUsuarioMaster);
-
-        var jsonRequest = JsonConvert.SerializeObject(map);
-
-        HttpResponseMessage response = WebHelper.Patch("Producto/ReactivarProducto", jsonRequest);
-
-        if (!response.IsSuccessStatusCode)
+        public static string ReactivarProducto(string idProducto, string idUsuarioMaster)
         {
-            throw new Exception("Verifique los datos ingresados");
+            Dictionary<String, String> map = new Dictionary<String, String>();
+            map.Add("id", idProducto);
+            map.Add("idUsuario", idUsuarioMaster);
+
+            var jsonRequest = JsonConvert.SerializeObject(map);
+
+            HttpResponseMessage response = WebHelper.Patch("Producto/ReactivarProducto", jsonRequest);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("Verifique los datos ingresados");
+            }
+
+            var reader = new StreamReader(response.Content.ReadAsStream());
+
+            String respuesta = reader.ReadToEnd();
+
+            return respuesta;
         }
-
-        var reader = new StreamReader(response.Content.ReadAsStream());
-
-        String respuesta = reader.ReadToEnd();
-
-        return respuesta;
     }
-
-
+   
 }

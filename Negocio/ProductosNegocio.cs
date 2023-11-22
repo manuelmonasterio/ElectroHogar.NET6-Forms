@@ -56,12 +56,12 @@ namespace Negocio
         {
             //Este es el idUsuario Master
             producto.IdUsuario = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
-            ProductoDatos.CrearProducto(producto);
+            ProductosDatos.CrearProducto(producto);
 
         }
         public void ModificarProducto(string id, double precio, int stock)
         {
-            String idUsuario = ProductosDatos.ModificarProducto(id, precio, stock);
+            String idProducto = ProductosDatos.ModificarProducto(id, precio, stock);
         }
         public void BorrarProducto(string idProducto)
         {
@@ -75,3 +75,4 @@ namespace Negocio
             ProductosDatos.ReactivarProducto(idProducto, IdUsuarioMaster);
         }
     }
+}

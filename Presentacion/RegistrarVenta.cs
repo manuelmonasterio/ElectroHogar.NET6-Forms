@@ -1,4 +1,5 @@
-﻿using Modelo;
+﻿using AccesoDatos;
+using Modelo;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -72,12 +73,12 @@ namespace PRESENTACION
                     if (cantidad > 0)
                     {
                         productosVendidos.Add((idProducto, cantidad));
-                        
+
                         VentaModelDatos VentaDatos = new VentaModelDatos();
                         VentaDatos.IdCliente = idCliente;
                         VentaDatos.IdUsuario = idUsuario;
                         VentaDatos.IdProducto = idProducto;
-                        ventaDatos.Cantidad = cantidad;
+                        VentaDatos.Cantidad = cantidad;
 
                         try
                         {

@@ -13,6 +13,8 @@ public class Productos
     public DateTime _fechaAlta { get; set; }
     public DateTime _fechaBaja { get; set; }
 
+    public string _estado { get; set; }
+
 
     public Guid IdProducto { get => _idproducto; set => _idproducto = value; }
     public string Nombre { get => _nombre; set => _nombre = value; }
@@ -24,14 +26,15 @@ public class Productos
     public int StockMaximo { get => _stockMaximo; set => _stockMaximo = value; }
     public DateTime FechaAlta { get => _fechaAlta; set => _fechaAlta = value; }
     public DateTime FechaBaja { get => _fechaBaja; set => _fechaBaja = value; }
-    
+    public string Estado { get => _estado; set => _estado = value; }
+
     override public String ToString() => _idproducto + " " + Nombre + " ";
 
     public Productos()
     {
 
     }
-    public Productos(string Nombre, Guid IdUsuario, int IdCategoria, Guid IdProveedor, double Precio, int Stock, int StockMaximo, DateTime FechaBaja)
+    public Productos(string Nombre, Guid IdUsuario, int IdCategoria, Guid IdProveedor, double Precio, int Stock, int StockMaximo, DateTime FechaBaja, string Estado)
     {
         _nombre = Nombre;
         _idproducto = IdProducto;
@@ -43,5 +46,6 @@ public class Productos
         _stockMaximo = StockMaximo;
         _fechaAlta = DateTime.Today;
         _fechaBaja = FechaBaja;
+        _estado = Estado;
     }
 }

@@ -26,7 +26,7 @@ namespace AccesoDatos
         public static void DevolverVenta(string idVenta, string idUsuarioMaster)
         {
             Dictionary<String, String> map = new Dictionary<String, String>();
-            map.Add("id", idventa);
+            map.Add("id", idVenta);
             map.Add("idUsuario", idUsuarioMaster);
 
             var jsonRequest = JsonConvert.SerializeObject(map);
