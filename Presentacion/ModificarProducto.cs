@@ -17,16 +17,17 @@ namespace PRESENTACION
             Console.Write("Ingrese el ID del producto a buscar para modificar sus datos (0 para salir): ");
             string productoId = Console.ReadLine();
 
-            if (int.Parse(productoId) == 0)
+            /*if (int.Parse(productoId) == 0)
             {
                 Console.WriteLine("No ingreso un producto valido");
-            }
+            }*/
 
             Productos producto = ProductosNegocio.BuscarProductoId(productoId);
 
             if (producto != null)
             {
                 Console.WriteLine("Datos del Producto:");
+                Console.WriteLine("Id: " + producto.IdProducto);
                 Console.WriteLine("Nombre: " + producto.Nombre);
                 Console.WriteLine("Precio: " + producto.Precio);
                 Console.WriteLine("Stock: " + producto.Stock);

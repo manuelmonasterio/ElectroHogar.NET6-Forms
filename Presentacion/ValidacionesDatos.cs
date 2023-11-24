@@ -28,21 +28,45 @@ namespace PRESENTACION
         {
             bool flag = false;
 
-            if (!int.TryParse(input, out valor))
+            if (int.TryParse(input, out valor))
             {
-                Console.WriteLine("Por favor, ingresar un valor numérico en el campo " + campo + ".");
-            }
-            else if (valor < 0)
-            {
-                Console.WriteLine("Por favor, ingresar un valor positivo");
+                if (valor >= 0)
+                {
+                    return true; // La conversión fue exitosa y el número es positivo
+                }
+                else
+                {
+                    throw new ArgumentException($"Por favor, ingresar un valor positivo en el campo {campo}.");
+                }
             }
             else
             {
+                throw new ArgumentException($"Por favor, ingresar un valor numérico en el campo {campo}.");
+            }
+
+            return flag;
+        }
+
+        public bool ValidarCuit(string input, ref int cuit, string campo)
+        {
+            bool flag = false;
+
+            // Elimina guiones si están presentes
+            input = input.Replace("-", "");
+
+            if (input.Length != 11 || !long.TryParse(input, out long cuitLong))
+            {
+                Console.WriteLine($"Por favor, ingresar un CUIT válido en el campo {campo}.");
+            }
+            else
+            {
+                cuit = (int)cuitLong;
                 flag = true;
             }
 
             return flag;
         }
+
         public bool ValidarFecha(string fecha, ref DateTime salida, string campo)
         {
             bool flag = false;

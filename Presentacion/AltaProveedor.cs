@@ -21,7 +21,7 @@ public class AltaProveedor
         string inputDireccion;
         string inputTelefono;
         string inputEmail;
-        string inputCuit = "";
+        string inputCuit;
         int cuit = 0;
         bool flag;
 
@@ -50,7 +50,8 @@ public class AltaProveedor
         do
         {
             Console.Write("Ingresar su cuit: ");
-            flag = vd.ValidarNumero(inputCuit, ref cuit, "CUIT");
+            inputCuit = Console.ReadLine();
+            flag = vd.ValidarCuit(inputCuit, ref cuit, "CUIT");
         } while (flag == false);
 
         Proveedores proveedor = new Proveedores();

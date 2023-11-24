@@ -24,16 +24,20 @@ namespace PRESENTACION
         private static ModificarCliente modClien = new ModificarCliente();
 
 
+
         public static void MenuAdm()
         {
             MetodosUsuarios usu = new MetodosUsuarios();
             UsuarioModel usuario9 = new Administrador();
-            usuario9 = new Administrador(new Guid(), "Carolina", "Wehner", "Uzal 1234", "1138205055", "carowehner2001@gmail.com", DateTime.Now, new DateTime(2001, 05, 23), new DateTime(2099, 01, 01), "AdminiCW05", 1, 43245128, "CAI20232", "Activo");
+            usuario9 = new Administrador(new Guid(), "Carolina", "Wehner", "Uzal 1234", "1138205055", "carowehner2001@gmail.com", DateTime.Now, new DateTime(2001, 05, 23), new DateTime(2099, 01, 01), "Admini05CW", 1, 43245128, "Cai20233!", "Activo");
             usuarios.Add(usuario9);
-            usuario9 = new Administrador(new Guid(), "Evelyn", "Zivano", "Farrel 1234", "1153376046", "evelynzivano@gmail.com", DateTime.Now, new DateTime(1994, 07, 12), new DateTime(2099, 01, 01), "AdminiEZ05", 1, 38491201, "CAI20232", "Activo");
+            usuario9 = new Administrador(new Guid(), "Evelyn", "Zivano", "Farrel 1234", "1153376046", "evelynzivano@gmail.com", DateTime.Now, new DateTime(1994, 07, 12), new DateTime(2099, 01, 01), "Admini05EZ", 1, 38491201, "CAI20232", "Activo");
             usuarios.Add(usuario9);
-            usuario9 = new Administrador(new Guid(), "Patricio", "Gerenni", "Cochabamba 1234", "1167845556", "patriciogerenni@gmail.com", DateTime.Now, new DateTime(1999, 04, 20), new DateTime(2099, 01, 01), "AdminiPG05", 1, 41823861, "CAI20232", "Activo");
+            usuario9 = new Administrador(new Guid(), "Patricio", "Gerenni", "Cochabamba 1234", "1167845556", "patriciogerenni@gmail.com", DateTime.Now, new DateTime(1999, 04, 20), new DateTime(2099, 01, 01), "Admini05PG", 1, 41823861, "CAI20232", "Activo");
             usuarios.Add(usuario9);
+
+            CategoriaProductos ct = new CategoriaProductos();
+            ct.AgregarCategorias();
 
             bool CtrlAdm = true;
             do
@@ -128,10 +132,14 @@ namespace PRESENTACION
                                         usuario2 = new Supervisores();
                                         usuario2 = mod.ModUsuario(usuario2.host);
                                     }
-                                    else
+                                    else if(usuario2.host == 3)
                                     {
                                         usuario2 = new Vendedor();
                                         usuario2 = mod.ModUsuario(usuario2.host);
+                                    }
+                                    else
+                                    {
+                                        break;
                                     }
 
                                     break;

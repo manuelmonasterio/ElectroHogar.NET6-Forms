@@ -8,6 +8,7 @@ public class BajaProveedor
 
     private static ValidacionesDatos vd = new ValidacionesDatos();
     private static ProveedoresNegocio pn = new ProveedoresNegocio();
+
     public Proveedores DarBajaProveedor()
 	{
 		

@@ -13,7 +13,7 @@ namespace PRESENTACION
     {
         private static MetodosUsuarios met = new MetodosUsuarios();
         private static int indiceContraseña = 0;
-        private static String Contraseña = "Password_" + indiceContraseña;
+        //private static String Contraseña = "Password_" + indiceContraseña;
         public UsuarioModel ModiUsuario()
         {
             string idUsuario;
@@ -92,7 +92,7 @@ namespace PRESENTACION
             public void CambiarContraseña()
             {
                 string nombreUsuario ;
-                string contraseña = Contraseña;
+                string contraseña;
                 string contraseñaNueva;
                 bool flag;
                 do
@@ -115,6 +115,8 @@ namespace PRESENTACION
 
                 try
                 {
+                    UsuarioModel usuario = BuscarUsuarioxNombre(nombreUsuario);
+                    contraseña = usuario.contraseña;
                     met.CambiarContraseña(nombreUsuario, contraseña, contraseñaNueva);
                     contraseña = contraseñaNueva;
                     indiceContraseña = indiceContraseña + 1;
@@ -126,7 +128,13 @@ namespace PRESENTACION
                 }
             }
 
-            public void cambiarEstado()
+            public UsuarioModel BuscarUsuarioxNombre(string NombreUsuario)
+            {
+
+                return Menu.usuarios.Find(u => u.usuario == NombreUsuario);
+            }
+
+        public void cambiarEstado()
             {
                //No esta en la Web Service 
             }

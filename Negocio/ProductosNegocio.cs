@@ -23,6 +23,7 @@ namespace Negocio
             //flag = vd.ValidarID(productoId);
             List<Productos> productos = ProductosDatos.ListarProductos();
 
+
             if (flag == true)
             {
                 productoId = Guid.NewGuid().ToString();
@@ -56,6 +57,7 @@ namespace Negocio
         {
             //Este es el idUsuario Master
             producto.IdUsuario = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
+            producto.IdProveedor = "a210366b-577e-4d68-8ca0-075b9218fedf";
             ProductosDatos.CrearProducto(producto);
 
         }
