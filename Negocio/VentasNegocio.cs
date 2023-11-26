@@ -11,7 +11,7 @@ namespace Negocio
 {
     public class VentasNegocio
     {
-        
+        //hola
         public void CrearVenta(VentaModelDatos venta)
         {
             //Este es el idUsuario Master
