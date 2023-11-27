@@ -24,8 +24,18 @@ namespace InterfazForms
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            this.Close();
-            //abrir formulario LOGIN
+            this.Hide();
+    
+            FormLogin formLogin = new FormLogin();
+            formLogin.ShowDialog();
+        }
+
+        private void btnGestionUsuarios_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            GestionUsuario formGestionUsuarios = new GestionUsuario();
+            formGestionUsuarios.ShowDialog();
         }
     }
 }

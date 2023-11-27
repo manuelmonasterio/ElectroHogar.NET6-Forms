@@ -19,8 +19,19 @@ namespace InterfazForms
 
         private void btnVolver1_Click(object sender, EventArgs e)
         {
-            this.Close();
-            //abrir formulario MenuAdministrador
+            this.Hide();
+
+            //Muestro el formulario para el perfil Administrador
+            MenuAdministrador formAdministrador = new MenuAdministrador();
+            formAdministrador.ShowDialog();
+        }
+
+        private void btnAltaUsuario_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            AltaUsuario formAltaUsuario = new AltaUsuario();
+            formAltaUsuario.ShowDialog();
         }
     }
 }

@@ -54,6 +54,7 @@
             btnGestionUsuarios.TabIndex = 1;
             btnGestionUsuarios.Text = "Gestion de Usuarios";
             btnGestionUsuarios.UseVisualStyleBackColor = true;
+            btnGestionUsuarios.Click += btnGestionUsuarios_Click;
             // 
             // btnProveedores
             // 

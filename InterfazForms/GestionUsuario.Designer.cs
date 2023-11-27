@@ -42,6 +42,7 @@
             btnAltaUsuario.TabIndex = 0;
             btnAltaUsuario.Text = "Alta de Usuario";
             btnAltaUsuario.UseVisualStyleBackColor = true;
+            btnAltaUsuario.Click += btnAltaUsuario_Click;
             // 
             // btnModUsuario
             // 

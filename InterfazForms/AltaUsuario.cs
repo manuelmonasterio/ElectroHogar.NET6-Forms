@@ -82,6 +82,9 @@ namespace InterfazForms
                         met.CrearUsuario(usuario);
                         //Console.WriteLine("Alta exitosa");
                         MessageBox.Show("Alta exitosa");
+
+                        this.Hide();
+
                     }
                     catch (Exception ex)
                     {

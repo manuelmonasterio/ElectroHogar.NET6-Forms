@@ -28,45 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
+            btnLogin = new Button();
+            btnSalir = new Button();
             txbUsuario = new TextBox();
             txbContrasena = new TextBox();
-            btnLogin = new Button();
             SuspendLayout();
-            // 
-            // txbUsuario
-            // 
-            txbUsuario.Location = new Point(322, 117);
-            txbUsuario.Name = "txbUsuario";
-            txbUsuario.Size = new Size(100, 23);
-            txbUsuario.TabIndex = 0;
-            txbUsuario.Text = "Usuario";
-            // 
-            // txbContrasena
-            // 
-            txbContrasena.Location = new Point(322, 159);
-            txbContrasena.Name = "txbContrasena";
-            txbContrasena.Size = new Size(100, 23);
-            txbContrasena.TabIndex = 1;
-            txbContrasena.Text = "Contraseña";
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(331, 212);
+            btnLogin.Location = new Point(321, 191);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(75, 23);
-            btnLogin.TabIndex = 2;
+            btnLogin.TabIndex = 0;
             btnLogin.Text = "LOGIN";
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
+            // 
+            // btnSalir
+            // 
+            btnSalir.Location = new Point(515, 344);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(75, 23);
+            btnSalir.TabIndex = 1;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = true;
+            // 
+            // txbUsuario
+            // 
+            txbUsuario.Location = new Point(321, 86);
+            txbUsuario.Name = "txbUsuario";
+            txbUsuario.Size = new Size(100, 23);
+            txbUsuario.TabIndex = 2;
+            // 
+            // txbContrasena
+            // 
+            txbContrasena.Location = new Point(341, 133);
+            txbContrasena.Name = "txbContrasena";
+            txbContrasena.Size = new Size(100, 23);
+            txbContrasena.TabIndex = 3;
             // 
             // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnLogin);
             Controls.Add(txbContrasena);
             Controls.Add(txbUsuario);
+            Controls.Add(btnSalir);
+            Controls.Add(btnLogin);
             Name = "FormLogin";
             Text = "FormLogin";
             ResumeLayout(false);
@@ -75,8 +84,9 @@
 
         #endregion
 
+        private Button btnLogin;
+        private Button btnSalir;
         private TextBox txbUsuario;
         private TextBox txbContrasena;
-        private Button btnLogin;
     }
 }
