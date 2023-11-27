@@ -36,7 +36,7 @@
             // 
             // btnAltaUsuario
             // 
-            btnAltaUsuario.Location = new Point(290, 116);
+            btnAltaUsuario.Location = new Point(296, 116);
             btnAltaUsuario.Name = "btnAltaUsuario";
             btnAltaUsuario.Size = new Size(175, 40);
             btnAltaUsuario.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             // btnModUsuario
             // 
-            btnModUsuario.Location = new Point(290, 162);
+            btnModUsuario.Location = new Point(296, 162);
             btnModUsuario.Name = "btnModUsuario";
             btnModUsuario.Size = new Size(175, 40);
             btnModUsuario.TabIndex = 1;
@@ -54,7 +54,7 @@
             // 
             // btnBajaUsuario
             // 
-            btnBajaUsuario.Location = new Point(290, 208);
+            btnBajaUsuario.Location = new Point(296, 208);
             btnBajaUsuario.Name = "btnBajaUsuario";
             btnBajaUsuario.Size = new Size(175, 40);
             btnBajaUsuario.TabIndex = 2;
@@ -63,7 +63,7 @@
             // 
             // btnVolver1
             // 
-            btnVolver1.Location = new Point(290, 254);
+            btnVolver1.Location = new Point(296, 254);
             btnVolver1.Name = "btnVolver1";
             btnVolver1.Size = new Size(175, 40);
             btnVolver1.TabIndex = 3;

@@ -35,13 +35,13 @@ namespace InterfazForms
                 else
                 {
                     this.Close();
-                    //abre formulario correspondiente
+                    //abre formulario correspondiente según perfil de usuario logeado
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Hubo un problema al realizar el login: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
+        } 
     }
 }

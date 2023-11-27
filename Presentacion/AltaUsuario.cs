@@ -203,9 +203,6 @@ namespace PRESENTACION
                 usuario1.fechacontraseña = DateTime.Today;
                 met.CrearUsuarioLista(usuario1);
             }
-
-
-            
         }
     }
 }
