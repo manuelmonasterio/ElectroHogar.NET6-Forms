@@ -24,6 +24,7 @@ namespace PRESENTACION
             return flag;
         }
 
+
         public bool ValidarNumero(string input, ref int valor, string campo)
         {
             bool flag = false;
