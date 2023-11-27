@@ -36,9 +36,9 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(321, 191);
+            btnLogin.Location = new Point(332, 216);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(75, 23);
+            btnLogin.Size = new Size(83, 33);
             btnLogin.TabIndex = 0;
             btnLogin.Text = "LOGIN";
             btnLogin.UseVisualStyleBackColor = true;
@@ -46,26 +46,29 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(515, 344);
+            btnSalir.Location = new Point(700, 407);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(75, 23);
+            btnSalir.Size = new Size(88, 31);
             btnSalir.TabIndex = 1;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click_1;
             // 
             // txbUsuario
             // 
-            txbUsuario.Location = new Point(321, 86);
+            txbUsuario.Location = new Point(291, 121);
             txbUsuario.Name = "txbUsuario";
-            txbUsuario.Size = new Size(100, 23);
+            txbUsuario.Size = new Size(169, 23);
             txbUsuario.TabIndex = 2;
+            txbUsuario.Text = "Administrador";
             // 
             // txbContrasena
             // 
-            txbContrasena.Location = new Point(341, 133);
+            txbContrasena.Location = new Point(291, 168);
             txbContrasena.Name = "txbContrasena";
-            txbContrasena.Size = new Size(100, 23);
+            txbContrasena.Size = new Size(169, 23);
             txbContrasena.TabIndex = 3;
+            txbContrasena.Text = "Contraseña";
             // 
             // FormLogin
             // 

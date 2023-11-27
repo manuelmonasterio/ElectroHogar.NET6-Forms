@@ -67,6 +67,11 @@ namespace InterfazForms
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
+            //no tocar
+        }
+
+        private void btnSalir_Click_1(object sender, EventArgs e)
+        {
             MessageBox.Show("Hasta luego");
             this.Close();
         }

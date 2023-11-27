@@ -22,8 +22,10 @@ namespace InterfazForms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             //vuelve a GestionUsuario
+            GestionUsuario formX = new GestionUsuario();
+            formX.ShowDialog();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -63,7 +65,6 @@ namespace InterfazForms
                 else
                 {
                     MetodosUsuarios met = new MetodosUsuarios();
-                    //metodo para dar de alta
                     MetodosUsuarios usu = new MetodosUsuarios();
                     UsuarioModelDatos usuario = new UsuarioModelDatos();
                     usuario.IdUsuario = "D347CE99-DB8D-4542-AA97-FC9F3CCE6969";
@@ -83,7 +84,10 @@ namespace InterfazForms
                         //Console.WriteLine("Alta exitosa");
                         MessageBox.Show("Alta exitosa");
 
+                        //tras usuario creado vuelve al menu de gestion de usuarios
                         this.Hide();
+                        GestionUsuario formGestionUsuarios = new GestionUsuario();
+                        formGestionUsuarios.ShowDialog();
 
                     }
                     catch (Exception ex)

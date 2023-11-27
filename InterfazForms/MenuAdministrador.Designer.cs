@@ -48,7 +48,7 @@
             // 
             // btnGestionUsuarios
             // 
-            btnGestionUsuarios.Location = new Point(305, 126);
+            btnGestionUsuarios.Location = new Point(305, 124);
             btnGestionUsuarios.Name = "btnGestionUsuarios";
             btnGestionUsuarios.Size = new Size(176, 34);
             btnGestionUsuarios.TabIndex = 1;

@@ -25,7 +25,7 @@ namespace InterfazForms
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             this.Hide();
-    
+
             FormLogin formLogin = new FormLogin();
             formLogin.ShowDialog();
         }
