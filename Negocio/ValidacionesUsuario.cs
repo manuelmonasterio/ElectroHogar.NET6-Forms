@@ -8,7 +8,7 @@ namespace Negocio
 {
     public class ValidacionesUsuario
     {
-        public bool ValidarNombreUsuario(string nombreUsuario, string nombre, string apellido, int min, int max)
+        public static string ValidarNombreUsuario(string nombreUsuario, string nombre, string apellido, int min, int max)
         {
             if (nombreUsuario.Length >= min && nombreUsuario.Length <= max)
             {
@@ -24,7 +24,7 @@ namespace Negocio
                 }
                 else
                 {
-                    return true; // El nombre de usuario es válido
+                    return null; // El nombre de usuario es válido
                 }
             }
             else
@@ -50,16 +50,16 @@ namespace Negocio
 
          }
          */
-        public static void ValidarContraseña(string contraseña)
+        public static string ValidarContraseña(string contraseña)
         {
             bool flag = false;
             bool contieneMayus = false;
             bool contieneNumero = false;
 
-            while (flag == false)
-            {
+            //while (flag == false)
+            //{
                 foreach (char caracter in contraseña)
-                {
+               {
                     if (char.IsUpper(caracter))
                     {
                         contieneMayus = true;
@@ -80,7 +80,7 @@ namespace Negocio
                         throw new Exception("- La contraseña debe tener entre 8 y 15 caracteres"
                                           + System.Environment.NewLine + "- La contraseña debe tener como mínimo una letra mayuscula y un número"
                                           + System.Environment.NewLine + "Por favor vuelva a introducir una contraseña válida: ");
-                        contraseña = Console.ReadLine();
+                        //contraseña = Console.ReadLine();
                     }
                     else
                     {
@@ -94,11 +94,12 @@ namespace Negocio
                     throw new Exception("- La contraseña debe tener entre 8 y 15 caracteres"
                                           + System.Environment.NewLine + "- La contraseña debe tener como mínimo una letra mayuscula y un número"
                                           + System.Environment.NewLine + "Por favor vuelva a introducir una contraseña válida: ");
-                    contraseña = Console.ReadLine();
+                    //contraseña = Console.ReadLine();
                 }
                 //dejé ambos mensajes en las validaciones porque me parece mejor para la experiencia del usuario que sepa desde el inicio todas las condiciones para cumplir con la contraseña
                 //sin tener que pifear cada una para conocer todas las condiciones necesarias
-            }
+                return null;
+            //}
         }
     }
 }

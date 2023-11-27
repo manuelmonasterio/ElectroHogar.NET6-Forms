@@ -79,7 +79,6 @@ namespace Negocio
         }
 
 
-
         public string BuscarPerfil(UsuarioModel usuarioEncontrado, int inputhost)
         {
             string msj = "";

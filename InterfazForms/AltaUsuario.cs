@@ -30,6 +30,7 @@ namespace InterfazForms
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            ValidacionesUsuario validacionesUsuario = new ValidacionesUsuario();
             try
             {
                 string listaerrores = "";
@@ -57,6 +58,9 @@ namespace InterfazForms
                 listaerrores += ValidacionesForm.ValidarVacio(inputPerfil, "Perfil");
                 listaerrores += ValidacionesForm.ValidarVacio(inputDni, "DNI");
                 listaerrores += ValidacionesForm.ValidarVacio(inputContra, "Contraseña");
+                listaerrores += ValidacionesForm.ValidarFecha(inputFechaNacimiento);
+                listaerrores += ValidacionesUsuario.ValidarNombreUsuario(NombreUsuario,inputNombre,inputApellido,8,15);
+                listaerrores += ValidacionesUsuario.ValidarContraseña(inputContra);
 
                 if (!string.IsNullOrEmpty(listaerrores))
                 {
