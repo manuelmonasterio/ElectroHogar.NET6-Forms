@@ -52,6 +52,7 @@
             btnModUsuario.TabIndex = 1;
             btnModUsuario.Text = "Modificar Usuario";
             btnModUsuario.UseVisualStyleBackColor = true;
+            btnModUsuario.Click += btnModUsuario_Click;
             // 
             // btnBajaUsuario
             // 

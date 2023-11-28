@@ -64,6 +64,8 @@ namespace InterfazForms
 
                 if (!string.IsNullOrEmpty(listaerrores))
                 {
+                    txbNombreUsuario.Clear();
+                    txbContrasena2.Clear();
                     MessageBox.Show(listaerrores, "Error");
                 }
                 else
@@ -88,7 +90,17 @@ namespace InterfazForms
                         //Console.WriteLine("Alta exitosa");
                         MessageBox.Show("Alta exitosa");
 
-                        //tras usuario creado vuelve al menu de gestion de usuarios
+                        //tras usuario creado limpia campos y vuelve al menu de gestion de usuarios
+                        txbNombre.Clear();
+                        txbApellido.Clear();
+                        txbDireccion.Clear();
+                        txbTelefono.Clear();
+                        txbMail.Clear();
+                        txbFecNac.Clear();
+                        txbPerfil.Clear();
+                        txbDNI.Clear();
+                        txbNombreUsuario.Clear();
+                        txbContrasena2.Clear();
                         this.Hide();
                         GestionUsuario formGestionUsuarios = new GestionUsuario();
                         formGestionUsuarios.ShowDialog();

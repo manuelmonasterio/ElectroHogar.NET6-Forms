@@ -36,5 +36,48 @@ namespace InterfazForms
             return null;
         }
 
+        public static bool ValidarNumero(string input, ref int valor, string campo)
+        {
+            bool flag = false;
+
+            if (int.TryParse(input, out valor))
+            {
+                if (valor >= 0)
+                {
+                    return true; // La conversión fue exitosa y el número es positivo
+                }
+                else
+                {
+                    throw new ArgumentException($"Por favor, ingresar un valor positivo en el campo {campo}.");
+                }
+            }
+            else
+            {
+                throw new ArgumentException($"Por favor, ingresar un valor numérico en el campo {campo}.");
+            }
+
+            return flag;
+        }
+        public static bool ValidarCuit(string input, ref int cuit)
+        {
+            bool flag = false;
+
+            // Elimina guiones si están presentes
+            input = input.Replace("-", "");
+
+            if (input.Length != 11 || !long.TryParse(input, out long cuitLong))
+            {
+                //Console.WriteLine($"Por favor, ingresar un CUIT válido en el campo {campo}.");
+                MessageBox.Show("Por favor, ingresar un CUIT válido");
+            }
+            else
+            {
+                cuit = (int)cuitLong;
+                flag = true;
+            }
+
+            return flag;
+        }
+
     }
 }

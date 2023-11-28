@@ -33,5 +33,12 @@ namespace InterfazForms
             AltaUsuario formAltaUsuario = new AltaUsuario();
             formAltaUsuario.ShowDialog();
         }
+
+        private void btnModUsuario_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ModificarUsuario formX = new ModificarUsuario();
+            formX.ShowDialog();
+        }
     }
 }

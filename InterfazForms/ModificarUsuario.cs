@@ -16,5 +16,12 @@ namespace InterfazForms
         {
             InitializeComponent();
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            GestionUsuario formX = new GestionUsuario();
+            formX.ShowDialog();
+        }
     }
 }
