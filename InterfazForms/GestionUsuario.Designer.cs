@@ -62,6 +62,7 @@
             btnBajaUsuario.TabIndex = 2;
             btnBajaUsuario.Text = "Baja de Usuario";
             btnBajaUsuario.UseVisualStyleBackColor = true;
+            btnBajaUsuario.Click += btnBajaUsuario_Click;
             // 
             // btnVolver1
             // 

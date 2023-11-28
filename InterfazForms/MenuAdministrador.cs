@@ -37,5 +37,12 @@ namespace InterfazForms
             GestionUsuario formGestionUsuarios = new GestionUsuario();
             formGestionUsuarios.ShowDialog();
         }
+
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MenuAdProveedores formX = new MenuAdProveedores();
+            formX.ShowDialog();
+        }
     }
 }

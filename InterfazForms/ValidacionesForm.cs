@@ -58,9 +58,9 @@ namespace InterfazForms
 
             return flag;
         }
-        public static bool ValidarCuit(string input, ref int cuit)
+        public static string ValidarCuit(string input, ref int cuit)
         {
-            bool flag = false;
+            string flag = "";
 
             // Elimina guiones si están presentes
             input = input.Replace("-", "");
@@ -68,12 +68,12 @@ namespace InterfazForms
             if (input.Length != 11 || !long.TryParse(input, out long cuitLong))
             {
                 //Console.WriteLine($"Por favor, ingresar un CUIT válido en el campo {campo}.");
-                MessageBox.Show("Por favor, ingresar un CUIT válido");
+                flag = "Por favor, ingresar un CUIT válido";
             }
             else
             {
                 cuit = (int)cuitLong;
-                flag = true;
+                flag = "";
             }
 
             return flag;

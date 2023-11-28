@@ -40,5 +40,12 @@ namespace InterfazForms
             ModificarUsuario formX = new ModificarUsuario();
             formX.ShowDialog();
         }
+
+        private void btnBajaUsuario_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BajaUsuario formX = new BajaUsuario();
+            formX.ShowDialog();
+        }
     }
 }

@@ -64,6 +64,7 @@
             btnProveedores.TabIndex = 2;
             btnProveedores.Text = "Proveedores";
             btnProveedores.UseVisualStyleBackColor = true;
+            btnProveedores.Click += btnProveedores_Click;
             // 
             // btnProductos
             // 

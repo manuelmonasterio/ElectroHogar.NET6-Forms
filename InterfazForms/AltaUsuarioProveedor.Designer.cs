@@ -30,7 +30,7 @@
         {
             btnCancelar = new Button();
             btnAceptar = new Button();
-            txbFecNac = new TextBox();
+            txbCUIT = new TextBox();
             txbMail = new TextBox();
             txbApellido = new TextBox();
             txbNombre = new TextBox();
@@ -43,7 +43,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(682, 422);
+            btnCancelar.Location = new Point(713, 415);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 50;
@@ -53,7 +53,7 @@
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(601, 422);
+            btnAceptar.Location = new Point(632, 415);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(75, 23);
             btnAceptar.TabIndex = 49;
@@ -61,12 +61,12 @@
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
             // 
-            // txbFecNac
+            // txbCUIT
             // 
-            txbFecNac.Location = new Point(363, 242);
-            txbFecNac.Name = "txbFecNac";
-            txbFecNac.Size = new Size(166, 23);
-            txbFecNac.TabIndex = 45;
+            txbCUIT.Location = new Point(363, 242);
+            txbCUIT.Name = "txbCUIT";
+            txbCUIT.Size = new Size(166, 23);
+            txbCUIT.TabIndex = 45;
             // 
             // txbMail
             // 
@@ -141,7 +141,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
-            Controls.Add(txbFecNac);
+            Controls.Add(txbCUIT);
             Controls.Add(txbMail);
             Controls.Add(txbApellido);
             Controls.Add(txbNombre);
@@ -160,7 +160,7 @@
 
         private Button btnCancelar;
         private Button btnAceptar;
-        private TextBox txbFecNac;
+        private TextBox txbCUIT;
         private TextBox txbMail;
         private TextBox txbApellido;
         private TextBox txbNombre;

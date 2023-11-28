@@ -42,6 +42,7 @@
             btnVolver1.TabIndex = 7;
             btnVolver1.Text = "Volver al menú anterior";
             btnVolver1.UseVisualStyleBackColor = true;
+            btnVolver1.Click += btnVolver1_Click;
             // 
             // btnBajaUsuario
             // 
@@ -51,6 +52,7 @@
             btnBajaUsuario.TabIndex = 6;
             btnBajaUsuario.Text = "Baja de Usuario Proveedor";
             btnBajaUsuario.UseVisualStyleBackColor = true;
+            btnBajaUsuario.Click += btnBajaUsuario_Click;
             // 
             // btnModUsuario
             // 
@@ -60,6 +62,7 @@
             btnModUsuario.TabIndex = 5;
             btnModUsuario.Text = "Modificar Usuario Proveedor";
             btnModUsuario.UseVisualStyleBackColor = true;
+            btnModUsuario.Click += btnModUsuario_Click;
             // 
             // btnAltaUsuario
             // 

@@ -19,7 +19,32 @@ namespace InterfazForms
 
         private void btnAltaUsuario_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            AltaUsuarioProveedor formX = new AltaUsuarioProveedor();
+            formX.ShowDialog();
+        }
 
+        private void btnVolver1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            //Muestro el formulario para el perfil Administrador
+            MenuAdministrador formAdministrador = new MenuAdministrador();
+            formAdministrador.ShowDialog();
+        }
+
+        private void btnModUsuario_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ModificarUsuarioProveedor formX = new ModificarUsuarioProveedor();
+            formX.ShowDialog();
+        }
+
+        private void btnBajaUsuario_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BajaUsuarioProveedor formX = new BajaUsuarioProveedor();
+            formX.ShowDialog();
         }
     }
 }
