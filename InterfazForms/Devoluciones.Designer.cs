@@ -1,6 +1,6 @@
 ﻿namespace InterfazForms
 {
-    partial class BajaUsuarioProveedor
+    partial class Devoluciones
     {
         /// <summary>
         /// Required designer variable.
@@ -28,68 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnCancelar = new Button();
             label1 = new Label();
-            txbIDProveedor = new TextBox();
-            btnDarBaja = new Button();
+            textBox1 = new TextBox();
+            btnCancelar = new Button();
+            btnAceptar = new Button();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(162, 177);
+            label1.Name = "label1";
+            label1.Size = new Size(198, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Ingresar el ID de la venta a devolver: ";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(366, 172);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(197, 23);
+            textBox1.TabIndex = 1;
             // 
             // btnCancelar
             // 
             btnCancelar.Location = new Point(713, 415);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
-            btnCancelar.TabIndex = 19;
+            btnCancelar.TabIndex = 20;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // label1
+            // btnAceptar
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(161, 174);
-            label1.Name = "label1";
-            label1.Size = new Size(227, 15);
-            label1.TabIndex = 20;
-            label1.Text = "Ingresar el ID del proveedor a dar de baja: ";
+            btnAceptar.Location = new Point(632, 415);
+            btnAceptar.Name = "btnAceptar";
+            btnAceptar.Size = new Size(75, 23);
+            btnAceptar.TabIndex = 19;
+            btnAceptar.Text = "Aceptar";
+            btnAceptar.UseVisualStyleBackColor = true;
             // 
-            // txbIDProveedor
-            // 
-            txbIDProveedor.Location = new Point(393, 170);
-            txbIDProveedor.Name = "txbIDProveedor";
-            txbIDProveedor.Size = new Size(227, 23);
-            txbIDProveedor.TabIndex = 21;
-            // 
-            // btnDarBaja
-            // 
-            btnDarBaja.Location = new Point(352, 224);
-            btnDarBaja.Name = "btnDarBaja";
-            btnDarBaja.Size = new Size(75, 23);
-            btnDarBaja.TabIndex = 22;
-            btnDarBaja.Text = "Dar Baja";
-            btnDarBaja.UseVisualStyleBackColor = true;
-            btnDarBaja.Click += btnDarBaja_Click;
-            // 
-            // BajaUsuarioProveedor
+            // Devoluciones
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnDarBaja);
-            Controls.Add(txbIDProveedor);
-            Controls.Add(label1);
             Controls.Add(btnCancelar);
-            Name = "BajaUsuarioProveedor";
-            Text = "BajaUsuarioProveedor";
+            Controls.Add(btnAceptar);
+            Controls.Add(textBox1);
+            Controls.Add(label1);
+            Name = "Devoluciones";
+            Text = "Devoluciones";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button btnCancelar;
         private Label label1;
-        private TextBox txbIDProveedor;
-        private Button btnDarBaja;
+        private TextBox textBox1;
+        private Button btnCancelar;
+        private Button btnAceptar;
     }
 }

@@ -60,7 +60,7 @@
             // lblAltaUsuario
             // 
             lblAltaUsuario.AutoSize = true;
-            lblAltaUsuario.Location = new Point(12, 21);
+            lblAltaUsuario.Location = new Point(12, 9);
             lblAltaUsuario.Name = "lblAltaUsuario";
             lblAltaUsuario.Size = new Size(108, 15);
             lblAltaUsuario.TabIndex = 0;
@@ -251,7 +251,7 @@
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(569, 437);
+            btnAceptar.Location = new Point(591, 456);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(75, 23);
             btnAceptar.TabIndex = 24;
@@ -261,7 +261,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(650, 437);
+            btnCancelar.Location = new Point(672, 456);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
             btnCancelar.TabIndex = 25;

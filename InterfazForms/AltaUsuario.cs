@@ -1,6 +1,7 @@
 ﻿using AccesoDatos;
 using Modelo;
 using Negocio;
+using PRESENTACION;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,13 +43,12 @@ namespace InterfazForms
                 string inputFechaNacimiento = txbFecNac.Text;
                 DateTime fechaNacimiento = DateTime.Now;
                 string inputPerfil = txbPerfil.Text;
-                int perfil = Convert.ToInt32(txbPerfil.Text);
                 string inputDni = txbDNI.Text;
-                int dni = Convert.ToInt32(txbDNI.Text); 
                 string NombreUsuario = txbNombreUsuario.Text;
                 string inputContra = txbContrasena2.Text;
+                int perfil = Convert.ToInt32(txbPerfil.Text);
+                int dni = Convert.ToInt32(txbDNI.Text);
 
-                
                 listaerrores += ValidacionesForm.ValidarVacio(inputNombre, "Nombre");
                 listaerrores += ValidacionesForm.ValidarVacio(inputApellido, "Apellido");
                 listaerrores += ValidacionesForm.ValidarVacio(inputDireccion, "Dirección");
@@ -59,7 +59,7 @@ namespace InterfazForms
                 listaerrores += ValidacionesForm.ValidarVacio(inputDni, "DNI");
                 listaerrores += ValidacionesForm.ValidarVacio(inputContra, "Contraseña");
                 listaerrores += ValidacionesForm.ValidarFecha(inputFechaNacimiento);
-                listaerrores += ValidacionesUsuario.ValidarNombreUsuario(NombreUsuario,inputNombre,inputApellido,8,15);
+                listaerrores += ValidacionesUsuario.ValidarNombreUsuario(NombreUsuario, inputNombre, inputApellido, 8, 15);
                 listaerrores += ValidacionesUsuario.ValidarContraseña(inputContra);
 
                 if (!string.IsNullOrEmpty(listaerrores))
@@ -170,7 +170,6 @@ namespace InterfazForms
                         met.CrearUsuarioLista(usuario1);
                     }
                 }
-                
             }
             catch (Exception ex)
             {

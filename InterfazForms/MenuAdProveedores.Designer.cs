@@ -36,7 +36,7 @@
             // 
             // btnVolver1
             // 
-            btnVolver1.Location = new Point(282, 260);
+            btnVolver1.Location = new Point(298, 260);
             btnVolver1.Name = "btnVolver1";
             btnVolver1.Size = new Size(175, 40);
             btnVolver1.TabIndex = 7;
@@ -46,31 +46,31 @@
             // 
             // btnBajaUsuario
             // 
-            btnBajaUsuario.Location = new Point(282, 214);
+            btnBajaUsuario.Location = new Point(298, 214);
             btnBajaUsuario.Name = "btnBajaUsuario";
             btnBajaUsuario.Size = new Size(175, 40);
             btnBajaUsuario.TabIndex = 6;
-            btnBajaUsuario.Text = "Baja de Usuario Proveedor";
+            btnBajaUsuario.Text = "Baja de Proveedor";
             btnBajaUsuario.UseVisualStyleBackColor = true;
             btnBajaUsuario.Click += btnBajaUsuario_Click;
             // 
             // btnModUsuario
             // 
-            btnModUsuario.Location = new Point(282, 168);
+            btnModUsuario.Location = new Point(298, 168);
             btnModUsuario.Name = "btnModUsuario";
             btnModUsuario.Size = new Size(175, 40);
             btnModUsuario.TabIndex = 5;
-            btnModUsuario.Text = "Modificar Usuario Proveedor";
+            btnModUsuario.Text = "Modificar Proveedor";
             btnModUsuario.UseVisualStyleBackColor = true;
             btnModUsuario.Click += btnModUsuario_Click;
             // 
             // btnAltaUsuario
             // 
-            btnAltaUsuario.Location = new Point(282, 122);
+            btnAltaUsuario.Location = new Point(298, 122);
             btnAltaUsuario.Name = "btnAltaUsuario";
             btnAltaUsuario.Size = new Size(175, 40);
             btnAltaUsuario.TabIndex = 4;
-            btnAltaUsuario.Text = "Alta de Usuario Proveedor";
+            btnAltaUsuario.Text = "Alta de Proveedor";
             btnAltaUsuario.UseVisualStyleBackColor = true;
             btnAltaUsuario.Click += btnAltaUsuario_Click;
             // 

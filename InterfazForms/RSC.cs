@@ -10,23 +10,18 @@ using System.Windows.Forms;
 
 namespace InterfazForms
 {
-    public partial class BajaUsuarioProveedor : Form
+    public partial class RSC : Form
     {
-        public BajaUsuarioProveedor()
+        public RSC()
         {
             InitializeComponent();
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuAdProveedores formX = new MenuAdProveedores();
+            Reportes formX = new Reportes();
             formX.ShowDialog();
-        }
-
-        private void btnDarBaja_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

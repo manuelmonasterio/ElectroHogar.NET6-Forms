@@ -66,7 +66,7 @@
             // 
             // txbNombreUsuario
             // 
-            txbNombreUsuario.Location = new Point(379, 41);
+            txbNombreUsuario.Location = new Point(379, 40);
             txbNombreUsuario.Name = "txbNombreUsuario";
             txbNombreUsuario.Size = new Size(100, 23);
             txbNombreUsuario.TabIndex = 2;

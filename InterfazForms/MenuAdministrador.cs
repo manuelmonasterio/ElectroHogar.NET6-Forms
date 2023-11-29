@@ -25,7 +25,6 @@ namespace InterfazForms
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             this.Hide();
-
             FormLogin formLogin = new FormLogin();
             formLogin.ShowDialog();
         }
@@ -42,6 +41,20 @@ namespace InterfazForms
         {
             this.Hide();
             MenuAdProveedores formX = new MenuAdProveedores();
+            formX.ShowDialog();
+        }
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MenuProductos formX = new MenuProductos();
+            formX.ShowDialog();
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Reportes formX = new Reportes();
             formX.ShowDialog();
         }
     }

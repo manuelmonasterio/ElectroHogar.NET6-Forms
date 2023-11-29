@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace InterfazForms
 {
-    public partial class BajaUsuarioProveedor : Form
+    public partial class BajaProducto : Form
     {
-        public BajaUsuarioProveedor()
+        public BajaProducto()
         {
             InitializeComponent();
         }
@@ -20,13 +20,8 @@ namespace InterfazForms
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuAdProveedores formX = new MenuAdProveedores();
+            GestionUsuario formX = new GestionUsuario();
             formX.ShowDialog();
-        }
-
-        private void btnDarBaja_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

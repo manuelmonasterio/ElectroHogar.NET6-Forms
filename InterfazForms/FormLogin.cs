@@ -18,7 +18,7 @@ namespace InterfazForms
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        public void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
@@ -32,6 +32,8 @@ namespace InterfazForms
                 if (!string.IsNullOrEmpty(listaerrores))
                 {
                     MessageBox.Show(listaerrores, "Error");
+                    txbUsuario.Clear();
+                    txbContrasena.Clear();
                 }
                 else if (usuario == "Administrador")
                 {
@@ -51,13 +53,19 @@ namespace InterfazForms
                     MenuSupervisor formSupervisor = new MenuSupervisor();
                     formSupervisor.ShowDialog();
                 }
-                else
+                else if (usuario == "Vendedor")
                 {
                     this.Hide();
 
                     //Muestro el formulario para el perfil Vendedor
                     MenuVendedor formVendedor = new MenuVendedor();
                     formVendedor.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("El usuario o la contraseña es incorrecto");
+                    txbUsuario.Clear();
+                    txbContrasena.Clear();
                 }
             }
             catch (Exception ex)
@@ -74,7 +82,7 @@ namespace InterfazForms
         private void btnSalir_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("Hasta luego");
-            this.Close();
+            Application.Exit();
         }
     }
 }

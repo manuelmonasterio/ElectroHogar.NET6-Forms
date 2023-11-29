@@ -130,9 +130,9 @@
             lblAltaUsuario.AutoSize = true;
             lblAltaUsuario.Location = new Point(44, 34);
             lblAltaUsuario.Name = "lblAltaUsuario";
-            lblAltaUsuario.Size = new Size(165, 15);
+            lblAltaUsuario.Size = new Size(122, 15);
             lblAltaUsuario.TabIndex = 26;
-            lblAltaUsuario.Text = "Dar de Alta Usuario Proveedor";
+            lblAltaUsuario.Text = "Dar de Alta Proveedor";
             // 
             // AltaUsuarioProveedor
             // 

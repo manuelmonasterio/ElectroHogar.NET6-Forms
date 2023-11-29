@@ -53,7 +53,7 @@ namespace InterfazForms
                 }
                 else
                 {
-                    
+
                     Proveedores proveedor = new Proveedores();
                     proveedor.Id = new Guid();
                     proveedor.Nombre = inputNombre;
@@ -74,7 +74,8 @@ namespace InterfazForms
                     {
 
                         pn.CrearProveedor(proveedorDatos);
-                        Console.WriteLine("Alta exitosa");
+                        //Console.WriteLine("Alta exitosa");
+                        MessageBox.Show("Alta exitosa");
                     }
                     catch (Exception ex)
                     {
@@ -89,4 +90,3 @@ namespace InterfazForms
         }
     }
 }
-            

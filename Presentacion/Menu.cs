@@ -29,11 +29,13 @@ namespace PRESENTACION
         {
             MetodosUsuarios usu = new MetodosUsuarios();
             UsuarioModel usuario9 = new Administrador();
+            UsuarioModel usuario10 = new Supervisores();
+            UsuarioModel usuario11 = new Vendedor();
             usuario9 = new Administrador(new Guid(), "Carolina", "Wehner", "Uzal 1234", "1138205055", "carowehner2001@gmail.com", DateTime.Now, new DateTime(2001, 05, 23), new DateTime(2099, 01, 01), "Admini05CW", 1, 43245128, "Cai20233!", "Activo");
             usuarios.Add(usuario9);
-            usuario9 = new Administrador(new Guid(), "Evelyn", "Zivano", "Farrel 1234", "1153376046", "evelynzivano@gmail.com", DateTime.Now, new DateTime(1994, 07, 12), new DateTime(2099, 01, 01), "Admini05EZ", 1, 38491201, "CAI20232", "Activo");
+            usuario9 = new Supervisores(new Guid(), "Evelyn", "Zivano", "Farrel 1234", "1153376046", "evelynzivano@gmail.com", DateTime.Now, new DateTime(1994, 07, 12), new DateTime(2099, 01, 01), "Admini05EZ", 2, 38491201, "CAI20232", "Activo");
             usuarios.Add(usuario9);
-            usuario9 = new Administrador(new Guid(), "Patricio", "Gerenni", "Cochabamba 1234", "1167845556", "patriciogerenni@gmail.com", DateTime.Now, new DateTime(1999, 04, 20), new DateTime(2099, 01, 01), "Admini05PG", 1, 41823861, "CAI20232", "Activo");
+            usuario9 = new Vendedor(new Guid(), "Patricio", "Gerenni", "Cochabamba 1234", "1167845556", "patriciogerenni@gmail.com", DateTime.Now, new DateTime(1999, 04, 20), new DateTime(2099, 01, 01), "Admini05PG", 3, 41823861, "CAI20232", "Activo");
             usuarios.Add(usuario9);
 
             CategoriaProductos ct = new CategoriaProductos();

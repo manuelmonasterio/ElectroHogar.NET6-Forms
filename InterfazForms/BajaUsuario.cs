@@ -27,10 +27,10 @@ namespace InterfazForms
         }
 
         private void btnDarBaja_Click(object sender, EventArgs e)
-        {            
+        {
             string idUsuario = txbIDUsuario.Text;
             bool flag;
-                           
+
             //Console.Write("Ingresar el id del usuario a dar de baja: ");
             //idUsuario = Console.ReadLine();
             ValidacionesDatos validador = new ValidacionesDatos();

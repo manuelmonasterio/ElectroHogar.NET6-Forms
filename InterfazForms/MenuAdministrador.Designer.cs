@@ -48,7 +48,8 @@
             // 
             // btnGestionUsuarios
             // 
-            btnGestionUsuarios.Location = new Point(305, 124);
+            btnGestionUsuarios.Location = new Point(309, 112);
+            btnGestionUsuarios.Margin = new Padding(6);
             btnGestionUsuarios.Name = "btnGestionUsuarios";
             btnGestionUsuarios.Size = new Size(176, 34);
             btnGestionUsuarios.TabIndex = 1;
@@ -58,7 +59,8 @@
             // 
             // btnProveedores
             // 
-            btnProveedores.Location = new Point(305, 171);
+            btnProveedores.Location = new Point(309, 158);
+            btnProveedores.Margin = new Padding(6);
             btnProveedores.Name = "btnProveedores";
             btnProveedores.Size = new Size(176, 34);
             btnProveedores.TabIndex = 2;
@@ -68,25 +70,30 @@
             // 
             // btnProductos
             // 
-            btnProductos.Location = new Point(305, 216);
+            btnProductos.Location = new Point(309, 204);
+            btnProductos.Margin = new Padding(6);
             btnProductos.Name = "btnProductos";
             btnProductos.Size = new Size(176, 34);
             btnProductos.TabIndex = 3;
             btnProductos.Text = "Productos";
             btnProductos.UseVisualStyleBackColor = true;
+            btnProductos.Click += btnProductos_Click;
             // 
             // btnReportes
             // 
-            btnReportes.Location = new Point(305, 261);
+            btnReportes.Location = new Point(309, 250);
+            btnReportes.Margin = new Padding(6);
             btnReportes.Name = "btnReportes";
             btnReportes.Size = new Size(176, 34);
             btnReportes.TabIndex = 4;
             btnReportes.Text = "Reportes";
             btnReportes.UseVisualStyleBackColor = true;
+            btnReportes.Click += btnReportes_Click;
             // 
             // btnCerrarSesion
             // 
-            btnCerrarSesion.Location = new Point(305, 306);
+            btnCerrarSesion.Location = new Point(309, 296);
+            btnCerrarSesion.Margin = new Padding(6);
             btnCerrarSesion.Name = "btnCerrarSesion";
             btnCerrarSesion.Size = new Size(176, 34);
             btnCerrarSesion.TabIndex = 5;

@@ -36,7 +36,7 @@
             // 
             // btnDarBaja
             // 
-            btnDarBaja.Location = new Point(325, 199);
+            btnDarBaja.Location = new Point(351, 204);
             btnDarBaja.Name = "btnDarBaja";
             btnDarBaja.Size = new Size(75, 23);
             btnDarBaja.TabIndex = 17;
@@ -46,15 +46,15 @@
             // 
             // txbIDUsuario
             // 
-            txbIDUsuario.Location = new Point(393, 146);
+            txbIDUsuario.Location = new Point(396, 157);
             txbIDUsuario.Name = "txbIDUsuario";
-            txbIDUsuario.Size = new Size(100, 23);
+            txbIDUsuario.Size = new Size(248, 23);
             txbIDUsuario.TabIndex = 16;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(176, 150);
+            label1.Location = new Point(179, 161);
             label1.Name = "label1";
             label1.Size = new Size(212, 15);
             label1.TabIndex = 15;

@@ -15,36 +15,36 @@ namespace PRESENTACION
         private static VentasNegocio vn = new VentasNegocio();
         public static List<Ventas> ventas = new List<Ventas>();
 
+        /*
+        public Ventas devolverVenta()
+        {
+            string idVenta = "";
+            string idProducto = "";
+            string venta = "";
 
-        //public Ventas devolverVenta()
-        //{
-        //    string idVenta = "";
-        //    string idProducto = "";
-        //    string venta = "";
+            int cantidad = 0;
 
-        //    int cantidad = 0;
+            bool flag;
 
-        //    bool flag;
+            do
+            {
+                Console.Write("Ingrese el Id de la venta a devolver: ");
+                idVenta = Console.ReadLine();
+                venta = ProductosNegocio.BuscarVentaId(idVenta);
+                flag = vd.ValidarVacio(idVenta, "ID Venta");
+                flag = vd.ValidarID(idVenta);
 
-        //    //do
-        //    //{
-        //    //    Console.Write("Ingrese el Id de la venta a devolver: ");
-        //    //    idVenta = Console.ReadLine();
-        //    //    venta = ProductosNegocio.BuscarVentaId(idVenta);
-        //    //    flag = vd.ValidarVacio(idVenta, "ID Venta");
-        //    //    flag = vd.ValidarID(idVenta);
-
-        //    //} while (flag == false);
+            } while (flag == false);
 
 
-        //    Productos producto = new Productos();
+            Productos producto = new Productos();
 
-        //    //producto = ProductosNegocio.BuscarProductoId(idProducto);
+            producto = ProductosNegocio.BuscarProductoId(idProducto);
 
-        //    //producto.Stock = producto.Stock + cantidad;
+            producto.Stock = producto.Stock + cantidad;
 
-        //    return venta;
-        //}
+            return venta;
+        } */
     }
 
 }
