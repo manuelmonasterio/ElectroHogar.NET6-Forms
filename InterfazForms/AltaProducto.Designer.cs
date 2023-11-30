@@ -33,10 +33,10 @@
             label4 = new Label();
             label1 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            txbNombre = new TextBox();
+            txbPrecio = new TextBox();
+            txbStock = new TextBox();
+            txbCat = new TextBox();
             btnCancelar = new Button();
             btnAceptar = new Button();
             SuspendLayout();
@@ -86,33 +86,33 @@
             label2.TabIndex = 7;
             label2.Text = "Ingrese el Precio: ";
             // 
-            // textBox1
+            // txbNombre
             // 
-            textBox1.Location = new Point(392, 124);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 8;
+            txbNombre.Location = new Point(392, 124);
+            txbNombre.Name = "txbNombre";
+            txbNombre.Size = new Size(100, 23);
+            txbNombre.TabIndex = 8;
             // 
-            // textBox2
+            // txbPrecio
             // 
-            textBox2.Location = new Point(392, 167);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 9;
+            txbPrecio.Location = new Point(392, 167);
+            txbPrecio.Name = "txbPrecio";
+            txbPrecio.Size = new Size(100, 23);
+            txbPrecio.TabIndex = 9;
             // 
-            // textBox3
+            // txbStock
             // 
-            textBox3.Location = new Point(392, 215);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 10;
+            txbStock.Location = new Point(392, 215);
+            txbStock.Name = "txbStock";
+            txbStock.Size = new Size(100, 23);
+            txbStock.TabIndex = 10;
             // 
-            // textBox4
+            // txbCat
             // 
-            textBox4.Location = new Point(392, 264);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 11;
+            txbCat.Location = new Point(392, 264);
+            txbCat.Name = "txbCat";
+            txbCat.Size = new Size(100, 23);
+            txbCat.TabIndex = 11;
             // 
             // btnCancelar
             // 
@@ -141,10 +141,10 @@
             ClientSize = new Size(800, 450);
             Controls.Add(btnAceptar);
             Controls.Add(btnCancelar);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txbCat);
+            Controls.Add(txbStock);
+            Controls.Add(txbPrecio);
+            Controls.Add(txbNombre);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(label4);
@@ -163,10 +163,10 @@
         private Label label4;
         private Label label1;
         private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox txbNombre;
+        private TextBox txbPrecio;
+        private TextBox txbStock;
+        private TextBox txbCat;
         private Button btnCancelar;
         private Button btnAceptar;
     }

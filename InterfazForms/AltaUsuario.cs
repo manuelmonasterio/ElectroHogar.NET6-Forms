@@ -1,5 +1,6 @@
 ﻿using AccesoDatos;
 using Modelo;
+using Modelo.Exceptions;
 using Negocio;
 using PRESENTACION;
 using System;
@@ -150,7 +151,7 @@ namespace InterfazForms
                         usuario1.fechacontraseña = DateTime.Today;
                         met.CrearUsuarioLista(usuario1);
                     }
-                    else
+                    else if (perfil == 3)
                     {
                         UsuarioModel usuario1 = new Vendedor();
                         usuario1.id = new Guid();
@@ -168,6 +169,11 @@ namespace InterfazForms
                         usuario1.contraseña = inputContra;
                         usuario1.fechacontraseña = DateTime.Today;
                         met.CrearUsuarioLista(usuario1);
+                    }
+                    else
+                    {
+                        txbPerfil.Clear();
+                        MessageBox.Show("Seleccione un perfil válido");
                     }
                 }
             }

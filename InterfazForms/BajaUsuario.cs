@@ -1,4 +1,6 @@
 ﻿using Modelo;
+using Modelo.Exceptions;
+using Negocio;
 using PRESENTACION;
 using System;
 using System.Collections.Generic;
@@ -28,25 +30,40 @@ namespace InterfazForms
 
         private void btnDarBaja_Click(object sender, EventArgs e)
         {
-            string idUsuario = txbIDUsuario.Text;
-            bool flag;
-
-            //Console.Write("Ingresar el id del usuario a dar de baja: ");
-            //idUsuario = Console.ReadLine();
-            ValidacionesDatos validador = new ValidacionesDatos();
-            flag = validador.ValidarVacio(idUsuario, "ID Usuario");
-            flag = validador.ValidarID(idUsuario);
-
-            if (flag == true)
+            try
             {
-                Menu menu = new Menu();
-                UsuarioModel usuario = menu.BuscarUsuarioID(idUsuario);
-                usuario.estado = "INACTIVO";
-                MessageBox.Show("Usuario dado de baja correctamente");
+                string listaerrores = "";
+                string idUsuario = txbIDUsuario.Text;
+                bool flag = false;
+
+                listaerrores += ValidacionesForm.ValidarVacio(idUsuario, "ID Usuario");
+                listaerrores += ValidacionesForm.ValidarID(idUsuario);
+
+                if (!string.IsNullOrEmpty(listaerrores))
+                {
+                    txbIDUsuario.Clear();
+                    MessageBox.Show(listaerrores, "Error");
+                }
+                else if (string.IsNullOrEmpty(listaerrores))
+                {
+                    flag = true;
+                }
+
+                if (flag == true)
+                {
+                    Menu menu = new Menu();
+                    UsuarioModel usuario = menu.BuscarUsuarioID(idUsuario);
+                    usuario.estado = "INACTIVO";
+                    MessageBox.Show("Usuario dado de baja correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("Usuario no encontrado");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Usuario no encontrado");
+                MessageBox.Show($"Hubo un problema al realizar la baja de usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

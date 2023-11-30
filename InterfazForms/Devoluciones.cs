@@ -23,5 +23,10 @@ namespace InterfazForms
             MenuSupervisor formX = new MenuSupervisor();
             formX.ShowDialog();
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

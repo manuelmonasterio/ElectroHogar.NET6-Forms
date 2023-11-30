@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Modelo;
+using Modelo.Exceptions;
+using Negocio;
+using AccesoDatos;
+using PRESENTACION;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +27,11 @@ namespace InterfazForms
             this.Hide();
             MenuVendedor formX = new MenuVendedor();
             formX.ShowDialog();
+        }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

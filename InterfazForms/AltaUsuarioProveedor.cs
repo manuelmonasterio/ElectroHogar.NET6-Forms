@@ -72,21 +72,26 @@ namespace InterfazForms
 
                     try
                     {
-
                         pn.CrearProveedor(proveedorDatos);
                         //Console.WriteLine("Alta exitosa");
                         MessageBox.Show("Alta exitosa");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        //Console.WriteLine(ex.Message);
+                        MessageBox.Show(ex.Message);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Hubo un problema al realizar el alta de usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"Hubo un problema al realizar el alta de proveedor: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void AltaUsuarioProveedor_Load(object sender, EventArgs e)
+        {
+            //no tocar
         }
     }
 }

@@ -58,6 +58,7 @@
             btnDarBaja.TabIndex = 2;
             btnDarBaja.Text = "Dar Baja";
             btnDarBaja.UseVisualStyleBackColor = true;
+            btnDarBaja.Click += btnDarBaja_Click;
             // 
             // btnCancelar
             // 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo;
+using Modelo.Exceptions;
 using Negocio;
 using AccesoDatos;
 using PRESENTACION;
@@ -75,8 +76,36 @@ namespace InterfazForms
                 cuit = (int)cuitLong;
                 flag = "";
             }
-
             return flag;
+        }
+        public static string ValidarID(string input)
+        {
+            ValidacionesDatos vd = new ValidacionesDatos();
+
+            string error = "";
+            if (!(input.Length == 36))
+            {
+                //los tipos de dato GUID tienen 36 caracteres
+                //Console.WriteLine("El ID debe tener 36 caracteres.");
+                error = "El ID debe tener 36 caracteres.";
+            }
+            else if (vd.FormatoGuid(input) == false)
+            {
+                //Console.WriteLine("El ID contiene dígitos especiales y solo debe contener números");
+                error = "El ID contiene dígitos especiales y solo debe contener números";
+            }
+            else if (Guid.TryParse(input, out Guid idvalidado))
+            {
+                //Console.WriteLine("El ID contiene un formato válido.");
+                //MessageBox.Show("El ID contiene un formato válido."); //comento porque no tiene sentido hacer una alerta para avisar que está bien el 
+            }
+            else
+            {
+                error = "El ID no contiene un formato válido";
+                //Console.WriteLine("El ID no contiene un formato válido");
+            }
+
+            return error;
         }
 
     }

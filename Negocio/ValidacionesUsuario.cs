@@ -77,9 +77,7 @@ namespace Negocio
                     //si tiene por lo menos una mayus y un número pasa a validar la cantidad de caracteres
                     if (contraseña.Length < 8 || contraseña.Length > 15)
                     {
-                        throw new Exception("- La contraseña debe tener entre 8 y 15 caracteres"
-                                          + System.Environment.NewLine + "- La contraseña debe tener como mínimo una letra mayuscula y un número"
-                                          + System.Environment.NewLine + "Por favor vuelva a introducir una contraseña válida: ");
+                        throw new Exception("\n- La contraseña debe tener entre 8 y 15 caracteres. \n- La contraseña debe tener como mínimo una letra mayuscula y un número. \n\nPor favor vuelva a introducir una contraseña válida");
                         //contraseña = Console.ReadLine();
                     }
                     else
@@ -91,9 +89,7 @@ namespace Negocio
                 else
                 {
                     //este else se dispara cuando la contra no tiene ni una mayus ni un número
-                    throw new Exception("- La contraseña debe tener entre 8 y 15 caracteres"
-                                          + System.Environment.NewLine + "- La contraseña debe tener como mínimo una letra mayuscula y un número"
-                                          + System.Environment.NewLine + "Por favor vuelva a introducir una contraseña válida: ");
+                    throw new Exception("\n- La contraseña debe tener entre 8 y 15 caracteres. \n- La contraseña debe tener como mínimo una letra mayuscula y un número. \n\nPor favor vuelva a introducir una contraseña válida");
                     //contraseña = Console.ReadLine();
                 }
                 //dejé ambos mensajes en las validaciones porque me parece mejor para la experiencia del usuario que sepa desde el inicio todas las condiciones para cumplir con la contraseña

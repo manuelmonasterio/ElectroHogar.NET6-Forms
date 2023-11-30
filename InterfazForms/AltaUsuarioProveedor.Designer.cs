@@ -152,6 +152,7 @@
             Controls.Add(lblAltaUsuario);
             Name = "AltaUsuarioProveedor";
             Text = "AltaUsuarioProveedor";
+            Load += AltaUsuarioProveedor_Load;
             ResumeLayout(false);
             PerformLayout();
         }
