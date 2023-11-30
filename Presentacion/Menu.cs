@@ -24,7 +24,6 @@ namespace PRESENTACION
         private static ModificarCliente modClien = new ModificarCliente();
 
 
-
         public static void MenuAdm()
         {
             MetodosUsuarios usu = new MetodosUsuarios();

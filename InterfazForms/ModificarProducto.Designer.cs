@@ -38,6 +38,7 @@
             txbNuevoStock = new TextBox();
             txbNuevoEstado = new TextBox();
             txbIDProducto = new TextBox();
+            label5 = new Label();
             SuspendLayout();
             // 
             // btnAceptar
@@ -48,6 +49,7 @@
             btnAceptar.TabIndex = 17;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // btnCancelar
             // 
@@ -124,11 +126,22 @@
             txbIDProducto.Size = new Size(180, 23);
             txbIDProducto.TabIndex = 26;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(258, 144);
+            label5.Name = "label5";
+            label5.Size = new Size(246, 15);
+            label5.TabIndex = 27;
+            label5.Text = "Ingrese unicamente los campos a modificar";
+            // 
             // ModificarProducto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
             Controls.Add(txbIDProducto);
             Controls.Add(txbNuevoEstado);
             Controls.Add(txbNuevoStock);
@@ -157,5 +170,6 @@
         private TextBox txbNuevoStock;
         private TextBox txbNuevoEstado;
         private TextBox txbIDProducto;
+        private Label label5;
     }
 }

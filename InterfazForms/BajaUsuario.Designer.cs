@@ -46,7 +46,7 @@
             // 
             // txbIDUsuario
             // 
-            txbIDUsuario.Location = new Point(396, 157);
+            txbIDUsuario.Location = new Point(389, 157);
             txbIDUsuario.Name = "txbIDUsuario";
             txbIDUsuario.Size = new Size(248, 23);
             txbIDUsuario.TabIndex = 16;
@@ -54,7 +54,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(179, 161);
+            label1.Location = new Point(172, 161);
             label1.Name = "label1";
             label1.Size = new Size(212, 15);
             label1.TabIndex = 15;

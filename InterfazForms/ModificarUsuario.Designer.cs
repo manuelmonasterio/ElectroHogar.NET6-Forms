@@ -30,7 +30,7 @@
         {
             btnCancelar = new Button();
             label1 = new Label();
-            txbIDUsuario = new TextBox();
+            txbNombreUsuario = new TextBox();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -42,7 +42,7 @@
             btnDarBaja = new Button();
             txbNuevaContra = new TextBox();
             txbNuevoEstado = new TextBox();
-            btnBuscar = new Button();
+            txbIDUsuario = new TextBox();
             SuspendLayout();
             // 
             // btnCancelar
@@ -58,18 +58,18 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 43);
+            label1.Location = new Point(61, 45);
             label1.Name = "label1";
             label1.Size = new Size(361, 15);
             label1.TabIndex = 1;
             label1.Text = "Ingrese el nombre del usuario que desea realizar una modificación: ";
             // 
-            // txbIDUsuario
+            // txbNombreUsuario
             // 
-            txbIDUsuario.Location = new Point(379, 39);
-            txbIDUsuario.Name = "txbIDUsuario";
-            txbIDUsuario.Size = new Size(245, 23);
-            txbIDUsuario.TabIndex = 2;
+            txbNombreUsuario.Location = new Point(428, 41);
+            txbNombreUsuario.Name = "txbNombreUsuario";
+            txbNombreUsuario.Size = new Size(245, 23);
+            txbNombreUsuario.TabIndex = 2;
             // 
             // label2
             // 
@@ -123,11 +123,11 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(210, 298);
+            label7.Location = new Point(195, 303);
             label7.Name = "label7";
-            label7.Size = new Size(320, 15);
+            label7.Size = new Size(178, 15);
             label7.TabIndex = 8;
-            label7.Text = "¿Desea dar de baja el usuario? Por no simplemente cancelar";
+            label7.Text = "Ingrese ID de usuario a eliminar: ";
             // 
             // btnNuevaContra
             // 
@@ -137,6 +137,7 @@
             btnNuevaContra.TabIndex = 9;
             btnNuevaContra.Text = "Modificar";
             btnNuevaContra.UseVisualStyleBackColor = true;
+            btnNuevaContra.Click += btnNuevaContra_Click;
             // 
             // btnNuevoEstado
             // 
@@ -146,14 +147,15 @@
             btnNuevoEstado.TabIndex = 10;
             btnNuevoEstado.Text = "Modificar";
             btnNuevoEstado.UseVisualStyleBackColor = true;
+            btnNuevoEstado.Click += btnNuevoEstado_Click;
             // 
             // btnDarBaja
             // 
-            btnDarBaja.Location = new Point(336, 333);
+            btnDarBaja.Location = new Point(347, 342);
             btnDarBaja.Name = "btnDarBaja";
             btnDarBaja.Size = new Size(75, 23);
             btnDarBaja.TabIndex = 11;
-            btnDarBaja.Text = "Si";
+            btnDarBaja.Text = "Eliminar";
             btnDarBaja.UseVisualStyleBackColor = true;
             btnDarBaja.Click += btnDarBaja_Click;
             // 
@@ -171,21 +173,19 @@
             txbNuevoEstado.Size = new Size(100, 23);
             txbNuevoEstado.TabIndex = 13;
             // 
-            // btnBuscar
+            // txbIDUsuario
             // 
-            btnBuscar.Location = new Point(653, 39);
-            btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(75, 23);
-            btnBuscar.TabIndex = 14;
-            btnBuscar.Text = "Buscar/borrar?";
-            btnBuscar.UseVisualStyleBackColor = true;
+            txbIDUsuario.Location = new Point(379, 299);
+            txbIDUsuario.Name = "txbIDUsuario";
+            txbIDUsuario.Size = new Size(245, 23);
+            txbIDUsuario.TabIndex = 14;
             // 
             // ModificarUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnBuscar);
+            Controls.Add(txbIDUsuario);
             Controls.Add(txbNuevoEstado);
             Controls.Add(txbNuevaContra);
             Controls.Add(btnDarBaja);
@@ -197,7 +197,7 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(txbIDUsuario);
+            Controls.Add(txbNombreUsuario);
             Controls.Add(label1);
             Controls.Add(btnCancelar);
             Name = "ModificarUsuario";
@@ -210,7 +210,7 @@
 
         private Button btnCancelar;
         private Label label1;
-        private TextBox txbIDUsuario;
+        private TextBox txbNombreUsuario;
         private Label label2;
         private Label label3;
         private Label label4;
@@ -222,6 +222,6 @@
         private Button btnDarBaja;
         private TextBox txbNuevaContra;
         private TextBox txbNuevoEstado;
-        private Button btnBuscar;
+        private TextBox txbIDUsuario;
     }
 }

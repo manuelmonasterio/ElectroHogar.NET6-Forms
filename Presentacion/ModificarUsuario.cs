@@ -134,7 +134,7 @@ namespace PRESENTACION
                 return Menu.usuarios.Find(u => u.usuario == NombreUsuario);
             }
 
-        public void cambiarEstado()
+            public void cambiarEstado()
             {
                //No esta en la Web Service 
             }

@@ -34,7 +34,7 @@ namespace InterfazForms
             {
                 string listaerrores = "";
                 string idUsuario = txbIDUsuario.Text;
-                bool flag = false;
+                bool flag = true;
 
                 listaerrores += ValidacionesForm.ValidarVacio(idUsuario, "ID Usuario");
                 listaerrores += ValidacionesForm.ValidarID(idUsuario);
@@ -43,13 +43,9 @@ namespace InterfazForms
                 {
                     txbIDUsuario.Clear();
                     MessageBox.Show(listaerrores, "Error");
+                    flag = false;
                 }
-                else if (string.IsNullOrEmpty(listaerrores))
-                {
-                    flag = true;
-                }
-
-                if (flag == true)
+                else if (flag == true)
                 {
                     Menu menu = new Menu();
                     UsuarioModel usuario = menu.BuscarUsuarioID(idUsuario);

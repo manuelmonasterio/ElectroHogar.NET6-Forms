@@ -32,21 +32,21 @@ namespace InterfazForms
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            ValidacionesUsuario validacionesUsuario = new ValidacionesUsuario();
+            //ValidacionesUsuario validacionesUsuario = new ValidacionesUsuario();
             try
             {
                 string listaerrores = "";
-                string inputNombre = txbNombre.Text;
-                string inputApellido = txbApellido.Text;
-                string inputDireccion = txbDireccion.Text;
-                string inputTelefono = txbTelefono.Text;
-                string inputEmail = txbMail.Text;
-                string inputFechaNacimiento = txbFecNac.Text;
+                string inputNombre = txbNombre.Text.Trim();
+                string inputApellido = txbApellido.Text.Trim();
+                string inputDireccion = txbDireccion.Text.Trim();
+                string inputTelefono = txbTelefono.Text.Trim();
+                string inputEmail = txbMail.Text.Trim();
+                string inputFechaNacimiento = txbFecNac.Text.Trim();
                 DateTime fechaNacimiento = DateTime.Now;
-                string inputPerfil = txbPerfil.Text;
-                string inputDni = txbDNI.Text;
-                string NombreUsuario = txbNombreUsuario.Text;
-                string inputContra = txbContrasena2.Text;
+                string inputPerfil = txbPerfil.Text.Trim();
+                string inputDni = txbDNI.Text.Trim();
+                string NombreUsuario = txbNombreUsuario.Text.Trim();
+                string inputContra = txbContrasena2.Text.Trim();
                 int perfil = Convert.ToInt32(txbPerfil.Text);
                 int dni = Convert.ToInt32(txbDNI.Text);
 

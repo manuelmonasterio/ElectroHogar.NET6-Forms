@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JsonIgnoreAttribute = Newtonsoft.Json.JsonIgnoreAttribute;
 
 namespace Modelo
 {
@@ -10,6 +12,28 @@ namespace Modelo
     {
         public int intentoFallido { get; set; } = 0;
         public Guid id { get; set; }
+
+        [JsonProperty("id")]
+        public string IdString
+        {
+            get { return id.ToString(); }
+            set
+            {
+                if (Guid.TryParse(value, out var guidValue))
+                {
+                    id = guidValue;
+                }
+                // No establecer el valor predeterminado (Guid.Empty) en caso de error
+            }
+        }
+
+        [JsonIgnore]
+        public Guid Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string direccion { get; set; }

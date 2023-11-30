@@ -41,8 +41,8 @@ namespace InterfazForms
             }
             else
             {
-                MessageBox.Show("Error inesperado");
-                Application.Exit();
+                MessageBox.Show("Error inesperado. \nIntente nuevamente.");
+                
             }
         }
 
