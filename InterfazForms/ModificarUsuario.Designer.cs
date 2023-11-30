@@ -30,7 +30,7 @@
         {
             btnCancelar = new Button();
             label1 = new Label();
-            txbNombreUsuario = new TextBox();
+            txbIDUsuario = new TextBox();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -64,12 +64,12 @@
             label1.TabIndex = 1;
             label1.Text = "Ingrese el nombre del usuario que desea realizar una modificación: ";
             // 
-            // txbNombreUsuario
+            // txbIDUsuario
             // 
-            txbNombreUsuario.Location = new Point(379, 39);
-            txbNombreUsuario.Name = "txbNombreUsuario";
-            txbNombreUsuario.Size = new Size(100, 23);
-            txbNombreUsuario.TabIndex = 2;
+            txbIDUsuario.Location = new Point(379, 39);
+            txbIDUsuario.Name = "txbIDUsuario";
+            txbIDUsuario.Size = new Size(245, 23);
+            txbIDUsuario.TabIndex = 2;
             // 
             // label2
             // 
@@ -173,7 +173,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(500, 41);
+            btnBuscar.Location = new Point(653, 39);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(75, 23);
             btnBuscar.TabIndex = 14;
@@ -197,7 +197,7 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(txbNombreUsuario);
+            Controls.Add(txbIDUsuario);
             Controls.Add(label1);
             Controls.Add(btnCancelar);
             Name = "ModificarUsuario";
@@ -210,7 +210,7 @@
 
         private Button btnCancelar;
         private Label label1;
-        private TextBox txbNombreUsuario;
+        private TextBox txbIDUsuario;
         private Label label2;
         private Label label3;
         private Label label4;
