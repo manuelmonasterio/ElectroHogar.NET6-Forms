@@ -29,7 +29,7 @@ namespace InterfazForms
             this.Hide();
 
             //Muestro el formulario para el perfil Administrador
-            MenuAdministrador formAdministrador = new MenuAdministrador();
+            MenuAdministrador formAdministrador = new MenuAdministrador(1);
             formAdministrador.ShowDialog();
         }
 

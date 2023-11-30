@@ -8,6 +8,7 @@ namespace Modelo
 {
     abstract public class UsuarioModel
     {
+        public int intentoFallido { get; set; } = 0;
         public Guid id { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
@@ -56,6 +57,25 @@ namespace Modelo
         public bool Find(Func<object, bool> value)
         {
             throw new NotImplementedException();
+        }
+
+        public void IncrementarIntentoFallido()
+        {
+            intentoFallido++;
+            if (intentoFallido >= 3) 
+            {
+                DesactivarUsuario();
+            }
+        }
+
+        public void DesactivarUsuario()
+        {
+           estado = "INACTIVO";
+        }
+
+        public void ResetearIntentoFallido()
+        {
+            intentoFallido = 0;
         }
     }
 }

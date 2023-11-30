@@ -25,7 +25,7 @@ namespace InterfazForms
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuVendedor formX = new MenuVendedor();
+            MenuVendedor formX = new MenuVendedor(3);
             formX.ShowDialog();
         }
 
@@ -55,8 +55,8 @@ namespace InterfazForms
 
             do
             {
-                Console.Write("Ingrese el ID del cliente: ");
-                idCliente = Console.ReadLine();
+                //Console.Write("Ingrese el ID del cliente: ");
+                //idCliente = Console.ReadLine();
                 flag = vd.ValidarVacio(idCliente, "ID Cliente") && vd.ValidarID(idCliente);
 
                 if (!flag)

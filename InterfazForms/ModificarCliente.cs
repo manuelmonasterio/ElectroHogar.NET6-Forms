@@ -20,7 +20,7 @@ namespace InterfazForms
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuVendedor formX = new MenuVendedor();
+            MenuVendedor formX = new MenuVendedor(3);
             formX.ShowDialog();
         }
     }

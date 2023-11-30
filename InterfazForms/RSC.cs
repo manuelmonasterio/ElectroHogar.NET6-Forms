@@ -12,15 +12,17 @@ namespace InterfazForms
 {
     public partial class RSC : Form
     {
-        public RSC()
+        private int host;
+        public RSC(int host)
         {
             InitializeComponent();
+            this.host = host;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Reportes formX = new Reportes();
+            Reportes formX = new Reportes(host);
             formX.ShowDialog();
         }
     }

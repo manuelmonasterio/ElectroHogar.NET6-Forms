@@ -12,9 +12,11 @@ namespace InterfazForms
 {
     public partial class MenuSupervisor : Form
     {
-        public MenuSupervisor()
+        private int host;
+        public MenuSupervisor(int host)
         {
             InitializeComponent();
+            this.host = host;
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -27,14 +29,14 @@ namespace InterfazForms
         private void btnProductos_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuProductos formLogin = new MenuProductos();
+            MenuProductos formLogin = new MenuProductos(host);
             formLogin.ShowDialog();
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Reportes formLogin = new Reportes();
+            Reportes formLogin = new Reportes(host);
             formLogin.ShowDialog();
         }
 

@@ -12,16 +12,27 @@ namespace InterfazForms
 {
     public partial class RVxV : Form
     {
-        public RVxV()
+        private int host;
+        public RVxV(int host)
         {
             InitializeComponent();
+            this.host = host;
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Reportes formX = new Reportes();
-            formX.ShowDialog();
+            if (host == 3) 
+            {
+                this.Hide();
+                MenuVendedor formX = new MenuVendedor(host);
+                formX.ShowDialog();
+            }
+            else
+            {
+                this.Hide();
+                Reportes formX = new Reportes(host);
+                formX.ShowDialog();
+            }
         }
     }
 }

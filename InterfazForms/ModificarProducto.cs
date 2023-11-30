@@ -12,15 +12,17 @@ namespace InterfazForms
 {
     public partial class ModificarProducto : Form
     {
-        public ModificarProducto()
+        private int host;
+        public ModificarProducto(int host)
         {
             InitializeComponent();
+            this.host = host;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuProductos formX = new MenuProductos();
+            MenuProductos formX = new MenuProductos(host);
             formX.ShowDialog();
         }
 

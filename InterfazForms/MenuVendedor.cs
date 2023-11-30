@@ -13,9 +13,11 @@ namespace InterfazForms
 {
     public partial class MenuVendedor : Form
     {
-        public MenuVendedor()
+        private int host;
+        public MenuVendedor(int host)
         {
             InitializeComponent();
+            this.host = host;
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -28,7 +30,7 @@ namespace InterfazForms
         private void btnRVxV_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RVxV formX = new RVxV();
+            RVxV formX = new RVxV(host);
             formX.ShowDialog();
         }
 

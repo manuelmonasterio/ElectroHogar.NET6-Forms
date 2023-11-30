@@ -12,15 +12,17 @@ namespace InterfazForms
 {
     public partial class RPxC : Form
     {
-        public RPxC()
+        private int host;
+        public RPxC(int host)
         {
             InitializeComponent();
+            this.host = host;
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Reportes formX = new Reportes();
+            Reportes formX = new Reportes(host);
             formX.ShowDialog();
         }
     }

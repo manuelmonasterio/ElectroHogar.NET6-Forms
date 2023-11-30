@@ -66,7 +66,7 @@
             // 
             // txbNombreUsuario
             // 
-            txbNombreUsuario.Location = new Point(379, 40);
+            txbNombreUsuario.Location = new Point(379, 39);
             txbNombreUsuario.Name = "txbNombreUsuario";
             txbNombreUsuario.Size = new Size(100, 23);
             txbNombreUsuario.TabIndex = 2;
@@ -155,17 +155,18 @@
             btnDarBaja.TabIndex = 11;
             btnDarBaja.Text = "Si";
             btnDarBaja.UseVisualStyleBackColor = true;
+            btnDarBaja.Click += btnDarBaja_Click;
             // 
             // txbNuevaContra
             // 
-            txbNuevaContra.Location = new Point(379, 157);
+            txbNuevaContra.Location = new Point(379, 156);
             txbNuevaContra.Name = "txbNuevaContra";
             txbNuevaContra.Size = new Size(100, 23);
             txbNuevaContra.TabIndex = 12;
             // 
             // txbNuevoEstado
             // 
-            txbNuevoEstado.Location = new Point(379, 225);
+            txbNuevoEstado.Location = new Point(379, 224);
             txbNuevoEstado.Name = "txbNuevoEstado";
             txbNuevoEstado.Size = new Size(100, 23);
             txbNuevoEstado.TabIndex = 13;

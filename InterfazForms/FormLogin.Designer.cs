@@ -60,7 +60,7 @@
             txbUsuario.Name = "txbUsuario";
             txbUsuario.Size = new Size(169, 23);
             txbUsuario.TabIndex = 2;
-            txbUsuario.Text = "Administrador";
+            txbUsuario.Text = "Admini05CW";
             // 
             // txbContrasena
             // 
@@ -68,7 +68,7 @@
             txbContrasena.Name = "txbContrasena";
             txbContrasena.Size = new Size(169, 23);
             txbContrasena.TabIndex = 3;
-            txbContrasena.Text = "Contraseña";
+            txbContrasena.Text = "CAI20232";
             // 
             // FormLogin
             // 
@@ -81,6 +81,7 @@
             Controls.Add(btnLogin);
             Name = "FormLogin";
             Text = "FormLogin";
+            Load += FormLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

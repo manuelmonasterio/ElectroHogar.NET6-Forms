@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace InterfazForms
 {
     public partial class MenuAdministrador : Form
     {
-        public MenuAdministrador()
+        private int host;
+        public MenuAdministrador(int host)
         {
             InitializeComponent();
+            this.host = host;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -47,14 +50,14 @@ namespace InterfazForms
         private void btnProductos_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuProductos formX = new MenuProductos();
+            MenuProductos formX = new MenuProductos(host);
             formX.ShowDialog();
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Reportes formX = new Reportes();
+            Reportes formX = new Reportes(host);
             formX.ShowDialog();
         }
     }

@@ -17,15 +17,17 @@ namespace InterfazForms
 {
     public partial class AltaProducto : Form
     {
-        public AltaProducto()
+        private int host;
+        public AltaProducto(int host)
         {
             InitializeComponent();
+            this.host = host;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MenuProductos formX = new MenuProductos();
+            MenuProductos formX = new MenuProductos(this.host);
             formX.ShowDialog();
         }
 
