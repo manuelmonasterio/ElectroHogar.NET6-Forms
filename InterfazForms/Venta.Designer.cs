@@ -32,10 +32,10 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            txbIDCliente = new TextBox();
+            txbIDUsuario = new TextBox();
+            txbIDProducto = new TextBox();
+            txbCantidad = new TextBox();
             label5 = new Label();
             btnRegistrar = new Button();
             btnCancelar = new Button();
@@ -77,33 +77,33 @@
             label4.TabIndex = 3;
             label4.Text = "Ingresar cantidad: ";
             // 
-            // textBox1
+            // txbIDCliente
             // 
-            textBox1.Location = new Point(329, 131);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(260, 23);
-            textBox1.TabIndex = 4;
+            txbIDCliente.Location = new Point(329, 131);
+            txbIDCliente.Name = "txbIDCliente";
+            txbIDCliente.Size = new Size(260, 23);
+            txbIDCliente.TabIndex = 4;
             // 
-            // textBox2
+            // txbIDUsuario
             // 
-            textBox2.Location = new Point(329, 177);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(260, 23);
-            textBox2.TabIndex = 5;
+            txbIDUsuario.Location = new Point(329, 177);
+            txbIDUsuario.Name = "txbIDUsuario";
+            txbIDUsuario.Size = new Size(260, 23);
+            txbIDUsuario.TabIndex = 5;
             // 
-            // textBox3
+            // txbIDProducto
             // 
-            textBox3.Location = new Point(329, 220);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(260, 23);
-            textBox3.TabIndex = 6;
+            txbIDProducto.Location = new Point(329, 220);
+            txbIDProducto.Name = "txbIDProducto";
+            txbIDProducto.Size = new Size(260, 23);
+            txbIDProducto.TabIndex = 6;
             // 
-            // textBox4
+            // txbCantidad
             // 
-            textBox4.Location = new Point(329, 262);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(35, 23);
-            textBox4.TabIndex = 7;
+            txbCantidad.Location = new Point(329, 262);
+            txbCantidad.Name = "txbCantidad";
+            txbCantidad.Size = new Size(35, 23);
+            txbCantidad.TabIndex = 7;
             // 
             // label5
             // 
@@ -142,10 +142,10 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnRegistrar);
             Controls.Add(label5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txbCantidad);
+            Controls.Add(txbIDProducto);
+            Controls.Add(txbIDUsuario);
+            Controls.Add(txbIDCliente);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -162,10 +162,10 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox txbIDCliente;
+        private TextBox txbIDUsuario;
+        private TextBox txbIDProducto;
+        private TextBox txbCantidad;
         private Label label5;
         private Button btnRegistrar;
         private Button btnCancelar;
