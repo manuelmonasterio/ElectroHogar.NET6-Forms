@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            textBox1 = new TextBox();
+            txbIDVenta = new TextBox();
             btnCancelar = new Button();
             btnAceptar = new Button();
             SuspendLayout();
@@ -43,12 +43,12 @@
             label1.TabIndex = 0;
             label1.Text = "Ingresar el ID de la venta a devolver: ";
             // 
-            // textBox1
+            // txbIDVenta
             // 
-            textBox1.Location = new Point(366, 172);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(197, 23);
-            textBox1.TabIndex = 1;
+            txbIDVenta.Location = new Point(366, 172);
+            txbIDVenta.Name = "txbIDVenta";
+            txbIDVenta.Size = new Size(197, 23);
+            txbIDVenta.TabIndex = 1;
             // 
             // btnCancelar
             // 
@@ -77,7 +77,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
-            Controls.Add(textBox1);
+            Controls.Add(txbIDVenta);
             Controls.Add(label1);
             Name = "Devoluciones";
             Text = "Devoluciones";
@@ -88,7 +88,7 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txbIDVenta;
         private Button btnCancelar;
         private Button btnAceptar;
     }

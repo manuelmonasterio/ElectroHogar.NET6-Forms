@@ -70,14 +70,14 @@
             // 
             txbIDProveedor.Location = new Point(389, 59);
             txbIDProveedor.Name = "txbIDProveedor";
-            txbIDProveedor.Size = new Size(100, 23);
+            txbIDProveedor.Size = new Size(249, 23);
             txbIDProveedor.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(266, 131);
+            label2.Location = new Point(259, 133);
             label2.Name = "label2";
             label2.Size = new Size(246, 15);
             label2.TabIndex = 4;
@@ -176,6 +176,7 @@
             btnAceptar.TabIndex = 16;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // ModificarUsuarioProveedor
             // 

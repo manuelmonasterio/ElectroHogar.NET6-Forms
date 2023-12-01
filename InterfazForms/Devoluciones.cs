@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Modelo;
+using Modelo.Exceptions;
+using Negocio;
+using AccesoDatos;
+using PRESENTACION;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,7 +31,9 @@ namespace InterfazForms
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
+            string IdVenta = txbIDVenta.Text.Trim();
+            VentasNegocio ventasNegocio = new VentasNegocio();
+            ventasNegocio.DevolverVenta(IdVenta);
         }
     }
 }
