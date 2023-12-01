@@ -30,7 +30,7 @@ namespace Negocio
             Guid idGuid;
             if (Guid.TryParse(proveedorId, out idGuid))
             {
-                Proveedores proveedorEncontrado = proveedores.Find(p => p.Id == idGuid);
+                Proveedores proveedorEncontrado = proveedores.Find(p => p.Idp == idGuid);
                 if (proveedorEncontrado != null)
                 {
                     return proveedorEncontrado;

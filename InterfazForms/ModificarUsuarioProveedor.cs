@@ -1,5 +1,7 @@
 ﻿using Modelo;
+using Modelo.Exceptions;
 using Negocio;
+using AccesoDatos;
 using PRESENTACION;
 using System;
 using System.Collections.Generic;
@@ -81,19 +83,19 @@ namespace InterfazForms
                                 MessageBox.Show(ex.Message);
                             }
                         }
-                        else if (!string.IsNullOrWhiteSpace(nuevoApellido))
+                        if (!string.IsNullOrWhiteSpace(nuevoApellido))
                         {
                             try
                             {
                                 pn.ModificarProveedor(proveedorId, proveedor1.Nombre, nuevoApellido, proveedor1.Email, Convert.ToString(proveedor1.Cuit));
-                                mensaje += "\nCambio de apellido exitoso";
+                                mensaje += "\nCambio de Apellido exitoso";
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
                             }
                         }
-                        else if (!string.IsNullOrWhiteSpace(nuevoCuit))
+                        if (!string.IsNullOrWhiteSpace(nuevoCuit))
                         {
                             if (nuevoCuit.Length == 11)
                             {
@@ -124,7 +126,7 @@ namespace InterfazForms
                                 }
                             }
                         }
-                        else if (!string.IsNullOrWhiteSpace(nuevoEmail))
+                        if (!string.IsNullOrWhiteSpace(nuevoEmail))
                         {
                             try
                             {
@@ -137,22 +139,43 @@ namespace InterfazForms
                                 MessageBox.Show(ex.Message);
                             }
                         }
-                        else if (!string.IsNullOrWhiteSpace(nuevoEstado) && (nuevoEstado == "ACTIVO" || nuevoEstado == "INACTIVO"))
+                        if (!string.IsNullOrWhiteSpace(nuevoEstado) && nuevoEstado == "ACTIVO")
                         {
-                            if (proveedor1.Estado == "INACTIVO")
+                            try
                             {
-                                proveedor1.Estado = "ACTIVO";
-                                pn.ReactivarProveedor(proveedorId);
+                                if (proveedor1.Estado == "INACTIVO")
+                                {
+                                    proveedor1.Estado = "ACTIVO";
+                                    pn.ReactivarProveedor(proveedorId);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("El usuario ya está Inactivo");
+                                }
                             }
-                            else if (proveedor1.Estado == "ACTIVO")
+                            catch (Exception ex)
                             {
-                                proveedor1.Estado = "INACTIVO";
-                                pn.BorrarProveedor(proveedorId);
+                                MessageBox.Show($"Hubo un problema al realizar la modificación del estado proveedor: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
-                            else
+                        }
+                        else if (!string.IsNullOrWhiteSpace(nuevoEstado) && nuevoEstado == "INACTIVO")
+                        {
+                            try
                             {
-                                MessageBox.Show("Hubo un error inesperado. No se modificará el estado del proveedor");
+                                if (proveedor1.Estado == "ACTIVO")
+                                {
+                                    proveedor1.Estado = "INACTIVO";
+                                    pn.BorrarProveedor(proveedorId);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("El usuario ya está Activo");
+                                }
                             }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"Hubo un problema al realizar la modificación del estado proveedor: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }                            
                         }
                         else
                         {
@@ -166,13 +189,14 @@ namespace InterfazForms
 
                 MessageBox.Show(mensaje);
 
-                MessageBox.Show("Datos actualizados del proveedor:" +
+                MessageBox.Show("Datos actualizados del proveedor: " +
                 "\nNombre: " + proveedor1.Nombre +
                 "\nApellido: " + proveedor1.Apellido +
                 "\nCuit: " + proveedor1.Cuit +
                 "\nEmail: " + proveedor1.Email +
                 "\nEstado: " + proveedor1.Estado);
-                }                
+
+                }
             }
             catch (Exception ex)
             {

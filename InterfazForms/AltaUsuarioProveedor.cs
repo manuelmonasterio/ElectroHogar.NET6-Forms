@@ -55,7 +55,7 @@ namespace InterfazForms
                 {
 
                     Proveedores proveedor = new Proveedores();
-                    proveedor.Id = new Guid();
+                    proveedor.Idp = new Guid();
                     proveedor.Nombre = inputNombre;
                     proveedor.Apellido = inputApellido;
                     proveedor.Email = inputEmail;

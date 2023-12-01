@@ -60,15 +60,16 @@
             txbUsuario.Name = "txbUsuario";
             txbUsuario.Size = new Size(169, 23);
             txbUsuario.TabIndex = 2;
-            txbUsuario.Text = "Admini05CW";
+            txbUsuario.Text = "Usuario";
             // 
             // txbContrasena
             // 
             txbContrasena.Location = new Point(291, 168);
             txbContrasena.Name = "txbContrasena";
+            txbContrasena.PasswordChar = '*';
             txbContrasena.Size = new Size(169, 23);
             txbContrasena.TabIndex = 3;
-            txbContrasena.Text = "CAI20232";
+            txbContrasena.Text = "Contraseña";
             // 
             // FormLogin
             // 

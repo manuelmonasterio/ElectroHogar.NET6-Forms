@@ -52,6 +52,7 @@ namespace InterfazForms
                 double precio = 0;
                 bool flag = false;
                 string vacio = "No fueron modificados: ";
+                string mensaje = "";
 
                 listaerrores += ValidacionesForm.ValidarVacio(productoId, "ID Producto");
                 vacio += ValidacionesForm.ValidarVacio(precioStr, "Precio");
@@ -82,15 +83,15 @@ namespace InterfazForms
                                 {
                                     pn.ModificarProducto(productoId, precio, producto.Stock);
 
-                                    Console.WriteLine("Cambio de precio exitoso");
+                                    mensaje += ("Cambio de precio exitoso");
                                 }
                                 catch (Exception ex)
                                 {
-                                    Console.WriteLine(ex.Message);
+                                    MessageBox.Show(ex.Message);
                                 }
                             }
                         }
-                        else if (!string.IsNullOrWhiteSpace(stockStr))
+                        if (!string.IsNullOrWhiteSpace(stockStr))
                         {
                             ValidacionesDatos validador = new ValidacionesDatos();
                             flag = validador.ValidarNumero(stockStr, ref stock, "Stock");
@@ -105,7 +106,7 @@ namespace InterfazForms
                                 {
                                     pn.ModificarProducto(productoId, producto.Precio, stock);
 
-                                    MessageBox.Show("Cambio de stock exitoso");
+                                    mensaje += ("\nCambio de stock exitoso");
                                 }
                                 catch (Exception ex)
                                 {
@@ -113,36 +114,59 @@ namespace InterfazForms
                                 }
                             }
                         }
-                        else if(!string.IsNullOrWhiteSpace(stockStr) && (estadoStr == "ACTIVO" || estadoStr == "INACTIVO"))
+                        if (!string.IsNullOrWhiteSpace(stockStr) && estadoStr == "ACTIVO")
                         {
-                            if (producto.Estado == "INACTIVO")
+                            try
                             {
-                                producto.Estado = "ACTIVO";
-                                pn.ReactivarProducto(productoId);
+                                if (producto.Estado == "INACTIVO")
+                                {
+                                    producto.Estado = "ACTIVO";
+                                    pn.ReactivarProducto(productoId);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("El producto ya está Inactivo");
+                                }
                             }
-                            else if (producto.Estado == "ACTIVO")
+                            catch (Exception ex)
                             {
-                                producto.Estado = "INACTIVO";
-                                pn.BorrarProducto(productoId);
+                                MessageBox.Show($"Hubo un problema al realizar la modificación del estado producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
-                            else
+                        }
+                        else if (!string.IsNullOrWhiteSpace(stockStr) && estadoStr == "INACTIVO")
+                        {
+                            try
                             {
-                                MessageBox.Show("Hubo un error inesperado. No se modificará el estado del producto");
+                                if (producto.Estado == "ACTIVO")
+                                {
+                                    producto.Estado = "INACTIVO";
+                                    pn.BorrarProducto(productoId);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("El producto ya está Activo");
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"Hubo un problema al realizar la modificación del estado producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                         else
                         {
                             MessageBox.Show("Opción no válida. Inténtalo de nuevo.");
                         }
-
-                        MessageBox.Show("Datos actualizados del producto " + producto.Nombre + ": " +
-                            "\nPrecio: " + precio +
-                            "\nStock: " + producto.Stock);
                     }
                     else
                     {
                         MessageBox.Show("Producto no encontrado.");
                     }
+
+                MessageBox.Show(mensaje);
+
+                MessageBox.Show("Datos actualizados del producto " + producto.Nombre + ": " +
+                "\nPrecio: " + precio +
+                "\nStock: " + producto.Stock);
                 }
             }
             catch (Exception ex)
